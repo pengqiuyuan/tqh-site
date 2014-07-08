@@ -28,8 +28,6 @@ import com.huake.web.controller.BaseApiController;
 
 @Controller
 @RequestMapping(value="/member")
-public class MemberController{
-	
 public class MemberController extends BaseApiController{
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
@@ -64,7 +62,7 @@ public class MemberController extends BaseApiController{
 	}
 	
 	/**
-	 * 用户注册 验证邮箱或�?昵称
+	 * 用户注册 验证邮箱或者昵称
 	 * @return
 	 */
 	@RequestMapping(value="/validate",method = RequestMethod.GET)
