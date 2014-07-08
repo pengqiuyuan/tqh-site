@@ -20,15 +20,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.huake.base.AppBizException;
 import com.huake.entity.Member;
 import com.huake.service.account.ShiroDbRealm.ShiroUser;
 import com.huake.service.member.MemberService;
-import com.huake.web.controller.BaseApiController;
 
 @Controller
 @RequestMapping(value="/member")
-public class MemberController extends BaseApiController{
+public class MemberController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	private static final Map<String,String> map = new HashMap<String,String>();

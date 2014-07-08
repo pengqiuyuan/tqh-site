@@ -1,8 +1,5 @@
-/target
-/bin
-/.settings
 *.class
-  *.apk
+*.apk
 target/
 bin/
 .settings/
