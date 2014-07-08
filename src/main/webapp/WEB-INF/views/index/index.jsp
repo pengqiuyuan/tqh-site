@@ -11,6 +11,6 @@
 </head>
 
 <body>
-我是首页
+<a href="${ctx }/member/login">注册-登录</a>
 </body>
 </html>

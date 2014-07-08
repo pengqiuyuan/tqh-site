@@ -15,7 +15,6 @@
 	<bean id="shiroDbRealm" class="com.huake.service.account.ShiroDbRealm">
 		<property name="accountService" ref="accountService"/>
 	</bean>
-	
 	<!-- Shiro Filter -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
@@ -27,6 +26,8 @@
 				/logout = logout
 				/static/** = anon
 				/api/** = anon
+				/member/**=anon
+				/index/**=anon
 				/register/** = anon
 				/admin/** = roles[admin]
 				/** = user

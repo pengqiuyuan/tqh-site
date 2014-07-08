@@ -7,6 +7,7 @@ import com.huake.entity.Member;
 
 public interface MemberDao extends PagingAndSortingRepository<Member, Long>,JpaSpecificationExecutor<Member>{
 	
-	Member findByEmail(String email);
-	Member findByEmailAndStatus(String email,Integer status);
+	public Member findByEmail(String email);
+	public Member findByEmailAndStatus(String email,Integer status);
+	public Member findByNickNameAndStatus(String nickName,Integer status);
 }
