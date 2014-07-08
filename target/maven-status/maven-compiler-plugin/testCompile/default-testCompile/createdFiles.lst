@@ -1,7 +1,0 @@
-com\huake\service\account\AccountServiceTest.class
-com\huake\repository\TaskDaoTest.class
-com\huake\QuickStartServer.class
-com\huake\repository\JpaMappingTest.class
-com\huake\test\MemberServiceTest.class
-com\huake\data\UserData.class
-com\huake\data\TaskData.class
