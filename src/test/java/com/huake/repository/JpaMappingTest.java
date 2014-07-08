@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 
-@ContextConfiguration(locations = { "/applicationContext.xml" })
+@ContextConfiguration(locations = { "classpath:applicationContext.xml" })
 public class JpaMappingTest extends SpringTransactionalTestCase {
 
 	private static Logger logger = LoggerFactory.getLogger(JpaMappingTest.class);

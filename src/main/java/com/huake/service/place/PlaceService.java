@@ -1,5 +1,7 @@
 package com.huake.service.place;
 
+import java.util.Date;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,8 @@ public class PlaceService {
 	 * 添加场馆
 	 * @return
 	 */
-	public Place add(){
-		return null;
+	public void add(Place place){
+		place.setCrtDate(new Date());
+		placeDao.save(place);
 	}
 }

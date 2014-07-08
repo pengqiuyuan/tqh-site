@@ -7,10 +7,10 @@
 
 <html>
 <head>
-	<title>首页</title>
+	<title></title>
 </head>
 
 <body>
-<a href="${ctx }/member/login">注册-登录</a>
+
 </body>
 </html>
