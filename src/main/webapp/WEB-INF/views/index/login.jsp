@@ -107,10 +107,10 @@
 		</div>
 		<div class="item_tab" style="display: none;">
 			 <form id="registerForm" action="${ctx }/member/register" method="post" enctype="multipart/form-data">
-				<div>帐号：<input name="email" placeholder="请输入邮箱" id="resiter_email"/></div>
-				<div>昵称：<input name="nickName" placeholder="请输入邮箱" id="register_nickName"/></div>
-				<div>密码：<input id="password" name="password" placeholder="请输入邮箱"/></div>
-				<div>确认密码：<input id="surePassword" name="password" placeholder="请输入密码"/></div>
+				<div>帐号：<input name="email" placeholder="请输入邮箱" id="resiter_email"/><span id=""></span></div>
+				<div>昵称：<input name="nickName" placeholder="请输入昵称" id="register_nickName"/><span></span></div>
+				<div>密码：<input id="password" name="password" placeholder="请输入密码"/></div>
+				<div>确认密码：<input id="surePassword" name="password" placeholder="请再次输入密码"/><span></span></div>
 				<button type="submit" id="registerSubmit" class="btn btn-primary">注册</button>
 			</form> 
 		</div>
