@@ -23,16 +23,15 @@ import com.huake.web.controller.BaseApiController;
 
 @Controller
 @RequestMapping(value="/member")
-public class MemberController extends BaseApiController{
+public class MemberController{
 	
-	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	public  static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired
 	private MemberService memberService;
 	
-	@RequestMapping(value="index",method=RequestMethod.GET)
+	@RequestMapping(value="/index",method=RequestMethod.GET)
 	private String index() throws Exception{
-		
 		return "/member/login";
 	}
 	

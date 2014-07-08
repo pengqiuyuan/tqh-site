@@ -7,10 +7,10 @@
 
 <html>
 <head>
-	<title>首页</title>
+	<title></title>
 </head>
 
 <body>
-我是首页
+
 </body>
 </html>
