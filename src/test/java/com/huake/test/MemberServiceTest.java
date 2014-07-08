@@ -1,16 +1,23 @@
 package com.huake.test;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.transaction.Transactional;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 
 import com.huake.entity.Member;
 import com.huake.service.member.MemberService;
-
-@ContextConfiguration(locations = {"/applicationContext.xml"})
+@TransactionConfiguration(defaultRollback=false)
+@ContextConfiguration(locations = {"classpath*:/applicationContext.xml"})
 public class MemberServiceTest extends SpringTransactionalTestCase{
 	
+	private static final Map<String,String> map = new HashMap<String,String>();
 	@Autowired
 	private MemberService memberService;
 	
@@ -22,5 +29,17 @@ public class MemberServiceTest extends SpringTransactionalTestCase{
 		
 		boolean t = memberService.iExist("64878@qq.com");
 		System.out.println("000000  " + t);
+	}
+	@Test
+	public void validate(){
+	System.out.println(memberService.vilidateEmailOrNickName(null, "sfgege", map).toString());
+	}
+	@Test
+	public void register(){
+		Member member  = new Member();
+		member.setEmail("4546785@qq.com");
+		member.setNickName("houhuileba");
+		member.setPassword("123");
+		memberService.register(member);
 	}
 }

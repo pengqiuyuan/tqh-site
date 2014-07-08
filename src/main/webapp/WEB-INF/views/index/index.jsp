@@ -11,6 +11,6 @@
 </head>
 
 <body>
-
+<a href="${ctx }/member/login">注册-登录</a>
 </body>
 </html>
