@@ -1,5 +1,6 @@
 package com.huake.web.controller.mgr;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -48,6 +49,7 @@ public class PlaceController{
 					PlaceDetail pdetail = new PlaceDetail();
 					pdetail.setValue("pic");
 					pdetail.setValue(result.get("url"));
+					pdetail.setCrtDate(new Date());
 					place.getPlaceDetails().add(pdetail);
 				}
 			}
