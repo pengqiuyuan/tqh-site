@@ -77,10 +77,11 @@ public class MemberController extends BaseApiController{
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/register",method = RequestMethod.POST)
+	@RequestMapping(value="/register",method = RequestMethod.POST,consumes="application/json",produces="application/json;charset=UTF-8")
 	@ResponseBody
 	@ResponseStatus(value = HttpStatus.OK)
-	private Member register(@RequestBody Member member) throws Exception{
-		return	memberService.register(member);
+	private Map<String,String> register(@RequestBody Member member) throws Exception{
+		System.out.println("开始注册"+member.getEmail()+"    " +member.getNickName()+"      "+member.getPassword());
+		return memberService.register(member,map);
 	}
 }

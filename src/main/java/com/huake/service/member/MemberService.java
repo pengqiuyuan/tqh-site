@@ -26,10 +26,10 @@ public class MemberService {
 	 * @return
 	 */
 	public Member findByEmail(String email,Integer status){
-		return memberDao.findByEmailAndStatus(email, Member.STATUS_VALID);
+		return memberDao.findByEmailAndStatus(email, status);
 	}
 	public Member findByNickName(String nickName,Integer status){
-		return memberDao.findByNickNameAndStatus(nickName, Member.STATUS_VALID);
+		return memberDao.findByNickNameAndStatus(nickName, status);
 	}
 	/**
 	 * 判断邮箱登陆名是否存在
@@ -86,9 +86,19 @@ public class MemberService {
 	 * @param member
 	 * @return
 	 */
-	public Member register(Member member){
-		member.setPassword(toMD5(member.getPassword()));
-		return	saveMember(member);
+	public Map<String,String> register(Member member,Map<String,String> map){
+		if(findByEmail(member.getEmail(),Member.STATUS_VALID) != null){
+			map.put("message","email_used");
+			return map;
+		}else if(findByNickName(member.getNickName(),Member.STATUS_VALID) !=null){
+			map.put("message","nickName_used");
+			return map;
+		}else{
+			member.setPassword(toMD5(member.getPassword()));
+			saveMember(member);
+			map.put("message", "success");
+			return map;
+		}
 	}
 	public String toMD5(String s) {
 		char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',

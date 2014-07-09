@@ -13,6 +13,8 @@
 <title>登录-注册</title>
 <style type="text/css">
 	.warn{color:#FF0000;}
+	.ok{color:#009933;}
+	.display{display:none}
 	*{ margin:0; padding:0;}
 	a{ text-decoration:none; color:#333;}
 	.box_163css{ width:640px; margin:0px auto; position:relative;}
@@ -93,27 +95,155 @@
 	
 	<div class="zlbox_content">
 		<div class="item_tab" style="display: block;">
-			<form id="loginForm" action="${ctx }/member/login" method="post">
+			<form id="loginForm"  name ="loginForm" action="${ctx }/member/login" method="post">
 				<c:if test="${not empty loginMember}">
 					<label class="warn">帐号与密码不符</label>
 				</c:if>
 				<label>帐号：</label>
 				<input name="email" class="input-large required" value="${loginMember.email }" placeholder="请输入邮箱"/>
 				<label>密码：</label>
-				<input name="password" class="input-large required" value="${loginMember.password }" placeholder="请输入密码"/><br/>
+				<input type="password" name="password" class="input-large required" value="${loginMember.password }" placeholder="请输入密码"/><br/>
 				<input type="checkbox" value="1">下次自动登录，使用公用电脑勿勾选<br/>
 				<button type="submit" id="loginSubmit" class="btn btn-primary">登录</button>
 			</form>
 		</div>
 		<div class="item_tab" style="display: none;">
-			 <form id="registerForm" action="${ctx }/member/register" method="post" enctype="multipart/form-data">
-				<div>帐号：<input name="email" placeholder="请输入邮箱" id="resiter_email"/><span id=""></span></div>
-				<div>昵称：<input name="nickName" placeholder="请输入昵称" id="register_nickName"/><span></span></div>
-				<div>密码：<input id="password" name="password" placeholder="请输入密码"/></div>
-				<div>确认密码：<input id="surePassword" name="password" placeholder="请再次输入密码"/><span></span></div>
-				<button type="submit" id="registerSubmit" class="btn btn-primary">注册</button>
+			 <form id="registerForm" name="registerForm"  method="post" enctype="multipart/form-data">
+				<div>帐号：<input name="email" placeholder="请输入邮箱" id="resiter_email"/><span id="back_email_message"></span></div>
+				<div>昵称：<input name="nickName" placeholder="请输入昵称" id="register_nickName"/><span id="back_nickName_message"></span></div>
+				<div>密码：<input type="password" id="password_" name="password_" placeholder="请输入密码"/></div>
+				<div>确认密码：<input type="password" id="surePassword" name="password" placeholder="请再次输入密码"/></div>
+				<button type="button" id="registerSubmit" class="btn btn-primary">注册</button>
 			</form> 
 		</div>
 	</div>
+	<script type="text/javascript">
+		function vilidateEmailOrNickName(category, value){
+			var element;
+			if(category=='email'){
+				 element = $("#back_email_message");
+			}else{
+				 element = $("#back_nickName_message");
+			}
+			 $.ajax({
+				url: "${ctx}/member/validate?"+category+"="+value, 
+				type: 'GET',
+				async:false,
+				contentType: "application/json;charset=UTF-8",
+				success: function(data){
+					element.removeClass("war ok");
+					if(data.message =='ok'){
+						element.empty();
+						element.addClass("ok");
+						element.text("*");
+					}else{
+						element.empty();
+						element.addClass("warn");
+						element.text(data.message);
+					}
+				},error:function(xhr){
+					alert("验证出错了");
+				}
+			}); 
+		}
+		
+		$(function(){
+			$("#resiter_email").blur(function(){
+				var element=$("#resiter_email");
+				if(element.val()!=null && element.val().trim()!=''){
+					vilidateEmailOrNickName('email',element.val());
+				}
+			});
+			$("#register_nickName").blur(function(){
+				var element=$("#register_nickName");
+				if(element.val()!=null && element.val().trim()!=''){
+					vilidateEmailOrNickName("nickName",element.val());
+				}
+			});
+			 $("#loginForm").validate({
+				rules:{
+					email:{
+						required:true,
+						email:true 
+					},
+					password:{
+						required:true,
+					}
+				},
+				messages:{
+					email:{
+						required:"请输入帐号",
+						eamil:"请输入正确的邮箱"
+					},
+					password:{
+						required:"请输入密码"
+					}
+				}
+			}); 
+			$("#registerForm").validate({
+				rules:{
+					email:{
+						required:true,
+						email:true 
+					},
+					nickName:{
+						required:true
+					},
+					password:{
+						required:true,
+						equalTo:"#password_"
+					}
+				},
+				messages:{
+					email:{
+						required:"请输入帐号",
+						eamil:"请输入正确的邮箱"
+					},
+					nickName:{
+						required:"请输入昵称"
+					},
+					password:{
+						required:"请输入密码",
+						equalTo:"两次密码输入不一样"
+					}
+				}
+		});
+		 $("#registerSubmit").click(function(){
+			var rs = $("#registerForm").valid();//判断validate格式验证是否正确
+			if(rs){
+				var emailValue = $("#resiter_email").val();
+				var nickNameValue = $("#register_nickName").val();
+				var passwordValue = $("#surePassword").val();
+				$.ajax({
+					url: "${ctx}/member/register", 
+					type: 'POST',
+					data: JSON.stringify({"email":emailValue,"nickName":nickNameValue,"password":passwordValue}),
+					contentType: "application/json;charset=UTF-8",
+					async:true,
+					success: function(data){
+						//alert(data.message);
+						if(data.message == 'email_used'){
+							var showEmail = $("#back_email_message");
+							showEmail.empty();
+							showEmail.addClass("warn");
+							showEmail.text('该帐号已使用');
+						}else if(data.message == 'nickName_used'){
+							var showEmail = $("#back_nickName_message");
+							showEmail.empty();
+							showEmail.addClass("warn");
+							showEmail.text('该昵称已使用');
+						}else if(data.message =='success'){
+							alert('注册成功');
+						}
+					},error:function(xhr){
+						alert("注册出错了");
+					}
+				}); 
+			}else{
+				//alert("失败");
+			}
+		});
+	});
+	</script>
 </body>
 </html>

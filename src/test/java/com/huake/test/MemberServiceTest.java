@@ -40,6 +40,6 @@ public class MemberServiceTest extends SpringTransactionalTestCase{
 		member.setEmail("4546785@qq.com");
 		member.setNickName("houhuileba");
 		member.setPassword("123");
-		memberService.register(member);
+		//memberService.register(member);
 	}
 }
