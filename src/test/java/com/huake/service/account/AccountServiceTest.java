@@ -20,7 +20,6 @@ import org.springside.modules.utils.Clock.MockClock;
 
 import com.huake.data.UserData;
 import com.huake.entity.User;
-import com.huake.repository.TaskDao;
 import com.huake.repository.UserDao;
 import com.huake.service.ServiceException;
 import com.huake.service.account.AccountService;
@@ -39,8 +38,6 @@ public class AccountServiceTest {
 	@Mock
 	private UserDao mockUserDao;
 
-	@Mock
-	private TaskDao mockTaskDao;
 
 	@Before
 	public void setUp() {
