@@ -17,7 +17,7 @@
 	.display{display:none}
 	*{ margin:0; padding:0;}
 	a{ text-decoration:none; color:#333;}
-	.box_163css{ width:640px; margin:0px auto; position:relative;}
+	.box_163css{ width:640px; margin:170px auto; position:relative;}
 	.nav{ width:100%; float:left; height:34px;}
 	.nav li{ font-size:14px;  float:left; width:160px; height:34px;-webkit-transition:all 0.35s linear; cursor:pointer; text-align:center; line-height:32px; list-style-type:none;}
 	.nav li.on{ color:#f00;}

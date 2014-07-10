@@ -1,6 +1,7 @@
 package com.huake.service.member;
 
 import java.security.MessageDigest;
+import java.util.List;
 import java.util.Map;
 
 import javax.transaction.Transactional;
@@ -26,10 +27,12 @@ public class MemberService {
 	 * @return
 	 */
 	public Member findByEmail(String email,Integer status){
-		return memberDao.findByEmailAndStatus(email, status);
+		List<Member> list = memberDao.findByEmailAndStatus(email, status);
+		return list.size()>0?list.get(0):null;
 	}
 	public Member findByNickName(String nickName,Integer status){
-		return memberDao.findByNickNameAndStatus(nickName, status);
+		List<Member> list = memberDao.findByNickNameAndStatus(nickName, status);
+		return list.size()>0?list.get(0):null;
 	}
 	/**
 	 * 判断邮箱登陆名是否存在
@@ -95,6 +98,7 @@ public class MemberService {
 			return map;
 		}else{
 			member.setPassword(toMD5(member.getPassword()));
+			member.setBonusPoint(Member.BONUS_POINT);
 			saveMember(member);
 			map.put("message", "success");
 			return map;
@@ -135,4 +139,5 @@ public class MemberService {
 		member.setStatus(Member.STATUS_VALID);
 		return memberDao.save(member);
 	}
+	
 }

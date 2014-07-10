@@ -13,11 +13,12 @@ import org.springside.modules.test.spring.SpringTransactionalTestCase;
 
 import com.huake.entity.Member;
 import com.huake.service.member.MemberService;
-@TransactionConfiguration(defaultRollback=false)
+//@TransactionConfiguration(defaultRollback=false)
 @ContextConfiguration(locations = {"classpath*:/applicationContext.xml"})
 public class MemberServiceTest extends SpringTransactionalTestCase{
 	
 	private static final Map<String,String> map = new HashMap<String,String>();
+	
 	@Autowired
 	private MemberService memberService;
 	
@@ -41,5 +42,14 @@ public class MemberServiceTest extends SpringTransactionalTestCase{
 		member.setNickName("houhuileba");
 		member.setPassword("123");
 		//memberService.register(member);
+	}
+	@Test
+	public void sfs(){
+		Member m = memberService.gg("4546785@qq.com");
+		System.out.println(m.getEmail()+"   " +m.getPassword());
+	}
+	@Test
+	public void  fdk(){
+		System.out.println("aaa");
 	}
 }

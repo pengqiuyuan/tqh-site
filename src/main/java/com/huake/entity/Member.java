@@ -29,6 +29,10 @@ public class Member implements Serializable {
 	 * 无效
 	 */
 	public static final Integer STATUS_UN_VALID=3;
+	/**
+	 * 默认积分
+	 */
+	public static final Long BONUS_POINT = new Long(0);
 
 	
 	/**
@@ -72,7 +76,12 @@ public class Member implements Serializable {
 	 */
 	@Column(name="status", length=2, nullable=false)
 	private Integer status;
-
+	/**
+	 * 积分
+	 */
+	@Column(name="bonus_point")
+	private Long bonusPoint;
+	
 	public Long getMemberId() {
 		return memberId;
 	}
@@ -127,6 +136,14 @@ public class Member implements Serializable {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public Long getBonusPoint() {
+		return bonusPoint;
+	}
+
+	public void setBonusPoint(Long bonusPoint) {
+		this.bonusPoint = bonusPoint;
 	}
 	
 }
