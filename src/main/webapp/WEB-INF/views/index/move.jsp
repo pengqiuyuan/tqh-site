@@ -10,9 +10,11 @@
 <title>第二个页面</title>
 </head>
 <body>
+<div style="margin-top:170px;">
 第二个页面<a href="${ctx}/logout">推出</a>
 <div>${currentMember.memberId}</div>
 <div>${currentMember.nickName}</div>
 <div>${currentMember.salt}</div>
+</div>
 </body>
 </html>
