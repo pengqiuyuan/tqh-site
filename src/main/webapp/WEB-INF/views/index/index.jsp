@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+	<link type="image/x-icon" href="${ctx}/static/images/favicon.ico" rel="shortcut icon">
     <title>Freelancer - A Free Start Bootstrap Theme</title>
 
     <!-- Bootstrap Core CSS -->
