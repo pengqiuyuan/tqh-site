@@ -14,5 +14,5 @@ public interface MemberDao extends PagingAndSortingRepository<Member, Long>,JpaS
 	public Member findByEmail(String email);
 	public List<Member> findByEmailAndStatus(String email,Integer status);
 	public List<Member> findByNickNameAndStatus(String nickName,Integer status);
-	
+	public Member findOne(Long memberId);
 }

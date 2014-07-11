@@ -33,8 +33,15 @@ public class Member implements Serializable {
 	 * 默认积分
 	 */
 	public static final Long BONUS_POINT = new Long(0);
-
 	
+	/**
+	 * 会员角色为 user
+	 */
+	public static final String ROLE_USER="user";
+	/**
+	 * 加盐长度
+	 */
+	public static final int SALT_SIZE = 8;
 	/**
 	 * 会员	 */
 	@Id
@@ -81,6 +88,20 @@ public class Member implements Serializable {
 	 */
 	@Column(name="bonus_point")
 	private Long bonusPoint;
+	
+	@Column
+	private String salt;
+	
+	/**
+	 * 登录名
+	 */
+	@Column(name="login_name", length=60)
+	private String loginName;
+	/**
+	 * 用户角色以”，“分割
+	 */
+	@Column
+	private String roles;
 	
 	public Long getMemberId() {
 		return memberId;
@@ -144,6 +165,30 @@ public class Member implements Serializable {
 
 	public void setBonusPoint(Long bonusPoint) {
 		this.bonusPoint = bonusPoint;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+
+	public String getLoginName() {
+		return loginName;
+	}
+
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
+
+	public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
 	
 }

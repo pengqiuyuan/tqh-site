@@ -95,15 +95,26 @@
 	
 	<div class="zlbox_content">
 		<div class="item_tab" style="display: block;">
-			<form id="loginForm"  name ="loginForm" action="${ctx }/member/login" method="post">
+			<form id="loginForm"  name ="loginForm" action="${ctx }/login" method="post">
 				<c:if test="${not empty loginMember}">
 					<label class="warn">帐号与密码不符</label>
 				</c:if>
+				<%
+	String error = (String) request.getAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
+	if(error != null){
+	%>
+		<div class="alert alert-error input-medium controls">
+			<button class="close" data-dismiss="alert">×</button>登录失败，请重试.
+		</div>
+	<%
+	}
+	%>
 				<label>帐号：</label>
-				<input name="email" class="input-large required" value="${loginMember.email }" placeholder="请输入邮箱"/>
+				<input name="username" class="input-large required" value="${username}" placeholder="请输入邮箱"/>
 				<label>密码：</label>
-				<input type="password" name="password" class="input-large required" value="${loginMember.password }" placeholder="请输入密码"/><br/>
-				<input type="checkbox" value="1">下次自动登录，使用公用电脑勿勾选<br/>
+				<input type="password" name="password" class="input-large required" value="" placeholder="请输入密码"/><br/>
+				<label class="checkbox" for="rememberMe"><input type="checkbox" id="rememberMe" name="rememberMe"/> 下次自动登录，使用公用电脑勿勾选 </label>	
+				<!-- <input type="checkbox" value="1">下次自动登录，使用公用电脑勿勾选 --><br/>
 				<button type="submit" id="loginSubmit" class="btn btn-primary">登录</button>
 			</form>
 		</div>
