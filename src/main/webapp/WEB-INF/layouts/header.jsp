@@ -2,27 +2,41 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
+
 <div id="header">
-	<div id="title">
-	    <h1><a href="${ctx}">QuickStart示例</a><small>--TodoList应用演示</small>
-	    <shiro:user>
-			<div class="btn-group pull-right">
-				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-					<i class="icon-user"></i> <shiro:principal property="name"/>
-					<span class="caret"></span>
-				</a>
-			
-				<ul class="dropdown-menu">
-					<shiro:hasRole name="admin">
-						<li><a href="${ctx}/admin/user">Admin Users</a></li>
-						<li class="divider"></li>
-					</shiro:hasRole>
-					<li><a href="${ctx}/api">APIs</a></li>
-					<li><a href="${ctx}/profile">Edit Profile</a></li>
-					<li><a href="${ctx}/logout">Logout</a></li>
-				</ul>
-			</div>
-		</shiro:user>
-		</h1>
-	</div>
+ <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">About</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 </div>

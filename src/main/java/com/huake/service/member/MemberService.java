@@ -1,16 +1,22 @@
 package com.huake.service.member;
 
 import java.security.MessageDigest;
+import java.util.List;
 import java.util.Map;
 
 import javax.transaction.Transactional;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springside.modules.security.utils.Digests;
+import org.springside.modules.utils.Clock;
+import org.springside.modules.utils.Encodes;
 
 import com.huake.entity.Member;
 import com.huake.repository.MemberDao;
+import com.huake.service.account.ShiroDbRealm.ShiroUser;
 
 @Component
 @Transactional
@@ -18,7 +24,7 @@ public class MemberService {
 
 	@Autowired
 	private MemberDao memberDao;
-	
+	private Clock clock = Clock.DEFAULT;
 	/**
 	 * 通过email查找用户
 	 * @param email
@@ -26,10 +32,12 @@ public class MemberService {
 	 * @return
 	 */
 	public Member findByEmail(String email,Integer status){
-		return memberDao.findByEmailAndStatus(email, Member.STATUS_VALID);
+		List<Member> list = memberDao.findByEmailAndStatus(email, status);
+		return list.size()>0?list.get(0):null;
 	}
 	public Member findByNickName(String nickName,Integer status){
-		return memberDao.findByNickNameAndStatus(nickName, Member.STATUS_VALID);
+		List<Member> list = memberDao.findByNickNameAndStatus(nickName, status);
+		return list.size()>0?list.get(0):null;
 	}
 	/**
 	 * 判断邮箱登陆名是否存在
@@ -51,7 +59,7 @@ public class MemberService {
 			redirectAttributes.addFlashAttribute("loginMember",member);
 			return "redirect:/member/login";
 		}
-		return "redirect:/index";
+		return "index/show";
 	}
 	/**
 	 * 注册邮箱 昵称验证
@@ -86,11 +94,26 @@ public class MemberService {
 	 * @param member
 	 * @return
 	 */
-	public Member register(Member member){
-		member.setPassword(toMD5(member.getPassword()));
-		return	saveMember(member);
+	public Map<String,String> register(Member member,Map<String,String> map){
+		if(findByEmail(member.getEmail(),Member.STATUS_VALID) != null){
+			map.put("message","email_used");
+			return map;
+		}else if(findByNickName(member.getNickName(),Member.STATUS_VALID) !=null){
+			map.put("message","nickName_used");
+			return map;
+		}else{
+			member.setPassword(toMD5(member.getPassword()));
+			member.setBonusPoint(Member.BONUS_POINT);
+			byte[] salt = Digests.generateSalt(Member.SALT_SIZE);
+			member.setSalt(Encodes.encodeHex(salt));
+			member.setLoginName(member.getEmail());
+			member.setRoles(Member.ROLE_USER);
+			saveMember(member);
+			map.put("message", "success");
+			return map;
+		}
 	}
-	public String toMD5(String s) {
+	public static String toMD5(String s) {
 		char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 				'A', 'B', 'C', 'D', 'E', 'F' };
 		try {
@@ -125,4 +148,27 @@ public class MemberService {
 		member.setStatus(Member.STATUS_VALID);
 		return memberDao.save(member);
 	}
+	//权限部分
+	public void setClock(Clock clock) {
+		this.clock = clock;
+	}
+	/**
+	 * 获取当前登录用户信息
+	 * @return
+	 */
+	public Member getCurrentMember(){
+		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
+		if(user != null){
+			Long memberId = user.memberId;
+			if(memberId != null){
+				Member member = memberDao.findOne(memberId);
+				return member;
+			}else{
+				return null;
+			}
+		}else{
+			return null;
+		}
+	}
+	
 }

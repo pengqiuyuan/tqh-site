@@ -11,9 +11,9 @@
 		<property name="cacheManager" ref="shiroEhcacheManager" />
 	</bean>
 
-	<!-- 項目自定义的Realm, 所有accountService依赖的dao都需要用depends-on声明 -->
+	<!-- 項目自定义的Realm, �?��accountService依赖的dao都需要用depends-on声明 -->
 	<bean id="shiroDbRealm" class="com.huake.service.account.ShiroDbRealm">
-		<property name="accountService" ref="accountService"/>
+		<property name="memberService" ref="memberService"/>
 	</bean>
 	<!-- Shiro Filter -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
@@ -26,11 +26,13 @@
 				/logout = logout
 				/static/** = anon
 				/api/** = anon
-				/member/**=anon
+				<!-- /member/login=anon -->
 				/index/**=anon
 				/register/** = anon
+				/member/validate = anon
+				/member/register = anon
 				/admin/** = roles[admin]
-				/** = user
+				/** = anon
 			</value>
 		</property>
 	</bean>

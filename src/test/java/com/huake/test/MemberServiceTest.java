@@ -18,6 +18,7 @@ import com.huake.service.member.MemberService;
 public class MemberServiceTest extends SpringTransactionalTestCase{
 	
 	private static final Map<String,String> map = new HashMap<String,String>();
+	
 	@Autowired
 	private MemberService memberService;
 	
@@ -37,9 +38,18 @@ public class MemberServiceTest extends SpringTransactionalTestCase{
 	@Test
 	public void register(){
 		Member member  = new Member();
-		member.setEmail("4546785@qq.com");
-		member.setNickName("houhuileba");
+		member.setEmail("565656@qq.com");
+		member.setNickName("shenqideren");
 		member.setPassword("123");
-		memberService.register(member);
+		memberService.register(member,map);
+	}
+	@Test
+	public void sfs(){
+		//Member m = memberService.gg("4546785@qq.com");
+	//	System.out.println(m.getEmail()+"   " +m.getPassword());
+	}
+	@Test
+	public void  fdk(){
+		System.out.println("aaa");
 	}
 }
