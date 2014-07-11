@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -20,26 +21,40 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springside.modules.utils.Encodes;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.ImmutableList;
+import com.huake.entity.Member;
 import com.huake.entity.User;
+import com.huake.service.member.CustomCredentialsMatcher;
+import com.huake.service.member.MemberService;
 
 public class ShiroDbRealm extends AuthorizingRealm {
 
-	protected AccountService accountService;
-
+	protected MemberService memberService;
 	/**
 	 * 认证回调函数,登录时调用.
 	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
-		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
+		/*UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
 		User user = accountService.findUserByLoginName(token.getUsername());
 		if (user != null) {
 			byte[] salt = Encodes.decodeHex(user.getSalt());
 			return new SimpleAuthenticationInfo(new ShiroUser(user.getId(), user.getLoginName(), user.getName()),
 					user.getPassword(), ByteSource.Util.bytes(salt), getName());
+		} else {
+			return null;
+		}*/
+		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
+		Member member = memberService.findByEmail(token.getUsername(),Member.STATUS_VALID);
+		if (member != null) {
+			byte[] salt = Encodes.decodeHex(member.getSalt());
+			System.out.println("认证信息  会员Id"+member.getMemberId()+"昵称名"+member.getLoginName()+"  邮箱"+member.getEmail()+"  密码"+member.getPassword());
+			return new SimpleAuthenticationInfo(new ShiroUser(member.getMemberId(), member.getNickName(), member.getEmail()),
+					member.getPassword(), ByteSource.Util.bytes(salt), getName());
 		} else {
 			return null;
 		}
@@ -50,10 +65,15 @@ public class ShiroDbRealm extends AuthorizingRealm {
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		ShiroUser shiroUser = (ShiroUser) principals.getPrimaryPrincipal();
+		/*ShiroUser shiroUser = (ShiroUser) principals.getPrimaryPrincipal();
 		User user = accountService.findUserByLoginName(shiroUser.loginName);
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		info.addRoles(user.getRoleList());
+		return info;*/
+		ShiroUser shiroUser = (ShiroUser) principals.getPrimaryPrincipal();
+		Member member = memberService.findByEmail(shiroUser.email,Member.STATUS_VALID);
+		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+		info.addRoles(ImmutableList.copyOf(StringUtils.split(member.getRoles(), ",")));
 		return info;
 	}
 
@@ -62,33 +82,32 @@ public class ShiroDbRealm extends AuthorizingRealm {
 	 */
 	@PostConstruct
 	public void initCredentialsMatcher() {
-		HashedCredentialsMatcher matcher = new HashedCredentialsMatcher(AccountService.HASH_ALGORITHM);
-		matcher.setHashIterations(AccountService.HASH_INTERATIONS);
-
-		setCredentialsMatcher(matcher);
+		/*HashedCredentialsMatcher matcher = new HashedCredentialsMatcher(AccountService.HASH_ALGORITHM);
+		matcher.setHashIterations(AccountService.HASH_INTERATIONS);*/
+		setCredentialsMatcher(new CustomCredentialsMatcher());
 	}
 
-	public void setAccountService(AccountService accountService) {
-		this.accountService = accountService;
+	public void setMemberService(MemberService memberService) {
+		this.memberService = memberService;
 	}
-
 	/**
 	 * 自定义Authentication对象，使得Subject除了携带用户的登录名外还可以携带更多信息.
 	 */
 	public static class ShiroUser implements Serializable {
 		private static final long serialVersionUID = -1373760761780840081L;
-		public Long id;
-		public String loginName;
-		public String name;
+		public Long memberId;
+		public String nickName;
+		public String email;
 
-		public ShiroUser(Long id, String loginName, String name) {
-			this.id = id;
-			this.loginName = loginName;
-			this.name = name;
+		public ShiroUser(Long memberId, String nickName, String email) {
+			System.out.println("会员信息    ID:"+memberId+"    name:" +nickName+"    email:"+email);
+			this.memberId = memberId;
+			this.nickName = nickName;
+			this.email = email;
 		}
 
 		public String getName() {
-			return name;
+			return nickName;
 		}
 
 		/**
@@ -96,7 +115,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
 		 */
 		@Override
 		public String toString() {
-			return loginName;
+			return email;
 		}
 
 		/**
@@ -104,11 +123,11 @@ public class ShiroDbRealm extends AuthorizingRealm {
 		 */
 		@Override
 		public int hashCode() {
-			return Objects.hashCode(loginName);
+			return Objects.hashCode(email);
 		}
 
 		/**
-		 * 重载equals,只计算loginName;
+		 * 重载equals,只计算email;
 		 */
 		@Override
 		public boolean equals(Object obj) {
@@ -122,11 +141,11 @@ public class ShiroDbRealm extends AuthorizingRealm {
 				return false;
 			}
 			ShiroUser other = (ShiroUser) obj;
-			if (loginName == null) {
-				if (other.loginName != null) {
+			if (email == null) {
+				if (other.email != null) {
 					return false;
 				}
-			} else if (!loginName.equals(other.loginName)) {
+			} else if (!email.equals(other.email)) {
 				return false;
 			}
 			return true;

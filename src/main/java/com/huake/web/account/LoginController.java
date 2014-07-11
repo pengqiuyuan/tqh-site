@@ -25,13 +25,15 @@ public class LoginController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String login() {
-		return "account/login";
+		System.out.println("登录 GET");
+		return "index/login";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String fail(@RequestParam(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM) String userName, Model model) {
+		System.out.println("登录 POST");
 		model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, userName);
-		return "account/login";
+		return "index/login";
 	}
 
 }
