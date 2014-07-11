@@ -11,7 +11,7 @@
 		<property name="cacheManager" ref="shiroEhcacheManager" />
 	</bean>
 
-	<!-- 項目自定义的Realm, �?��accountService依赖的dao都需要用depends-on声明 -->
+	<!-- 項目自定义的Realm, 所有依赖的dao都需要用depends-on声明 -->
 	<bean id="shiroDbRealm" class="com.huake.service.account.ShiroDbRealm">
 		<property name="memberService" ref="memberService"/>
 	</bean>
