@@ -24,5 +24,8 @@ springside4
 2、layouts布局的添加、上中下
 3、首页展示的完成
 2014-7-10
-
+1、会员登录、注册部分已完成()
 2014-7-11
+1、球房入驻完成  、图片预览、图片拖拽上传（使用 http://www.zhangxinxu.com/study/201109/html5-file-image-ajax-upload.html）
+2、修改球房入驻 http://jasny.github.io/bootstrap/getting-started/
+3、使用jasny，bootstrap的一个插件
