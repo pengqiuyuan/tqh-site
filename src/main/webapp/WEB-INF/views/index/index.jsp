@@ -9,7 +9,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>台球�?/title>
+		<title>台球会</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link type="image/x-icon" href="${ctx}/static/images/favicon.ico" rel="shortcut icon">
@@ -103,7 +103,7 @@
     </div>
     <div class="col-md-4 text-center">
       <img class="img-circle" src="${ctx}/static/images/assets/example/index_10.png">
-      <h2><a href="#">赛事直播�?/a></h2>
+      <h2><a href="#">赛事直播间</a></h2>
     </div>
     <div class="col-md-4 text-center">
       <img class="img-circle" src="${ctx}/static/images/assets/example/index_12.png">
@@ -126,7 +126,7 @@
   <!-- FOOTER -->
   <div class="row" style="background:url(${ctx}/static/images/assets/example/index1_33.png);height:140px;">
     <div class="col-lg-12">
-    	<p class="friend_link">友情链接�?<a href="">九游手机游戏 | </a><a href="">天网手机软件 | </a><a href="">历趣手机软件 | </a><a href="">软吧手机软件 | </a><a href="">宝软�?| </a><a href="">应用�?| </a><a href="">安智�?| </a><a href="">雷锋�?/a></p>
+    	<p class="friend_link">友情链接： <a href="">九游手机游戏 | </a><a href="">天网手机软件 | </a><a href="">历趣手机软件 | </a><a href="">软吧手机软件 | </a><a href="">宝软网 | </a><a href="">应用汇 | </a><a href="">安智网 | </a><a href="">雷锋网</a></p>
   	</div>
   </div>
 </div> 
