@@ -6,11 +6,16 @@
 package com.huake.web.account;
 
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.huake.entity.Member;
+import com.huake.service.member.MemberService;
 
 /**
  * LoginController负责打开登录页面(GET请求)和登录出错页面(POST请求)，
@@ -23,6 +28,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = "/login")
 public class LoginController {
 
+	@Autowired
+	private MemberService memberService;
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String login() {
 		System.out.println("登录 GET");
@@ -36,4 +44,8 @@ public class LoginController {
 		return "index/login";
 	}
 
+	@ModelAttribute("currentMember")
+	public Member getCurrentMember(){
+		return memberService.getCurrentMember();
+	}
 }

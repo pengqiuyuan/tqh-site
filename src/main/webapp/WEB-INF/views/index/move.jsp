@@ -4,17 +4,16 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
-
+<!DOCTYPE html>
 <html>
 <head>
-<title>第二个页面</title>
+	<title>第二个页面</title>
 </head>
 <body>
-<div style="margin-top:170px;">
-第二个页面<a href="${ctx}/logout">推出</a>
-<div>${currentMember.memberId}</div>
-<div>${currentMember.nickName}</div>
-<div>${currentMember.salt}</div>
-</div>
+${currentMember}</br>
+${currentMember.memberId}</br>
+${currentMember.nickName}</br>
+${currentMember.email}</br>
+<a href="${ctx }/logout">退出</a>
 </body>
 </html>
