@@ -5,6 +5,7 @@
 		<pattern>/api/*</pattern>
 		<pattern>/index</pattern>
 		<!-- <pattern>/member/move</pattern> -->
+		<pattern>/chat</pattern>
 	</excludes>
 	 <decorator name="client" page="client.jsp">
         <pattern>/login</pattern>
