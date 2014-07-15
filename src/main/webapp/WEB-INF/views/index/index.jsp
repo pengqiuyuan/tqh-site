@@ -110,7 +110,7 @@
     </div>
     <div class="col-md-4 text-center">
       <img class="img-circle" src="${ctx}/static/images/assets/example/index_10.png">
-      <h2>赛事直播间</h2>
+      <h2>赛事直播�?/h2>
       
       <p><a class="btn btn-default" href="#">点击详情 »</a></p>
     </div>
@@ -155,9 +155,9 @@
   <div class="container-footer" style="background:url(${ctx}/static/images/assets/example/index1_33.png)
   ;height:167px; margin-top:30px; width:100%;">
     <div class="lk-999 " style="margin-left:147px; padding-top:50px; color:#9ca3a2;"><p class="pull-right" ><a href="#"></a></p>
-    <p style="font-color:#9ca3a2">友情链接： <a href="">九游手机游戏 | </a><a href="">天网手机软件 | </a><a href="">历趣手机软件 | </a><a href="">软吧手机软件 | </a><a href="">宝软网 | </a><a href="">应用汇 | </a><a href="">安智网 | </a><a href="">雷锋网</a></p>
+    <p style="font-color:#9ca3a2">友情链接�?<a href="">九游手机游戏 | </a><a href="">天网手机软件 | </a><a href="">历趣手机软件 | </a><a href="">软吧手机软件 | </a><a href="">宝软�?| </a><a href="">应用�?| </a><a href="">安智�?| </a><a href="">雷锋�?/a></p>
    </div>
-   <div class="container l" style="margin-left:250px; margin-top:30px; color:#9ca3a2; font-size:12px;"><p>版权所有 福州华科信息科技有限公司 保留一切权利 闽ICP备13018017号</p></div> 
+   <div class="container l" style="margin-left:250px; margin-top:30px; color:#9ca3a2; font-size:12px;"><p>版权�?�� 福州华科信息科技有限公司 保留�?��权利 闽ICP�?3018017�?/p></div> 
    </div>
 <!-- /.container -->
 	<!-- script references -->

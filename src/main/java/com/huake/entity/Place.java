@@ -38,7 +38,7 @@ public class Place extends BaseEntry{
 	/**
 	 * 地址
 	 */
-	@Column(name = "address")
+	@Column(name = "addr")
 	private String addr;
 
 	/**
