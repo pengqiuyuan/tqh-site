@@ -35,7 +35,7 @@ tqh-site
 3、使用jasny，bootstrap的一个插件https://github.com/pengqiuyuan/tqh-site/blob/dev/tqh_image/4.png
 ![Image text](https://raw.githubusercontent.com/pengqiuyuan/tqh-site/dev/tqh_image/4.png)
 
-2014-7-11
+2014-7-12
 ---------------------------------
 1、实时聊天模块儿的添加（连接pomelo服务器已完成）
 2、进入房间、发送消息、广播（未完成）
