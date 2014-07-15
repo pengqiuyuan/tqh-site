@@ -8,7 +8,7 @@ import org.apache.shiro.crypto.hash.Sha384Hash;
   
 /** 
  * 自定义 密码验证类 
- * @author q 
+ * @author zhenghongwei
  * 
  */  
 public class CustomCredentialsMatcher extends SimpleCredentialsMatcher {  

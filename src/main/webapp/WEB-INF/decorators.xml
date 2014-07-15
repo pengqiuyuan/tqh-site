@@ -4,9 +4,11 @@
 		<pattern>/static/*</pattern>
 		<pattern>/api/*</pattern>
 		<pattern>/index</pattern>
+		<!-- <pattern>/member/move</pattern> -->
+		<pattern>/chat</pattern>
 	</excludes>
-	
-	<decorator name="default" page="default.jsp">
-		<pattern>/*</pattern>
-	</decorator>
+	 <decorator name="client" page="client.jsp">
+        <pattern>/login</pattern>
+        <pattern>/member/*</pattern>
+    </decorator>
 </decorators>
