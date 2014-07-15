@@ -69,6 +69,7 @@ public class MemberController {
 	@ResponseBody
 	@ResponseStatus(value = HttpStatus.OK)
 	private Map<String,String>  vilidateEmailOrNickName(@RequestParam(value="email",required=false) String email,@RequestParam(value="nickName",required=false) String nickName) throws Exception{
+		System.out.println("开始验证   名字"+nickName+"   邮箱 "+email);
 		return	memberService.vilidateEmailOrNickName(email, nickName, map);
 	}
 	/**
