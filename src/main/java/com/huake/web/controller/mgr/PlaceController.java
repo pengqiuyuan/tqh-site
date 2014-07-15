@@ -47,7 +47,7 @@ public class PlaceController{
 					Map<String, String> result = imageService
 							.uploadThumbnailsImage(fileInput, null);
 					PlaceDetail pdetail = new PlaceDetail();
-					pdetail.setValue("pic");
+					pdetail.setEntry("pic");
 					pdetail.setValue(result.get("url"));
 					pdetail.setCrtDate(new Date());
 					place.getPlaceDetails().add(pdetail);
