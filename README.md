@@ -14,7 +14,7 @@ tqh-site
 4、会员的快速注册模块(service)
 2014-7-8
 ------------------------
-1、登录、快速注册controller部分的完成(宏伟)
+1、登录、快速注册controller部 的完成(宏伟)
 2、完成会员登录、快速注册模块(宏伟)
 3、首页跳转
 4、球房入驻模块(秋源)
@@ -34,4 +34,11 @@ tqh-site
 2、修改球房入驻 http://jasny.github.io/bootstrap/getting-started/
 3、使用jasny，bootstrap的一个插件https://github.com/pengqiuyuan/tqh-site/blob/dev/tqh_image/4.png
 ![Image text](https://raw.githubusercontent.com/pengqiuyuan/tqh-site/dev/tqh_image/4.png)
+
+2014-7-12
 ---------------------------------
+1、实时聊天模块儿的添加（连接pomelo服务器已完成）
+2、进入房间、发送消息、广播（未完成）
+3、界面设计（未完成)
+
+
