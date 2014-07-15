@@ -13,9 +13,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 
-import com.huake.chat.DataCallBack;
-import com.huake.chat.PomeloClient;
-import com.huake.service.chat.ChatService;
 @TransactionConfiguration(defaultRollback=false)
 @ContextConfiguration(locations = {"classpath*:/applicationContext.xml"})
 public class ChatServiceTest extends SpringTransactionalTestCase{
@@ -28,21 +25,12 @@ public class ChatServiceTest extends SpringTransactionalTestCase{
 	@Value("#{envProps.chatport}")
 	private int port;
 	
-	@Autowired
-	private ChatService chatService;
-	
-	PomeloClient clientLive;
 	
 	//@Test
 	public void test(){
 		System.out.println("55555555");
-		PomeloClient client = new PomeloClient("http://192.168.1.182", 3014);
-		client.init();
+
 		System.out.println("000000  ");
 	}
 
-	@Test
-	public void chatTest() throws JSONException{
-		chatService.linkToLive();
-	}
 }
