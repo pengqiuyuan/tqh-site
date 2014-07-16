@@ -85,22 +85,5 @@
                 <input tabindex="1" type="text" id="entry" />
             </div>
         </div>
-        <div id="pop">
-            <div id="popHead">
-                <a id="popClose" title="close">Close</a>
-                <h2>
-                    Tip
-                </h2>
-            </div>
-            <div id="popContent">
-                <dl>
-                    <dd id="popIntro">
-                    </dd>
-                </dl>
-                <p id="popMore">
-                    No Tip Again
-                </p>
-            </div>
-        </div>
     </body>
 </html>
