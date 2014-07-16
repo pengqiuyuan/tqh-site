@@ -30,31 +30,14 @@
     </head>
 
  <body>
-        <div id="app">
-            <div id="loginView">
-                <div id="loginTitle">
-                    Chat of Pomelo
-                </div>
-                <table>
-                    <tr>
-                        <td>
-                            <input id="loginUser" type="text" placeholder="enter your name" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input name="channels" type="text" id="channelList" placeholder="enter your channel"
-                            />
-                        </td>
-                        <tr>
-                            <td>
-                                <input id="login" type='button' value="join" />
-                            </td>
-                        </tr>
-                </table>
-                <div id="loginError">
-                </div>
+        <div id="app"> 
+        	<input type="hidden" id="nickName" name="nickName" value="${member.nickName}" >
+        	<input type="hidden" id="channelName" name="channelName" value="${channelName}" >       
+        	<input type="hidden" id="avatar" name="avatar" value="${member.avatar}" > 
+        	<input type="hidden" id="avatarMoRen" name="avatarMoRen" value="${ctx}/static/images/avatar.png" >               
+            <div id="loginError">
             </div>
+            
             <div id="chatHistory">
             </div>
             <div id="toolbar">
@@ -76,6 +59,11 @@
                         room:
                         <span id="room">
                         </span>
+                    </li>
+                    <li>
+                        avatar:
+                        <img id="avatarimg" src="" style="width: 60px; height: 60px;">
+                        </img>
                     </li>
 <!--                    <li>
                         button:

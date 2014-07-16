@@ -8,12 +8,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import com.huake.entity.Member;
 import com.huake.entity.Place;
 import com.huake.entity.PlaceDetail;
+import com.huake.service.member.MemberService;
 import com.huake.service.place.PlaceService;
 import com.huake.util.ImageUploadService;
 
@@ -28,6 +32,9 @@ public class PlaceController{
 	
 	@Autowired
 	private ImageUploadService imageService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	
 	@RequestMapping(value = "/index",method = RequestMethod.GET)
@@ -56,5 +63,15 @@ public class PlaceController{
 		}
 		placeService.add(place);
 		return  "redirect:/index";
+	}
+	
+	
+	/**
+	 * 获取当前用户信息
+	 * @return
+	 */
+	@ModelAttribute("currentMember")
+	public Member getCurrentMember(){
+		return memberService.getCurrentMember();
 	}
 }
