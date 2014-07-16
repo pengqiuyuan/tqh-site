@@ -89,8 +89,8 @@ public class Member implements Serializable {
 	@Column(name="bonus_point")
 	private Long bonusPoint;
 	
-	@Column
-	private String salt;
+/*	@Column  用户注册生成盐，占时不用注销掉
+	private String salt;*/
 	
 	/**
 	 * 登录名
@@ -165,14 +165,6 @@ public class Member implements Serializable {
 
 	public void setBonusPoint(Long bonusPoint) {
 		this.bonusPoint = bonusPoint;
-	}
-
-	public String getSalt() {
-		return salt;
-	}
-
-	public void setSalt(String salt) {
-		this.salt = salt;
 	}
 
 	public String getLoginName() {
