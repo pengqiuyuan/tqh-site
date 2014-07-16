@@ -19,6 +19,10 @@ public class ChatController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
 	
+	private static final String CHAT_ZHIBO = "zhibo";
+	
+	private static final String CHAT_SILIAO = "siliao";
+	
 	@Autowired
 	private MemberService memberService;
 	
@@ -29,7 +33,14 @@ public class ChatController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(Model model) {
 		Member member = getCurrentMember();
-		model.addAttribute("member",member);
+		if(member == null){
+			Member mem =new Member();
+			model.addAttribute("member",mem);
+			model.addAttribute("channelName",CHAT_ZHIBO);
+		}else{
+			model.addAttribute("member",member);
+			model.addAttribute("channelName",CHAT_ZHIBO);
+		}
 		return "/chat/index";
 	}
 	

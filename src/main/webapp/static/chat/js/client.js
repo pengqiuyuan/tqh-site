@@ -9,6 +9,7 @@ var LOGIN_ERROR = "There is no server to log in, please wait.";
 var LENGTH_ERROR = "Name/Channel is too long or too short. 20 character max.";
 var NAME_ERROR = "Bad character in Name/Channel. Can only have letters, numbers, Chinese characters, and '_'";
 var DUPLICATE_ERROR = "Please change your name to login.";
+var avatar;
 
 util = {
 	urlRE: /https?:\/\/([-\w\.]+)+(:\d+)?(\/([^\s]*(\?\S+)?)?)?/g,
@@ -49,7 +50,7 @@ function scrollDown(base) {
 };
 
 // add message on board
-function addMessage(from, target, text, time) {
+function addMessage(from, target, text, img ,time) {
 	var name = (target == '*' ? 'all' : target);
 	if(text === null) return;
 	if(time == null) {
@@ -67,7 +68,7 @@ function addMessage(from, target, text, time) {
 	messageElement.addClass("message");
 	// sanitize
 	text = util.toStaticHTML(text);
-	var content = '<tr>' + '  <td class="date">' + util.timeString(time) + '</td>' + '  <td class="nick">' + util.toStaticHTML(from) + ' says to ' + name + ': ' + '</td>' + '  <td class="msg-text">' + text + '</td>' + '</tr>';
+	var content = '<tr>' + '  <td class="date">' + util.timeString(time) + '</td>' + '  <td class="im"><img src="'+img+'" style="width: 60px; height: 60px;"></img></td>' +'  <td class="nick">' + util.toStaticHTML(from) + ' says to ' + name + ': ' + '</td>' + '  <td class="msg-text">' + text + '</td>' + '</tr>';
 	messageElement.html(content);
 	//the log is the stream that we view
 	$("#chatHistory").append(messageElement);
@@ -132,24 +133,26 @@ function setRoom() {
 	$("#room").text(rid);
 };
 
+//set your room
+function setAvatar() {
+	$("#avatarimg").attr("src",avatar);
+};
+
 // show error
 function showError(content) {
-	$("#loginError").text(content);
-	$("#loginError").show();
+	loginAngin();
 };
 
 // show login panel
 function showLogin() {
-	$("#loginView").show();
 	$("#chatHistory").hide();
-	$("#toolbar").hide();
+	$("#toolbar").show();
 	$("#loginError").hide();
 	$("#loginUser").focus();
 };
 
 // show chat panel
 function showChat() {
-	$("#loginView").hide();
 	$("#loginError").hide();
 	$("#toolbar").show();
 	$("entry").focus();
@@ -160,7 +163,7 @@ function showChat() {
 function queryEntry(uid, callback) {
 	var route = 'gate.gateHandler.queryEntry';
 	pomelo.init({
-		host: "192.168.1.50",
+		host: "127.0.0.1",
 		port: 3014,
 		log: true
 	}, function() {
@@ -177,13 +180,63 @@ function queryEntry(uid, callback) {
 	});
 };
 
+//如果游客登录名重复执行
+function loginAngin() {
+	username = $("#nickName").attr("value");
+	rid = $('#channelName').val();
+	avatar = $('#avatar').val();	
+	if(!username){
+		var Num=""; 
+		for(var i=0;i<5;i++) 
+		{ 
+		Num+=Math.floor(Math.random()*10); 
+		} 
+		username=83405;
+		avatar=$('#avatarMoRen').val();
+	}
+	if(username.length > 20 || username.length == 0 || rid.length > 20 || rid.length == 0) {
+		showError(LENGTH_ERROR);
+		return false;
+	}
+
+	if(!reg.test(username) || !reg.test(rid)) {
+		showError(NAME_ERROR);
+		return false;
+	}
+
+	//query entry of connection
+	queryEntry(username, function(host, port) {
+		pomelo.init({
+			host: host,
+			port: port,
+			log: true
+		}, function() {
+			var route = "connector.entryHandler.enter";
+			pomelo.request(route, {
+				username: username,
+				rid: rid
+			}, function(data) {
+				if(data.error) {
+                    showError(DUPLICATE_ERROR);
+                    return;
+                }
+				setName();
+				setRoom();
+				setAvatar();
+				showChat();
+				initUserList(data);
+			});
+		});
+	});
+};
+
 $(document).ready(function() {
 	//when first time into chat room.
 	showLogin();
 
 	//wait message from the server.
 	pomelo.on('onChat', function(data) {
-		addMessage(data.from, data.target, data.msg);
+		addMessage(data.from, data.target, data.msg,data.avatar);
 		$("#chatHistory").show();
 		if(data.from !== username)
 			tip('message', data.from);
@@ -279,10 +332,19 @@ $(document).ready(function() {
     });
 
 	//deal with login button click.
-	$("#login").click(function() {
-		username = $("#loginUser").attr("value");
-		rid = $('#channelList').val();
-
+	$(document).ready(function(){
+		username = $("#nickName").attr("value");
+		rid = $('#channelName').val();
+		avatar = $('#avatar').val();	
+		if(!username){
+			var Num=""; 
+			for(var i=0;i<5;i++) 
+			{ 
+			Num+=Math.floor(Math.random()*10); 
+			} 
+			username=83404;
+			avatar=$('#avatarMoRen').val()
+		}
 		if(username.length > 20 || username.length == 0 || rid.length > 20 || rid.length == 0) {
 			showError(LENGTH_ERROR);
 			return false;
@@ -311,12 +373,13 @@ $(document).ready(function() {
                     }
 					setName();
 					setRoom();
+					setAvatar();
 					showChat();
 					initUserList(data);
 				});
 			});
 		});
-	});
+	});	
 
 	//deal with chat mode.
 	$("#entry").keypress(function(e) {
@@ -340,11 +403,12 @@ $(document).ready(function() {
                     from: username,
                     target: target,
                     fromId:fromId,
-                    targetId:targetId
+                    targetId:targetId,
+                    avatar:avatar
 			}, function(data) {
 				$("#entry").attr("value", ""); // clear the entry field.
 				if(target != '*' && target != username) {
-					addMessage(username, data.route.target, msg);
+					addMessage(username, data.route.target, msg,data.route.avatar);
 					$("#chatHistory").show();
 				}
 			});
