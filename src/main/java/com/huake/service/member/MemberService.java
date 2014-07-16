@@ -104,8 +104,8 @@ public class MemberService {
 		}else{
 			member.setPassword(toMD5(member.getPassword()));
 			member.setBonusPoint(Member.BONUS_POINT);
-			byte[] salt = Digests.generateSalt(Member.SALT_SIZE);
-			member.setSalt(Encodes.encodeHex(salt));
+			//byte[] salt = Digests.generateSalt(Member.SALT_SIZE);
+			//member.setSalt(Encodes.encodeHex(salt));
 			member.setLoginName(member.getEmail());
 			member.setRoles(Member.ROLE_USER);
 			saveMember(member);

@@ -10,8 +10,28 @@
 <head>
 <title>球房入驻</title>
  <link href="${ctx}/static/jasny/css/jasny-bootstrap.css" rel="stylesheet" type="text/css"> 
+ <script src="${ctx}/static/jasny/js/jasny-bootstrap.js" type="text/javascript"></script>
 </head>
 <body>
+ <div class="container_map"> 
+<div class="nav">
+		<div class="navigation">
+			<ul style="font-size:14px;">
+				<li ><a href="#">首 页</a></li>
+				<li><a href="#">球房入驻</a></li>
+				<li ><a href="#">赛事直播间</a></li>
+				<li><a href="#">赛事活动</a></li>
+				<li><a href="#">推荐</a></li>
+				<li><a href="#">商城</a></li>
+				<li><a href="#">圈子话题</a></li>
+		
+			</ul>
+			
+		</div>
+	</div>
+ 
+        
+ </div>
 	<section id="contact">
         <div class="container">
             <div class="row">
@@ -78,7 +98,6 @@
             </div>
         </div>
     </section>
- 	<script src="${ctx}/static/jasny/js/jasny-bootstrap.js" type="text/javascript"></script>
 	<script>
 	$("#contiueadd").click(function(){
 		$("#pics").append("<div class='fileinput fileinput-new' data-provides='fileinput' style='margin-right:5px'>"

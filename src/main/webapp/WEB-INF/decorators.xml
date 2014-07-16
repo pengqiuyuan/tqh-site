@@ -10,5 +10,6 @@
 	 <decorator name="client" page="client.jsp">
         <pattern>/login</pattern>
         <pattern>/member/*</pattern>
+        <pattern>/place/*</pattern>
     </decorator>
 </decorators>

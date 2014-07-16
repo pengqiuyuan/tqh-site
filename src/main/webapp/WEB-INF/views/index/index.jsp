@@ -4,13 +4,14 @@
 <%@ page import="org.apache.shiro.authc.IncorrectCredentialsException"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
-
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
 		<title>台球会</title>
 		<meta name="generator" content="Bootply" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link type="image/x-icon" href="${ctx}/static/images/favicon.ico" rel="shortcut icon">
 		<link href="${ctx}/static/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -23,13 +24,15 @@
 		<script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<%-- <script src="${ctx}/static/bootstrap/3.1.1/js/scripts.js"></script> --%>
 		<%--bootStrap  兼容问题 --%>
-		<%-- <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-ie.js"></script> --%>
-		<%-- <link href="${ctx}/static/bootstrap/3.1.1/css/bootstrap-ie6.css" rel="stylesheet"> --%>
+		 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<%-- <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-ie.js"></script>
+		<link href="${ctx}/static/bootstrap/3.1.1/css/bootstrap-ie6.css" rel="stylesheet"> --%>
 		<style type="text/css">
 			.col-md-4 {width:16.666%;float:left;} 
 			.fill {width:100%;height:100%;background-position: center;background-size: cover;}
-			.friend_link{margin-top:40px;padding-left:160px;}
-			.friend_link a{color:#515151;}
+			.friend_link{padding-top:20px;padding-left:100px;color:#E9EBEB;}
+			.friend_link a{color:#E9EBEB;}
 			a:link {color: #000;text-decoration: none;}
 			a:visited {color: #000;text-decoration: none;}
 			a:active {color: #bc2931;text-decoration: none;}
@@ -99,7 +102,7 @@
   <div class="row">
   	<div class="col-md-4 text-center">
     	<img class="img-circle" src="${ctx}/static/images/assets/example/index_08.png">
-      	<h2><a href="#">台球地图</a></h2>
+      	<h2><a href="${ctx}/place/index">台球地图</a></h2>
     </div>
     <div class="col-md-4 text-center">
       <img class="img-circle" src="${ctx}/static/images/assets/example/index_10.png">
@@ -126,11 +129,15 @@
   <!-- FOOTER -->
   <div class="row" style="background:url(${ctx}/static/images/assets/example/index1_33.png);height:140px;">
     <div class="col-lg-12">
-    	<p class="friend_link">友情链接： <a href="">九游手机游戏 | </a><a href="">天网手机软件 | </a><a href="">历趣手机软件 | </a><a href="">软吧手机软件 | </a><a href="">宝软网 | </a><a href="">应用汇 | </a><a href="">安智网 | </a><a href="">雷锋网</a></p>
+    	<p class="friend_link"><label style="color:#000000;">友情链接：</label> <a href="http://www.appchina.com">应用汇| </a><a href="http://app.mi.com">小米应用商店 | </a><a href="http://apk.hiapk.com">安卓市场 | </a><a href="www.fzhuake.com">华科信息 </a></p>
   	</div>
   </div>
 </div> 
  
-<!-- /.container -->
+ <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    });
+    </script>
 	</body>
 </html>

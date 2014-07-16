@@ -51,10 +51,12 @@ public class ShiroDbRealm extends AuthorizingRealm {
 		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
 		Member member = memberService.findByEmail(token.getUsername(),Member.STATUS_VALID);
 		if (member != null) {
-			byte[] salt = Encodes.decodeHex(member.getSalt());
+			//byte[] salt = Encodes.decodeHex(member.getSalt());
 			System.out.println("认证信息  会员Id"+member.getMemberId()+"昵称名"+member.getLoginName()+"  邮箱"+member.getEmail()+"  密码"+member.getPassword());
-			return new SimpleAuthenticationInfo(new ShiroUser(member.getMemberId(), member.getNickName(), member.getEmail()),
-					member.getPassword(), ByteSource.Util.bytes(salt), getName());
+			//return new SimpleAuthenticationInfo(new ShiroUser(member.getMemberId(), member.getNickName(), member.getEmail()),
+				//	member.getPassword(), ByteSource.Util.bytes(salt), getName());
+			return	new SimpleAuthenticationInfo(new ShiroUser(member.getMemberId(), member.getNickName(), member.getEmail()),
+					member.getPassword(), getName());
 		} else {
 			return null;
 		}
