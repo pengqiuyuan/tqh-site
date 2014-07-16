@@ -23,6 +23,8 @@ public class PlaceService {
 	 */
 	public void add(Place place){
 		place.setCrtDate(new Date());
+		place.setUpDate(new Date());
+		place.setStatus(Place.STATUS_NOT_CHECK);
 		placeDao.save(place);
 	}
 }

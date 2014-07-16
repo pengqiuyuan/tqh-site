@@ -145,7 +145,7 @@
   						</div>
   						<div class="form-group">
     						<div class="col-sm-offset-4 col-sm-6">
-      							<button type="submit" id="loginSubmit" class=""><img class="header_footer_img" src="${ctx}/static/images/assets/example/lg.png"/></button>
+      							<button type="submit" id="loginSubmit" class="btn btn-sm btn-success" style="width:200px;"> 登录</button>
    							 </div>
   						</div>
 					</form>
@@ -180,7 +180,7 @@
   						</div>
   						<div class="form-group">
     						<div class="col-sm-offset-4 col-sm-6">
-      							<button type="button" id="registerSubmit" class=""><img class="header_footer_img" src="${ctx}/static/images/assets/example/zc.png"/></button>
+      							<button type="button" id="registerSubmit" class="btn btn-sm btn-success" style="width:200px;">快速注册</button>
    							 </div>
   						</div>
 					</form> 
