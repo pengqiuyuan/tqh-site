@@ -38,7 +38,7 @@
                 <table>
                     <tr>
                         <td>
-                            <input id="loginUser" type="text" placeholder="enter your name" />
+                            <input id="loginUser" type="text" value="${member.avatar}" placeholder="enter your name" />
                         </td>
                     </tr>
                     <tr>
