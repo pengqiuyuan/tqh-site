@@ -20,6 +20,10 @@
 		<decorator:head/>
 		<style type="text/css">
 		.header_footer_img{width:100%;}
+		.friend_link{padding-top:20px;padding-left:100px;color:#E9EBEB;}
+		.friend_link a{color:#E9EBEB;}
+		a:link {color: #000;text-decoration: none;}
+		.shar{padding-top:40px;padding-left:100px;}
 		</style>
 	</head>
 	<body ng-controller='<decorator:getProperty property="body.ng-controller" default=""/>'>
@@ -31,8 +35,12 @@
 		<decorator:body />
 		<div class="container-fluid">
 			<footer>
-				<div class="row">
-					<img class="header_footer_img" src="${ctx}/static/images/assets/example/footer.png"/>
+				<div class="row" >
+					<div style="background:url(${ctx}/static/images/assets/example/footer.png);background-size:cover;height:200px;">
+						<p class="friend_link">友情链接： <a href="http://www.appchina.com">应用汇| </a><a href="http://app.mi.com">小米应用商店 | </a><a href="http://apk.hiapk.com">安卓市场 | </a><a href="http://www.fzhuake.com">华科信息 </a></p>
+						<p class="shar"><span><img src="${ctx}/static/images/assets/example/index_31.png"/></span><span><img src="${ctx}/static/images/assets/example/index_34.png"/></span></p>
+					</div>
+					<%-- <img class="header_footer_img" src="${ctx}/static/images/assets/example/footer.png"/> --%>
 				</div>
 			</footer>
 		</div>

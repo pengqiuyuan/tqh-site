@@ -100,20 +100,6 @@
 					<div style="clear: both;"></div>
 				</div>		
 				<div style="clear: both;"></div>
-		 		<!-- <div class="box_163css border_red">
-		 			<div class="text-center"></div>
-				    <ul class="nav">
-				        <li class="navs_li on">登录</li>
-				        <li class="navs_li">注册</li>
-				    </ul>
-	    			<div class="line">
-			    	<span class="s_line">	    		
-						<b></b>
-			    	</span>
-					<div style="clear: both;"></div>
-					</div>		
-					<div style="clear: both;"></div>
-				</div> -->
 				<div class="zlbox_content">
 				<br style="border:1px solid red;width:1px;"/>
 					<div class="item_tab" style="display: block;">
@@ -151,24 +137,17 @@
   						<div class="form-group">
     						<div class="col-sm-offset-4 col-sm-4">
       							<div class="checkbox">
-        							<label>
-        								<input type="checkbox" id="rememberMe" value="1" name="rememberMe" />下次自动登录
+        							<label for="rememberMe">
+        								<input type="checkbox" id="rememberMe" name="rememberMe" />下次自动登录
         							</label>
         						</div>
         					</div>
   						</div>
   						<div class="form-group">
-    						<div class="col-sm-offset-3 col-sm-5">
-      							<button type="submit" id="loginSubmit" class=""><img src="${ctx}/static/images/assets/example/lg.png"/></button>
+    						<div class="col-sm-offset-4 col-sm-6">
+      							<button type="submit" id="loginSubmit" class=""><img class="header_footer_img" src="${ctx}/static/images/assets/example/lg.png"/></button>
    							 </div>
   						</div>
-						<%-- <label>帐号：</label>
-						<input name="username" class="input-large required" value="${username}" placeholder="请输入邮箱"/>
-						<label>密码：</label>
-						<input type="password" name="password" class="input-large required" value="" placeholder="请输入密码"/><br/>
-						<label class="checkbox" for="rememberMe"><input type="checkbox" id="rememberMe" name="rememberMe"/> 下次自动登录，使用公用电脑勿勾选 </label>	
-						<!-- <input type="checkbox" >下次自动登录，使用公用电脑勿勾选 --><br/>
-						<button type="submit" id="loginSubmit" class="btn btn-primary">登录</button> --%>
 					</form>
 				</div>
 				<div class="item_tab" style="display: none;">
@@ -200,15 +179,10 @@
 	    					</div>
   						</div>
   						<div class="form-group">
-    						<div class="col-sm-offset-3 col-sm-5">
-      							<button type="button" id="registerSubmit" class=""><img src="${ctx}/static/images/assets/example/zc.png"/></button>
+    						<div class="col-sm-offset-4 col-sm-6">
+      							<button type="button" id="registerSubmit" class=""><img class="header_footer_img" src="${ctx}/static/images/assets/example/zc.png"/></button>
    							 </div>
   						</div>
-						<!-- <div>帐号：<input name="email" placeholder="请输入邮箱" id="resiter_email"/><span id="back_email_message"></span></div>
-						<div>昵称：<input name="nickName" placeholder="请输入昵称" id="register_nickName"/><span id="back_nickName_message"></span></div>
-						<div>密码：<input type="password" id="password_" name="password_" placeholder="请输入密码"/></div>
-						<div>确认密码：<input type="password" id="surePassword" name="password" placeholder="请再次输入密码"/></div>
-						<button type="button" id="registerSubmit" class="btn btn-primary">注册</button> -->
 					</form> 
 				</div>
 			</div>
