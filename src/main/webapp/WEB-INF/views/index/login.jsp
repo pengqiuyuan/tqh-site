@@ -101,7 +101,7 @@
 				</div>		
 				<div style="clear: both;"></div>
 				<div class="zlbox_content">
-				<br style="border:1px solid red;width:1px;"/>
+				<!-- <br style="width:1px;"/> -->
 					<div class="item_tab" style="display: block;">
 						<form id="loginForm" class="form-horizontal" name ="loginForm" action="${ctx }/login" method="post">
 							<c:if test="${not empty loginMember}">

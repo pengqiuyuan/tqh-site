@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
@@ -14,19 +14,16 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link type="image/x-icon" href="${ctx}/static/images/favicon.ico" rel="shortcut icon">
-		<link href="${ctx}/static/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-		<!--[if lt IE 9]>
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
+		<link href="${ctx}/static/bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet">
 		<link href="${ctx}/static/bootstrap/3.1.1/css/styles.css" rel="stylesheet">
 		<!-- script references -->
 	    <script src="${ctx}/static/bootstrap/3.1.1/js/jquery-1.10.2.js"></script>
 		<script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<%-- <script src="${ctx}/static/bootstrap/3.1.1/js/scripts.js"></script> --%>
 		<%--bootStrap  兼容问题 --%>
-		 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<%-- <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-ie.js"></script>
+  		<script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
+  		<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<%-- 	<script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-ie.js"></script>
 		<link href="${ctx}/static/bootstrap/3.1.1/css/bootstrap-ie6.css" rel="stylesheet"> --%>
 		<style type="text/css">
 			.col-md-4 {width:16.666%;float:left;} 
