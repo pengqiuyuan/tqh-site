@@ -65,10 +65,10 @@ function addMessage(from, target, text, img ,time) {
 	//  the person who caused the event,
 	//  and the content
 	var messageElement = $(document.createElement("table"));
-	messageElement.addClass("message");
+	messageElement.addClass("message list-group");
 	// sanitize
 	text = util.toStaticHTML(text);
-	var content = '<tr>' + '  <td class="date">' + util.timeString(time) + '</td>' + '  <td class="im"><img src="'+img+'" style="width: 60px; height: 60px;"></img></td>' +'  <td class="nick">' + util.toStaticHTML(from) + ' says to ' + name + ': ' + '</td>' + '  <td class="msg-text">' + text + '</td>' + '</tr>';
+	var content = '<tr class="list-group-item">' + '  <td class="date">' + util.timeString(time) + '</td>' + '  <td class="im"><img src="'+img+'" style="width: 60px; height: 60px;"></img></td>' +'  <td class="nick">' + util.toStaticHTML(from) + ' says to ' + name + ': ' + '</td>' + '  <td class="msg-text">' + text + '</td>' + '</tr>';
 	messageElement.html(content);
 	//the log is the stream that we view
 	$("#chatHistory").append(messageElement);
@@ -163,7 +163,7 @@ function showChat() {
 function queryEntry(uid, callback) {
 	var route = 'gate.gateHandler.queryEntry';
 	pomelo.init({
-		host: "127.0.0.1",
+		host: "192.168.1.50",
 		port: 3014,
 		log: true
 	}, function() {

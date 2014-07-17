@@ -19,8 +19,16 @@
 <script src="${ctx}/static/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="${ctx}/static/jquery-validation/1.11.1/jquery.validate.min.js" type="text/javascript"></script>
 <script src="${ctx}/static/jquery-validation/1.11.1/messages_bs_zh.js" type="text/javascript"></script>
-<link href="${ctx}/static/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link href="${ctx}/static/bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet" type="text/css">
+<script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap.js"></script>
+
+		<style type="text/css">
+		.header_footer_img{width:100%;}
+		.friend_link{padding-top:20px;padding-left:100px;color:#E9EBEB;}
+		.friend_link a{color:#E9EBEB;}
+		a:link {color: #000;text-decoration: none;}
+		.shar{padding-top:40px;padding-left:100px;}
+		</style>
 
 <sitemesh:head/>
 </head>
