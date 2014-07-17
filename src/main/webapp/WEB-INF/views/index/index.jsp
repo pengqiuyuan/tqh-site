@@ -19,29 +19,25 @@
 		<!-- script references -->
 	    <script src="${ctx}/static/bootstrap/3.1.1/js/jquery-1.10.2.js"></script>
 		<script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-		<%-- <script src="${ctx}/static/bootstrap/3.1.1/js/scripts.js"></script> --%>
-		<%--bootStrap  兼容问题 --%>
-  		<script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
-  		<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-	<%-- 	<script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-ie.js"></script>
-		<link href="${ctx}/static/bootstrap/3.1.1/css/bootstrap-ie6.css" rel="stylesheet"> --%>
 		<style type="text/css">
-			.col-md-4 {width:16.666%;float:left;} 
-			.fill {width:100%;height:100%;background-position: center;background-size: cover;}
-			.friend_link{padding-top:20px;padding-left:100px;color:#E9EBEB;}
-			.friend_link a{color:#E9EBEB;}
+			body{padding-bottom:0px}
+			.friend_link{padding-top:30px;padding-left:100px;color:#000;}
+		 	.friend_link a{color:#E9EBEB;}
 			a:link {color: #000;text-decoration: none;}
-			a:visited {color: #000;text-decoration: none;}
-			a:active {color: #bc2931;text-decoration: none;}
+			 a:visited {color: #000;text-decoration: none;}
+			/*a:active {color: #bc2931;text-decoration: none;} */
 			.login_p{float:left; margin-left:30px; margin-top:25px; font-size:30px; color:#FFF; font-family:黑体;}
-			.login_p a{color:#FFFFFF;}
+			.login_p a{color:#FFFFFF;} 
+			.shar{padding-top:0px;padding-left:100px;}
+			.shar span{padding-right:10px;}
+			.tqh_logo{margin-left:64%;}
 		</style>
 	</head>
 	<body>
 <div class="navbar-wrapper">
 	<!-- login register-->
 	<div class="container">
-		<div style="margin-left:240px; height:101px;margin-top:-80px; background:url(${ctx}/static/images/assets/example/index1_02.png) no-repeat ">
+		<div style="margin-left:150px; height:101px;margin-top:-20px; background:url(${ctx}/static/images/assets/example/index1_02.png) no-repeat ">
 			<!-- <span class="nav-pills"></span> -->
 			<p class="login_p"> <a href="${ctx}/login">登录</a>  <a href="${ctx}/login">注册</a></p>
 		</div>
@@ -51,45 +47,38 @@
 <!-- /navbar wrapper -->
 <!-- Carousel
 ================================================== -->
-<div id="myCarousel" class="carousel slide">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-	    <div class="item active">
-	      <div class="fill" style="background-image:url('${ctx}/static/images/assets/example/index_01.png');"></div>
-	       <%--  <div class="fill" ><img src="${ctx}/static/images/assets/example/index_01.png" style="width:100%;"/></div> --%>
-	        <div class="carousel-caption">
-	            <h1></h1>
-	        </div>
-	    </div>
-	    <div class="item">
-	      <div class="fill" style="background-image:url('${ctx}/static/images/assets/example/index_01.png');"></div>
-	        <%-- <div class="fill" ><img src="${ctx}/static/images/assets/example/index_01.png" style="width:100%;"/></div> --%>
-	        <div class="carousel-caption">
-	            <h1></h1>
-	        </div>
-	    </div>
-	    <div class="item">
-	      <div class="fill" style="background-image:url('${ctx}/static/images/assets/example/index_01.png');"></div>
-	    	<%-- <div class="fill" ><img src="${ctx}/static/images/assets/example/index_01.png" style="width:100%;"/></div> --%>
-	        <div class="carousel-caption">
-	            <h1></h1>
-	        </div>
-	    </div>
+<div class="bs-example">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3" class=""></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+      <div class="item active">
+          <img style="width:100%;" data-src="" alt="First slide" src="${ctx}/static/images/assets/example/index_01.png">
+        </div>
+        <div class="item">
+          <img style="width:100%;" data-src="" alt="First slide" src="${ctx}/static/images/assets/example/banner_1.jpg">
+        </div>
+        <div class="item">
+          <img style="width:100%;" data-src="" alt="Second slide" src="${ctx}/static/images/assets/example/banner_2.jpg">
+        </div>
+        <div class="item">
+          <img style="width:100%;" data-src="" alt="Third slide" src="${ctx}/static/images/assets/example/banner_3.jpg">
+        </div>
+      </div>
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
   </div>
-  <!-- Controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="icon-prev"></span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="icon-next"></span>
-  </a> 
-</div> 
 <!-- /.carousel -->
 <!-- Marketing messaging and featurettes
 ================================================== -->
@@ -97,43 +86,59 @@
  <div class="container">
   <!-- Three columns of text below the carousel --> 
   <div class="row">
-  	<div class="col-md-4 text-center">
-    	<img class="img-circle" src="${ctx}/static/images/assets/example/index_08.png">
-      	<h2><a href="${ctx}/place/index">台球地图</a></h2>
+  	<div class="col-md-2 text-center">
+    	<a href="${ctx}/place/index">
+    		<img class="img-circle" src="${ctx}/static/images/assets/example/index_08.png">
+      		<h3>台球地图</h3>
+      	</a>
     </div>
-    <div class="col-md-4 text-center">
-      <img class="img-circle" src="${ctx}/static/images/assets/example/index_10.png">
-      <h2><a href="#">赛事直播间</a></h2>
+    <div class="col-md-2 text-center">
+    	<a href="#">
+      		<img class="img-circle" src="${ctx}/static/images/assets/example/index_10.png">
+      		<h3>赛事直播间</h3>
+      	</a>
     </div>
-    <div class="col-md-4 text-center">
-      <img class="img-circle" src="${ctx}/static/images/assets/example/index_12.png">
-      <h2><a href="#">活动</a></h2>
+    <div class="col-md-2 text-center">
+    	<a href="#">
+      		<img class="img-circle" src="${ctx}/static/images/assets/example/index_12.png">
+      		<h3>活动</h3>
+      	</a>
     </div>
-	<div class="col-md-4 text-center">
-      <img class="img-circle" src="${ctx}/static/images/assets/example/index_14.png">
-      <h2><a href="#">推荐</a></h2>
+	<div class="col-md-2 text-center">
+      	<a href="#">
+      		<img class="img-circle" src="${ctx}/static/images/assets/example/index_14.png">
+      		<h3>推荐</h3>
+      	</a>
     </div>
-    <div class="col-md-4 text-center">
-      <img class="img-circle" src="${ctx}/static/images/assets/example/index_16.png">
-      <h2><a href="#">商城</a></h2>
+    <div class="col-md-2 text-center">
+      	<a href="#">
+      		<img class="img-circle" src="${ctx}/static/images/assets/example/index_16.png">
+      		<h3>商城</h3>
+      	</a>
     </div>
-    <div class="col-md-4 text-center">
-      <img class="img-circle" src="${ctx}/static/images/assets/example/index_19.png">
-   	  <h2><a href="#">台球圈子</a></h2>
+    <div class="col-md-2 text-center">
+      	<a href="#">
+      		<img class="img-circle" src="${ctx}/static/images/assets/example/index_19.png">
+   	  		<h3>台球圈子</h3>
+   	  	</a>
     </div>
   </div><!-- /.row -->
   <!-- START THE FEATURETTES -->
   <!-- FOOTER -->
-  <div class="row" style="background:url(${ctx}/static/images/assets/example/index1_33.png);height:140px;">
-    <div class="col-lg-12">
-    	<p class="friend_link"><label style="color:#000000;">友情链接：</label> <a href="http://www.appchina.com">应用汇| </a><a href="http://app.mi.com">小米应用商店 | </a><a href="http://apk.hiapk.com">安卓市场 | </a><a href="www.fzhuake.com">华科信息 </a></p>
-  	</div>
-  </div>
 </div> 
- 
+ <div class="container-fluid" style="margin-top:30px;">
+ 	<div style="background:url(${ctx}/static/images/assets/example/friend_link_bg.png) repeat-x;">
+		<p class="friend_link">友情链接： <a href="http://www.appchina.com">应用汇| </a><a href="http://app.mi.com">小米应用商店 | </a><a href="http://apk.hiapk.com">安卓市场 | </a><a href="http://www.fzhuake.com">华科信息 </a></p>
+		<span class="tqh_logo"><img src="${ctx}/static/images/assets/example/tqh.png"/></span>
+		<p class="shar">
+			<span><img src="${ctx}/static/images/assets/example/index_31.png"/></span>
+			<span><img src="${ctx}/static/images/assets/example/index_34.png"/></span>
+		</p>
+	</div>
+ </div>
  <script>
     $('.carousel').carousel({
-        interval: 5000 //changes the speed
+        interval: 1000 //changes the speed
     });
     </script>
 	</body>
