@@ -3,40 +3,17 @@
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 
-<div id="header">
- <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-left">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#about">About</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+<div class="container-fluid">
+	<div class="row">
+		<img class="header_footer_img" src="${ctx}/static/images/assets/example/header.png"/>
+	</div>
 </div>
+<ul class="nav nav-pills" id="nav" role="tablist">
+	<li id="index"><a href="${ctx }/index">首页</a></li>
+	<li id="map"><a href="#">台球地图</a></li>
+	<li><a href="#">赛事直播间</a></li>
+	<li><a href="#">赛事活动</a></li>
+	<li><a href="#">推荐</a></li>
+	<li><a href="#">商城</a></li>
+	<li><a href="#">圈子话题</a></li>
+</ul>

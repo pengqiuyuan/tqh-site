@@ -13,23 +13,10 @@
  <script src="${ctx}/static/jasny/js/jasny-bootstrap.js" type="text/javascript"></script>
  <style type="text/css">
  .form_bg{background:url(${ctx}/static/images/assets/example/login_bg.png);}
- #nav{padding-left:30%;background:url(${ctx}/static/images/assets/example/dh_bg.png);}
- #nav a{color:#333333;}
  .palce_form_head{padding-left:50px;background:url(${ctx}/static/images/assets/example/dh_bg.png);color:#FFFFFF;font-size:14px;}
  </style>
 </head>
 <body>
-	<!--导航  -->
-		<ul class="nav nav-pills" id="nav" role="tablist">
-	      <li><a href="${ctx }/index">首页</a></li>
-	      <li><a href="#">台球地图</a></li>
-	      <li><a href="#">赛事直播间</a></li>
-	      <li><a href="#">赛事活动</a></li>
-	      <li><a href="#">推荐</a></li>
-	      <li><a href="#">商城</a></li>
-	      <li><a href="#">圈子话题</a></li>
-	    </ul>
- 	<!--  -->
         <div class="container" style="margin-top:20px;">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 form_bg">
@@ -119,6 +106,7 @@
         </div>
     <!-- </section> -->
 	<script>
+	$("#map").addClass("active");
 	$(function(){
 		$.validator.addMethod("selectProvince",function(value,element){
 			 var provinceCode = $("#province").val();
