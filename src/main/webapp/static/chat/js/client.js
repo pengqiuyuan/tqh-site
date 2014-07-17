@@ -140,7 +140,7 @@ function setAvatar() {
 
 // show error
 function showError(content) {
-	loginAngin();
+	//loginAngin();
 };
 
 // show login panel
@@ -163,7 +163,7 @@ function showChat() {
 function queryEntry(uid, callback) {
 	var route = 'gate.gateHandler.queryEntry';
 	pomelo.init({
-		host: "192.168.1.50",
+		host: "127.0.0.1",
 		port: 3014,
 		log: true
 	}, function() {
@@ -172,7 +172,6 @@ function queryEntry(uid, callback) {
 		}, function(data) {
 			pomelo.disconnect();
 			if(data.code === 500) {
-				showError(LOGIN_ERROR);
 				return;
 			}
 			callback(data.host, data.port);
@@ -180,55 +179,6 @@ function queryEntry(uid, callback) {
 	});
 };
 
-//如果游客登录名重复执行
-function loginAngin() {
-	username = $("#nickName").attr("value");
-	rid = $('#channelName').val();
-	avatar = $('#avatar').val();	
-	if(!username){
-		var Num=""; 
-		for(var i=0;i<5;i++) 
-		{ 
-		Num+=Math.floor(Math.random()*10); 
-		} 
-		username=83405;
-		avatar=$('#avatarMoRen').val();
-	}
-	if(username.length > 20 || username.length == 0 || rid.length > 20 || rid.length == 0) {
-		showError(LENGTH_ERROR);
-		return false;
-	}
-
-	if(!reg.test(username) || !reg.test(rid)) {
-		showError(NAME_ERROR);
-		return false;
-	}
-
-	//query entry of connection
-	queryEntry(username, function(host, port) {
-		pomelo.init({
-			host: host,
-			port: port,
-			log: true
-		}, function() {
-			var route = "connector.entryHandler.enter";
-			pomelo.request(route, {
-				username: username,
-				rid: rid
-			}, function(data) {
-				if(data.error) {
-                    showError(DUPLICATE_ERROR);
-                    return;
-                }
-				setName();
-				setRoom();
-				setAvatar();
-				showChat();
-				initUserList(data);
-			});
-		});
-	});
-};
 
 $(document).ready(function() {
 	//when first time into chat room.
@@ -342,7 +292,7 @@ $(document).ready(function() {
 			{ 
 			Num+=Math.floor(Math.random()*10); 
 			} 
-			username=83404;
+			username="游客"+Num;
 			avatar=$('#avatarMoRen').val()
 		}
 		if(username.length > 20 || username.length == 0 || rid.length > 20 || rid.length == 0) {
