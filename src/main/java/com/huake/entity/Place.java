@@ -54,6 +54,17 @@ public class Place extends BaseEntry{
 	 */
 	private Set<PlaceDetail> placeDetails = new HashSet<PlaceDetail>();
 
+	/**
+	 * 省份代码
+	 */
+	@Column(name = "province")
+	private String province;
+	/**
+	 * 城市代码
+	 */
+	@Column(name = "city")
+	private String city;
+	
 	public String getName() {
 		return name;
 	}
@@ -103,6 +114,22 @@ public class Place extends BaseEntry{
 
 	public void setPlaceDetails(Set<PlaceDetail> placeDetails) {
 		this.placeDetails = placeDetails;
+	}
+
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 	
 }

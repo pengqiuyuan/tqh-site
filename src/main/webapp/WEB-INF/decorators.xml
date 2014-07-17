@@ -4,12 +4,13 @@
 		<pattern>/static/*</pattern>
 		<pattern>/api/*</pattern>
 		<pattern>/index</pattern>
+		<pattern>/login</pattern>
 		<!-- <pattern>/member/move</pattern> -->
 		<pattern>/chat</pattern>
 	</excludes>
-	 <decorator name="client" page="client.jsp">
-        <pattern>/login</pattern>
-        <pattern>/member/*</pattern>
-        <pattern>/place/*</pattern>
+	 <decorator name="default" page="default.jsp">
+        <!-- <pattern>/member/*</pattern>
+         -->
+         <pattern>/place/*</pattern>
     </decorator>
 </decorators>
