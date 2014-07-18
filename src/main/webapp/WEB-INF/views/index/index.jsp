@@ -36,7 +36,7 @@
 <div class="navbar-wrapper">
 	<!-- login register-->
 	<div class="container">
-		<div style="margin-left:150px; height:101px;margin-top:-20px; background:url(${ctx}/static/images/assets/example/index1_02.png) no-repeat ">
+		<div style="margin-left:40px; height:101px;margin-top:-30px; background:url(${ctx}/static/images/assets/example/index1_02.png) no-repeat ">
 			<!-- <span class="nav-pills"></span> -->
 			<p class="login_p"> <a href="${ctx}/login">登录</a>  <a href="${ctx}/login">注册</a></p>
 		</div>
@@ -49,24 +49,32 @@
 <div class="bs-example">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-        <li data-target="#carousel-example-generic" data-slide-to="3" class=""></li>
+      	<c:forEach items="${banners}" var="banner" varStatus="num">
+      		<c:choose>
+      			<c:when test="${num.index==0 }">
+      				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      			</c:when>
+      			<c:otherwise>
+      				<li data-target="#carousel-example-generic" data-slide-to="${num.index }" class=""></li>
+      			</c:otherwise>
+      		</c:choose>
+      	</c:forEach>
       </ol>
       <div class="carousel-inner" role="listbox">
-      <div class="item active">
-          <img style="width:100%;" data-src="" alt="First slide" src="${ctx}/static/images/assets/example/index_01.png">
-        </div>
-        <div class="item">
-          <img style="width:100%;" data-src="" alt="First slide" src="${ctx}/static/images/assets/example/banner_1.jpg">
-        </div>
-        <div class="item">
-          <img style="width:100%;" data-src="" alt="Second slide" src="${ctx}/static/images/assets/example/banner_2.jpg">
-        </div>
-        <div class="item">
-          <img style="width:100%;" data-src="" alt="Third slide" src="${ctx}/static/images/assets/example/banner_3.jpg">
-        </div>
+      	<c:forEach items="${banners}" var="banner" varStatus="num">
+      		<c:choose>
+      			<c:when test="${num.index==0 }">
+      				<div class="item active">
+          				<img style="width:100%;" data-src="" alt="First slide" src="${banner.thumb}">
+        			</div>
+      			</c:when>
+      			<c:otherwise>
+	      			<div class="item">
+	          			<img style="width:100%;" data-src="" alt="Second slide" src="${banner.thumb}">
+	        		</div>
+      			</c:otherwise>
+      	</c:choose>
+      </c:forEach>
       </div>
       <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
@@ -137,7 +145,7 @@
  </div>
  <script>
     $('.carousel').carousel({
-        interval: 1000 //changes the speed
+        interval: 3000 //changes the speed
     });
     </script>
 	</body>

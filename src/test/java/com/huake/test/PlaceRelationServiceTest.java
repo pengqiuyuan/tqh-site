@@ -8,6 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
 import com.huake.entity.PlaceRelation;
+import com.huake.entity.TqhSiteBanner;
+import com.huake.service.banner.TqhSiteBannerService;
 import com.huake.service.place.PlaceRelationService;
 
 @TransactionConfiguration(defaultRollback=false)
@@ -16,6 +18,9 @@ public class PlaceRelationServiceTest extends SpringTransactionalTestCase{
 
 	@Autowired
 	private PlaceRelationService placeRelationService;
+	
+	@Autowired
+	private TqhSiteBannerService tqhSiteBannerService;
 	
 	@Test
 	public void getAllProvince(){
@@ -34,4 +39,15 @@ public class PlaceRelationServiceTest extends SpringTransactionalTestCase{
 		}
 	}
 
+	/**
+	 * 网站Banner测试
+	 */
+	@Test
+	public void bannerTest(){
+		List<TqhSiteBanner>	tb = tqhSiteBannerService.findAllBannners();
+		System.out.println("长度"+tb.size());
+		for(TqhSiteBanner t :tb){
+			System.out.println("ID"+t.getId()+"    名字"+t.getTitle()+"   时间"+t.getSeqDate());
+		}
+	}
 }
