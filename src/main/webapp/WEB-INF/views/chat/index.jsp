@@ -17,8 +17,11 @@
         <script src="${ctx}/static/chat/js/pop.js"></script>   
         <link href="${ctx}/static/bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet" type="text/css">
 		<script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap.js"></script> 
+		<script src="${ctx}/static/chat/swfobject.js"></script>
 </head>
 <body>
+<div id="player">
+</div>
         <div class="jumbotron container" style="margin-top:20px;">
             <div id="app"> 
 	        	<input type="hidden" id="nickName" name="nickName" value="${member.nickName}" >
@@ -61,7 +64,35 @@
         </div>
     <!-- </section> -->
 	<script>
+    var flashvars = {
+            // M3U8 url, or any other url which compatible with SMP player (flv, mp4, f4m)
+            // escaped it for urls with ampersands
+            src: escape("http://video.taiqiuhui.cn/hls/test.m3u8"),
+            // url to OSMF HLS Plugin
+            plugin_m3u8: "${ctx}/static/chat/HLSProviderOSMF.swf",
+        };
+        var params = {
+            // self-explained parameters
+            allowFullScreen: true,
+            allowScriptAccess: "always",
+            bgcolor: "#000000"
+        };
+        var attrs = {
+            name: "player"
+        };
 
+        swfobject.embedSWF(
+            // url to SMP player
+            "${ctx}/static/chat/StrobeMediaPlayback.swf",
+            // div id where player will be place
+            "player",
+            // width, height
+            "800", "485",
+            // minimum flash player version required
+            "10.2",
+            // other parameters
+            null, flashvars, params, attrs
+        );
 	</script>
 </body>
 </html>
