@@ -12,5 +12,6 @@
         <!-- <pattern>/member/*</pattern>
          -->
          <pattern>/place/*</pattern>
+         <pattern>/chat/liveRoom</pattern>
     </decorator>
 </decorators>

@@ -100,7 +100,7 @@
       	</a>
     </div>
     <div class="col-md-2 text-center">
-    	<a href="#">
+    	<a href="${ctx}/chat/liveRoom">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/tqh_live_map.png">
       		<h3>赛事直播间</h3>
       	</a>
