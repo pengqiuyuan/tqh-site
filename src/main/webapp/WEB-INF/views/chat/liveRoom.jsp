@@ -51,27 +51,28 @@
 .chat-min-left-container{margin-top:-80px;background-color:#c7c7c7;min-height:120px;}
 .chat-min-right-container{margin-top:0px;background-color:#c7c7c7;min-height:120px;}
 .chat-img{margin-top:20px;margin-left:0px;}
-.chat-name-left{color:#128C73;font-size:16px;font-weight:bold;}
-.chat-name-right{color:#128C73;font-size:16px;font-weight:bold;float:right;}
+.chat-name-left{color:#1ABC9C;font-size:16px;font-weight:bold;}
+.chat-name-right{color:#1ABC9C;font-size:16px;font-weight:bold;float:right;}
 .chat-content-left{color:#727071;font-size:16px;font-weight:normal;margin-top:10px;}
 .chat-content-right{color:#666363;font-size:16px;font-weight:normal;margin-top:30px;}
 .chat-right-point{margin-top:30px;margin-left:-20px;}
-.msg-container{}
- </style>
+</style>
 </head>
 <body>
-    <div class="container-fluid" style="background:url(${ctx}/static/images/assets/example/live_02.jpg) repeat-x;padding-top:15px;">
-    	<div class="row" >
-       		<div class="col-md-7">
-          		<div style="padding-left:18%;">
+    <div class="container-fluid">
+    	<div class="row">
+    		<!-- 直播模块背景图片 -->
+    		<img src="${ctx}/static/images/assets/example/live_02.jpg" style="width:100%;min-height:544px;max-height:544px;position:absolute;z-index:-666;"/>
+       		<div class="col-md-7" style="margin-top:15px;margin-bottom:60px;">
+          		<div class="" style="padding-left:18%;">
           			<img src="${ctx}/static/images/assets/example/r.jpg">
           		</div>
     		</div>
-    		<div class="col-md-4">
+    		<div class="col-md-4" style="margin-top:15px;margin-bottom:60px;">
     			<ul class="nav nav-list" style="background-color:#EDEDED;">
               		<li class="nav-header" style="background:#323232;height:74px;">
-	              		<div class="" style="font-size:18px;color:#cfcfcf; font-family:宋体;">2014英国国际锦标赛 1/4决赛</div>
-	              		<div class="" style="font-size:16px;color:#989797; font-family:宋体;margin-top:6px;">时间：10月17日-10月27日</div>
+	              		<div class="" style="font-size:18px;color:#cfcfcf; font-family:宋体;padding-top:15px;padding-left:15px;">2014英国国际锦标赛 1/4决赛</div>
+	              		<div class="" style="font-size:16px;color:#989797; font-family:宋体;margin-top:6px;padding-left:15px;">时间：10月17日-10月27日</div>
               		</li>
               		<li class="active" style="background-color: #c7c7c7;margin-top:5px;">
               			<a href="#">
@@ -201,7 +202,7 @@
 		</div>   
 		<!-- 评论模块 -->    
     	<div class="row tab-pan">
-       		<div class="col-lg-10 col-lg-offset-1" style="margin-top:15px;background:#f0f0f0;">
+       		<div class="col-lg-10 col-lg-offset-1" style="margin-top:-25px;background:#f0f0f0;">
        		<div class="bs-example bs-example-tabs">
 			    <ul id="myTab" class="nav nav-tabs" role="tablist">
 			      <li class="active"><a href="#home" role="tab" data-toggle="tab">大家的评论</a></li>
