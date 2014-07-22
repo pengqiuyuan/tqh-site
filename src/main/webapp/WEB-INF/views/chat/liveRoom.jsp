@@ -10,8 +10,15 @@
 <html>
 <head>
 <title>球房入驻</title>
-<%-- <link href="${ctx}/static/bootstrap/3.1.1/css/live.css" rel="stylesheet" type="text/css">  --%>
- <%-- <script src="${ctx}/static/jasny/js/jasny-bootstrap.js" type="text/javascript"></script> --%>
+<script src="${ctx}/static/chat/js/jquery-1.8.0.min.js"></script>
+<script src="${ctx}/static/chat/js/socket.io.js"></script>
+<script src="${ctx}/static/chat/js/pomeloclient.js"></script>
+<script src="${ctx}/static/chat/js/client.js"></script>
+<script src="${ctx}/static/chat/js/pop.js"></script>   
+<link href="${ctx}/static/bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet" type="text/css">
+<script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap.js"></script> 
+<script src="${ctx}/static/chat/swfobject.js"></script>
+
  <style type="text/css">
  .red_border{border:1px solid red;}
  .green_border{border:1px solid green;}
@@ -46,8 +53,7 @@
 }
 /* .tab-pan{padding-bottom:15px;} */
 .chat-row{margin-top:24px;}
-.chat-time-left{padding-top:60px;color:#b8b8b8;font-weight:normal;}
-.chat-time-right{padding-top:37px;color:#b8b8b8;font-weight:normal;}
+.chat-time{padding-top:60px;color:#b8b8b8;font-weight:normal;}
 .chat-container{padding-left:10px;}
 .chat-min-left-container{margin-top:-80px;background-color:#c7c7c7;min-height:120px;}
 .chat-min-right-container{margin-top:0px;background-color:#c7c7c7;min-height:120px;}
@@ -64,12 +70,19 @@
 </head>
 <body>
     <div class="container-fluid">
+        <div id="app"> 
+	        	<input type="hidden" id="nickName" name="nickName" value="${member.nickName}" >
+	        	<input type="hidden" id="channelName" name="channelName" value="${channelName}" >       
+	        	<input type="hidden" id="avatar" name="avatar" value="${member.avatar}" > 
+	        	<input type="hidden" id="avatarMoRen" name="avatarMoRen" value="${ctx}/static/images/avatar.png" >
+	        	<input type="hidden" id="zhiboMoRen" name="zhiboMoRen" value="${ctx}/static/images/zhibo.png" >                
+	            <div id="loginError">
+        </div>    	
     	<div class="row">
     		<!-- 直播模块背景图片 -->
     		<img src="${ctx}/static/images/assets/example/live_02.jpg" style="width:100%;min-height:544px;max-height:544px;position:absolute;z-index:-666;"/>
        		<div class="col-md-7" style="margin-top:15px;margin-bottom:60px;">
-          		<div class="" style="padding-left:18%;">
-          			<img src="${ctx}/static/images/assets/example/r.jpg">
+          		<div id="player" class="" style="padding-left:18%;">
           		</div>
     		</div>
     		<div class="col-md-4" style="margin-top:15px;margin-bottom:60px;">
@@ -215,83 +228,8 @@
 			    <div id="myTabContent" class="tab-content">
 			    <!-- 大家的评论 -->
 				    <div class="tab-pane fade active in" id="home">
-				    	<div class="contain-fluid">
-				    		<div class="row chat-row">
-								<div class="col-md-1 chat-time-left">19分钟前</div>
-								<div class="col-md-5 chat-container">
-									<div class="left-point"></div> 
-									<div class="col-md-12 chat-min-left-container">
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-left">树枝孤鸟</div>
-											<p class="chat-content-left">
-												属性如果单独属性如果单独属性如果单独属性如果单独属性如果单独属性如
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row chat-row">
-								<div class="col-md-1 chat-time-left">19分钟前</div>
-								<div class="col-md-5 chat-container">
-									<div class="left-point"></div> 
-									<div class="col-md-12 chat-min-left-container">
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-left">树枝孤鸟</div>
-											<p class="chat-content-left">
-											属性如果单独属性如果单独属性如果单独属性如果单
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row chat-row">
-								<div class="col-md-1"></div>
-								<div class="col-md-4"></div>
-								<div class="col-md-6 chat-container">
-									<div class="col-md-11 chat-min-right-container">
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-right">树枝孤鸟</div>
-											<p class="chat-content-right">
-												属性如果单独属性如果单独属性如果单独属性如果单独属性如
-											</p>
-										</div>
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-									</div>
-									<div class="col-md-1 chat-right-point">
-										<div class="right-point"></div> 
-									</div>
-								</div>
-								<div class="col-md-1 chat-time-right">11月19日</div>
-							</div>
-							<div class="row chat-row">
-								<div class="col-md-1"></div>
-								<div class="col-md-4"></div>
-								<div class="col-md-6 chat-container">
-									<div class="col-md-11 chat-min-right-container">
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-right">树枝孤鸟</div>
-											<p class="chat-content-right">
-												属性如果单独属性如果单独属性如果单独属性如果单独属性如果
-											</p>
-										</div>
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-									</div>
-									<div class="col-md-1 chat-right-point">
-										<div class="right-point"></div> 
-									</div>
-								</div>
-								<div class="col-md-1 chat-time-right">11月19日</div>
-							</div>
+				    	<div id="chatHistory" class="contain-fluid">
+								
 				    	</div>
 				    	<!-- send message content-->
 				    	<div class="container-fluid" style="margin:24px -15px 0px -15px;padding:10px 20px 10px 20px;background-color:#c7c7c7;">
@@ -299,13 +237,16 @@
 					    		<div class="form-horizontal" role="form">
 	  								<div class="form-group">
 	  									<div class="col-sm-1" style="margin:5px 0px -7px 20px;">
-	    									<img src="${ctx}/static/images/assets/example/live_05.png" />
+	  										<input style="display: none" class="form-control" id="usersList" value="*">
+	  										<input style="display: none" class="form-control" id="name" >
+	  										<input style="display: none" class="form-control" id="room" >
+	    									<img id="avatarimg" src="" style="width: 51px; height: 51px;"/>
 	    								</div>
 	    								<div class="col-sm-9" style="margin:5px 0px -7px -35px;padding-top:17px;">
-	      									<input type="text" class="form-control" id="content" placeholder="我想说:">
+	      									<input type="text" class="form-control" id="entry" placeholder="我想说:">
 	    								</div>
 	    								<div class="col-sm-1" style="margin-top:20px;">
-	      									<button  class="btn btn-sm" style="width:90px;background-color:#128C73"><span style="font-size:16px;color:#FFFFFF;font-weight:bold;">发送</span></button>
+	      									<button id="sendentry" class="btn btn-sm" style="width:90px;background-color:#128C73"><span style="font-size:16px;color:#FFFFFF;font-weight:bold;">发送</span></button>
 	    								</div>
 	  								</div>
 	  							</div>
@@ -314,79 +255,8 @@
 				    </div>
 				    <!-- 小编的评论 -->
 				    <div class="tab-pane fade" id="profile" style="padding-bottom:10px;">
-				    	<div class="contain-fluid">
-				    		<div class="row chat-row">
-								<div class="col-md-1 chat-time-left">19分钟前</div>
-								<div class="col-md-5 chat-container">
-									<div class="left-point"></div> 
-									<div class="col-md-12 chat-min-left-container">
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-left">树枝孤鸟</div>
-											<p class="chat-content-left">
-												属性如果单独属性如果单独属性如果单独属性如果单独属性如果单独属性如
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row chat-row">
-								<div class="col-md-1 chat-time-left">19分钟前</div>
-								<div class="col-md-5 chat-container">
-									<div class="left-point"></div> 
-									<div class="col-md-12 chat-min-left-container">
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-left">树枝孤鸟</div>
-											<p class="chat-content-left">
-											属性如果单独属性如果单独属性如果单独属性如果单
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row chat-row">
-								<div class="col-md-1 chat-time-left">19分钟前</div>
-								<div class="col-md-5 chat-container">
-									<div class="left-point"></div> 
-									<div class="col-md-12 chat-min-left-container">
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-left">树枝孤鸟</div>
-											<p class="chat-content-left">
-												属性如果单独属性如果单独属性如果单独属性如果单独属性如果单独属性如
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row chat-row">
-								<div class="col-md-1"></div>
-								<div class="col-md-4"></div>
-								<div class="col-md-6 chat-container">
-									<div class="col-md-11 chat-min-right-container">
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-right">树枝孤鸟</div>
-											<p class="chat-content-right">
-												属性如果单独属性如果单独属性如果单独属性如果单独属性如果
-											</p>
-										</div>
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-									</div>
-									<div class="col-md-1 chat-right-point">
-										<div class="right-point"></div> 
-									</div>
-								</div>
-								<div class="col-md-1 chat-time-right">11月19日</div>
-							</div>
+				    	<div id="chatOffHistory" class="contain-fluid">
+
 				   		</div>
 		   			</div><!-- 选项卡end-->
   				</div>
@@ -394,5 +264,38 @@
 		</div>
 	</div>
 </div>
+
+	<script>
+    var flashvars = {
+            // M3U8 url, or any other url which compatible with SMP player (flv, mp4, f4m)
+            // escaped it for urls with ampersands
+            src: escape("http://video.taiqiuhui.cn/hls/test.m3u8"),
+            // url to OSMF HLS Plugin
+            plugin_m3u8: "${ctx}/static/chat/HLSProviderOSMF.swf",
+        };
+        var params = {
+            // self-explained parameters
+            allowFullScreen: true,
+            allowScriptAccess: "always",
+            bgcolor: "#000000"
+        };
+        var attrs = {
+            name: "player"
+        };
+
+        swfobject.embedSWF(
+            // url to SMP player
+            "${ctx}/static/chat/StrobeMediaPlayback.swf",
+            // div id where player will be place
+            "player",
+            // width, height
+            "700", "485",
+            // minimum flash player version required
+            "10.2",
+            // other parameters
+            null, flashvars, params, attrs
+        );
+	</script>
+
 </body>
 </html>

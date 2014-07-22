@@ -28,6 +28,7 @@
 	        	<input type="hidden" id="channelName" name="channelName" value="${channelName}" >       
 	        	<input type="hidden" id="avatar" name="avatar" value="${member.avatar}" > 
 	        	<input type="hidden" id="avatarMoRen" name="avatarMoRen" value="${ctx}/static/images/avatar.png" >               
+	            <input type="hidden" id="zhiboMoRen" name="zhiboMoRen" value="${ctx}/static/images/zhibo.png" >  
 	            <div id="loginError">
             </div>
             <div id="chatHistory" class="jumbotron container">
