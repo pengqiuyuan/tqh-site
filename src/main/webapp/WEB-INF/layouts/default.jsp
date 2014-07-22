@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>台球�?<sitemesh:title/></title>
+<title>台球会<sitemesh:title/></title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<meta http-equiv="Cache-Control" content="no-store" />
@@ -27,10 +27,12 @@
 		.friend_link{padding-top:30px;padding-left:100px;color:#E9EBEB;}
 		 .friend_link a{color:#E9EBEB;}
 		a:link {text-decoration: none;} 
-		.shar{padding-top:30px;padding-left:100px;}
+		.tqh_logo{margin-left:72%;margin-top:-100px;}
+		.shar{margin-top:-20px;padding-left:100px;}
 		.shar span{padding-right:10px;}
 		#nav{padding-left:30%;background:url(${ctx}/static/images/assets/example/dh_bg.png);}
- 		#nav a{color:#333333;font-family:"Microsoft YaHei";font-size:16px;}
+ 		#nav a{color:#FFFFFF;font-family:"Microsoft YaHei";font-size:16px;}
+ 		#nav a:hover{background-color:#15E2B9}
 	</style>
 </head>
 

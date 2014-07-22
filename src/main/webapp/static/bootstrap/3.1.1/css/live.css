@@ -1,0 +1,118 @@
+@charset "utf-8";
+/* CSS Document */
+.ttt3{font-size:32px;
+font-weight:bold;
+color:#666666;
+width:150px;
+float: left;
+margin-top: 15px;
+margin-left:8px;
+}
+
+/* CSS 代码 */ 
+
+/* CSS yahoo 样式分页案例css代码 */ 
+DIV.yahoo { 
+PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 20px;
+margin-top: 20px; PADDING-TOP: 3px; TEXT-ALIGN: center 
+} 
+DIV.yahoo A { 
+BORDER-RIGHT: #fff 1px solid; PADDING-RIGHT: 5px;
+ BORDER-TOP: #fff 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px;
+ MARGIN: 2px; BORDER-LEFT: #fff 1px solid;
+ PADDING-TOP: 2px; BORDER-BOTTOM: #fff 1px solid; TEXT-DECORATION: underline 
+} 
+DIV.yahoo A:hover { 
+BORDER-RIGHT: #0088cc 1px solid; BORDER-TOP: #0088cc 1px solid; 
+BORDER-LEFT: #0088cc 1px solid; COLOR: #000; BORDER-BOTTOM: #0088cc 1px solid 
+} 
+DIV.yahoo A:active { 
+BORDER-RIGHT: #0088cc 1px solid; BORDER-TOP: #0088cc 1px solid;
+ BORDER-LEFT: #0088cc 1px solid; COLOR: #f00; BORDER-BOTTOM: #0088cc 1px solid 
+} 
+DIV.yahoo SPAN.current { 
+BORDER-RIGHT: #fff 1px solid; PADDING-RIGHT: 5px;
+ BORDER-TOP: #fff 1px solid; PADDING-LEFT: 5px; FONT-WEIGHT: bold;
+ PADDING-BOTTOM: 2px; MARGIN: 2px; BORDER-LEFT: #fff 1px solid;
+ COLOR: #000; PADDING-TOP: 2px; BORDER-BOTTOM: #fff 1px solid;
+ BACKGROUND-COLOR: #fff 
+} 
+DIV.yahoo SPAN.disabled { 
+BORDER-RIGHT: #eee 1px solid; PADDING-RIGHT: 5px; 
+BORDER-TOP: #eee 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px;
+ MARGIN: 2px; BORDER-LEFT: #eee 1px solid; COLOR: #ddd; 
+PADDING-TOP: 2px; BORDER-BOTTOM: #eee 1px solid 
+} 
+
+
+.org_box{width:500px; height:80px; line-height:40px; margin:40px auto; padding-left:2em; background:#c7c7c7;font-size:12px; position:relative; } 
+.org_box_cor{ width:0; height:0; font-size:0;border-style:solid;overflow:hidden; position:absolute; }
+.cor1{border-width:20px;border-color:#f3961c transparent transparent transparent;left:60px; bottom:-40px;}
+.cor2 {
+border-width: 15px;
+border-color: transparent #c7c7c7 transparent transparent;
+left: -30px;
+bottom: 30px;
+}
+
+.cor4{border-width:15px;border-color:transparent transparent transparent #c7c7c7;right:-30px; bottom:30px;}
+
+.box1{height:40px;background:#000;position:relative;}
+.corner{width:0;height:0;font-size:0;border-width:20px 20px 20px;border-style:solid;border-color:#f00 transparent #f00 #f00  ;_border-color: #f00 white white white ;position:absolute;left:0;bottom:0;overflow:hidden;}
+
+.pg {
+	width:52px;
+	height:52px;
+	float:left;
+    padding-top: 10px;
+    margin-left: -8px;
+}
+
+.txt{color:#148c74;
+font-size:16px;
+font-weight:bold;
+padding-left:25px;
+float:left;
+width:429px;
+}
+.txt2{color:#666363;
+font-size:16px;
+padding-left:25px;
+line-height:20px;
+float:left;
+}
+
+.org_box1{width:500px; height:80px; line-height:40px; margin:40px auto; padding-right:2em; background:#c7c7c7;font-size:12px; position:relative; } 
+.pg1{
+	width:52px;
+	height:52px;
+	float:right;
+    padding-top: 10px;
+    margin-right: -8px;
+}
+.txt_1{color:#148c74;
+font-size:16px;
+font-weight:bold;
+padding-right:25px;
+float:right;
+width:429px;
+text-align: right;
+}
+.txt2_1{color:#666363;
+font-size:16px;
+padding-right:10px;
+line-height:20px;
+float:right;
+text-align: right;}
+.org_box5{ height:80px; line-height:40px; margin:40px auto; padding-left:2em; background:#c7c7c7;font-size:12px; position:relative;}
+.pg8{padding-top:15px;
+float:left;}
+.rr{width:711px;
+height:39px;
+float:left;
+margin-top: 27px;
+margin-left: 10px;}
+.ppp{margin-left:50px;
+float:left;
+margin-top:20px;
+}

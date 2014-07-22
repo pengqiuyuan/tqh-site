@@ -44,6 +44,10 @@ public class ChatController {
 		return "/chat/index";
 	}
 	
+	@RequestMapping(value="liveRoom",method = RequestMethod.GET)
+	public String liveRoom(){
+		return "/chat/liveRoom";
+	}
 	/**
 	 * 直播聊天
 	 * @param model

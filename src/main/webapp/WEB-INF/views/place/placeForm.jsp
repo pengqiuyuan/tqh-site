@@ -12,12 +12,12 @@
  <link href="${ctx}/static/jasny/css/jasny-bootstrap.css" rel="stylesheet" type="text/css"> 
  <script src="${ctx}/static/jasny/js/jasny-bootstrap.js" type="text/javascript"></script>
  <style type="text/css">
- .form_bg{background:url(${ctx}/static/images/assets/example/login_bg.png);}
- .palce_form_head{padding-left:50px;background:url(${ctx}/static/images/assets/example/dh_bg.png);color:#FFFFFF;font-size:14px;}
+ .form_bg{background:url(${ctx}/static/images/assets/example/place_form_bg.png);}
+ .palce_form_head{padding-left:50px;background:url(${ctx}/static/images/assets/example/dh_bg.png);height:32px;padding-top:6px;color:#FFFFFF;font-size:14px;}
  </style>
 </head>
 <body>
-        <div class="container" style="margin-top:20px;">
+        <div class="container" style="margin-top:16px;">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 form_bg">
 					<form id="inputForm" action="${ctx}/place/save" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -79,7 +79,7 @@
 											<span class="fileinput-exists">更改</span>
 											<input type="file" class="file-input" name="fileInput_pic" id="file" />
 										 </span>
-											<a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput"><span class="glyphicon glyphicon-remove"></span>移除</a>
+											<a href="#"  class="btn btn-danger fileinput-exists" data-dismiss="fileinput"><span class="glyphicon glyphicon-remove"></span>移除</a>
 										</div>
 									</div>
 								</div>
@@ -87,15 +87,15 @@
 							<div class="form-group">
 							<label for="name" class="col-sm-2 control-label"></label>
 								<div class="col-sm-10 controls">
-									<input type="button" class="btn btn-success" name="contiueadd" id="contiueadd" value="继续添加" />
-									<input type="button" class="btn btn-danger" name="deleteAll" id="deleteAll" value="移除全部" />
+									<input type="button" class="btn" style="width:90px;background-color:#128C73;color:#FFFFFF;" name="contiueadd" id="contiueadd" value="继续添加" />
+									<input type="button" class="btn" style="width:90px;background-color:#c2632d;color:#FFFFFF;" name="deleteAll" id="deleteAll" value="移除全部" />
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<label for="name" class="col-sm-2 control-label"></label>
 								<div class="col-xs-4 controls">
-									<button type="submit" class="btn btn-lg btn-success">上传球房信息</button>
+									<button type="submit" style="background-color:#18a88b;color:#FFFFFF;" class="btn btn-lg">上传球房信息</button>
 								</div>
 							</div>
 				
@@ -106,7 +106,7 @@
         </div>
     <!-- </section> -->
 	<script>
-	$("#map").addClass("active");
+	//$("#map").addClass("active");
 	$(function(){
 		$.validator.addMethod("selectProvince",function(value,element){
 			 var provinceCode = $("#province").val();
