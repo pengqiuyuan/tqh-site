@@ -73,6 +73,8 @@ function addMessage(from, target, text, img ,time) {
 	scrollDown(base);
 };
 
+
+
 function addMessageUser(from, target, text, img ,time) {
 	var name = (target == '*' ? 'all' : target);
 	if(text === null) return;
@@ -83,10 +85,10 @@ function addMessageUser(from, target, text, img ,time) {
 	}
 	text = util.toStaticHTML(text);
 	var content = '<div class="row chat-row"><div class="col-md-1 chat-time">' + util.timeString(time) + '</div>' 
-	+'  <div class="col-md-4"></div><div class="col-md-6 chat-container"><div class="col-md-11 chat-min-right-container"><div class="col-md-10" style="margin-top:20px;"><div class="chat-name-right">' + util.toStaticHTML(from) + '</div>' 
+	+'  <div class="col-md-4"></div><div class="col-md-6 chat-container"><div class="col-md-11 chat-min-right-container"> <div class="col-md-10" style="margin-top:20px;"><div class="chat-name-right">' + util.toStaticHTML(from) + '</div>' 
 	+ '  <p class="chat-content-right">' + text + '</p>'
 	+ '</div><div class="col-md-2"><img class="chat-img" style="width: 51px; height: 51px;" src="'+img+'"  class="chat-img"></img></div>' 
-	+'<div class="col-md-1 chat-right-point"><div class="right-point"></div></div></div></div>';
+	+'</div><div class="col-md-1 chat-right-point"><div class="right-point"></div></div></div>';
 	
 	$("#chatHistory").append(content);
 	base += increase;
