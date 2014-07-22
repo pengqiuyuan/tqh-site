@@ -84,8 +84,8 @@
     		<div class="col-md-4" style="margin-top:15px;margin-bottom:60px;">
     			<ul class="nav nav-list" style="background-color:#EDEDED;">
               		<li class="nav-header" style="background:#323232;height:74px;">
-	              		<div class="" style="font-size:18px;color:#cfcfcf; font-family:宋体;padding-top:15px;padding-left:15px;">2014英国国际锦标�?1/4决赛</div>
-	              		<div class="" style="font-size:16px;color:#989797; font-family:宋体;margin-top:6px;padding-left:15px;">时间�?0�?7�?10�?7�?/div>
+	              		<div class="" style="font-size:18px;color:#cfcfcf; font-family:宋体;padding-top:15px;padding-left:15px;">2014英国国际锦标赛 1/4决赛</div>
+	              		<div class="" style="font-size:16px;color:#989797; font-family:宋体;margin-top:6px;padding-left:15px;">时间：10月17日-10月27日</div>
               		</li>
               		<li class="active" style="background-color: #c7c7c7;margin-top:5px;">
               			<a href="#">
@@ -98,7 +98,7 @@
               							<p class="against_head">16</p>
               						</div>
               						<div class="col-md-2">
-              							<p class="against_head">�?/p>
+              							<p class="against_head">：</p>
               						</div>
               						<div class="col-md-2">
               							<p class="against_head">24</p>
@@ -109,13 +109,13 @@
               					</div>
               					<div class="row">
               						<div class="col-md-3">
-              							<p class="against_foot">丁俊�?/p>
+              							<p class="against_foot">丁俊晖</p>
               						</div>
               						<div class="col-md-2">
               							<p class="against_foot">(2)</p>
               						</div>
               						<div class="col-md-2">
-              							<p class="turn_num against_foot">�?5)�?/p>
+              							<p class="turn_num against_foot">第(5)轮</p>
               						</div>
               						<div class="col-md-2">
               							<p class="against_foot">(1)</p>
@@ -138,7 +138,7 @@
               							<p class="against_head">16</p>
               						</div>
               						<div class="col-md-2">
-              							<p class="against_head">�?/p>
+              							<p class="against_head">：</p>
               						</div>
               						<div class="col-md-2">
               							<p class="against_head">24</p>
@@ -149,13 +149,13 @@
               					</div>
               					<div class="row">
               						<div class="col-md-3">
-              							<p class="against_foot">丁俊�?/p>
+              							<p class="against_foot">丁俊晖</p>
               						</div>
               						<div class="col-md-2">
               							<p class="against_foot">(2)</p>
               						</div>
               						<div class="col-md-2">
-              							<p class="turn_num against_foot">�?5)�?/p>
+              							<p class="turn_num against_foot">第(5)轮</p>
               						</div>
               						<div class="col-md-2">
               							<p class="against_foot">(1)</p>
@@ -178,7 +178,7 @@
               							<p class="against_head">16</p>
               						</div>
               						<div class="col-md-2">
-              							<p class="against_head">�?/p>
+              							<p class="against_head">：</p>
               						</div>
               						<div class="col-md-2">
               							<p class="against_head">24</p>
@@ -189,13 +189,13 @@
               					</div>
               					<div class="row">
               						<div class="col-md-3">
-              							<p class="against_foot">丁俊�?/p>
+              							<p class="against_foot">丁俊晖</p>
               						</div>
               						<div class="col-md-2">
               							<p class="against_foot">(2)</p>
               						</div>
               						<div class="col-md-2">
-              							<p class="turn_num against_foot">�?5)�?/p>
+              							<p class="turn_num against_foot">第(5)轮</p>
               						</div>
               						<div class="col-md-2">
               							<p class="against_foot">(1)</p>
@@ -218,11 +218,11 @@
        		<div class="col-lg-10 col-lg-offset-1" style="margin-top:-25px;background:#f0f0f0;">
        		<div class="bs-example bs-example-tabs">
 			    <ul id="myTab" class="nav nav-tabs" role="tablist">
-			      <li class="active"><a href="#home" role="tab" data-toggle="tab">大家的评�?/a></li>
-			      <li class=""><a href="#profile" role="tab" data-toggle="tab">小编的评�?/a></li>
+			      <li class="active"><a href="#home" role="tab" data-toggle="tab">大家的评论</a></li>
+			      <li class=""><a href="#profile" role="tab" data-toggle="tab">小编的评论</a></li>
 			    </ul>
 			    <div id="myTabContent" class="tab-content">
-			    <!-- 大家的评�?-->
+			    <!-- 大家的评论 -->
 				    <div class="tab-pane fade active in" id="home">
 				    	<div id="chatHistory" class="contain-fluid">
 								
@@ -239,21 +239,21 @@
 	    									<img id="avatarimg" src="" style="width: 51px; height: 51px;"/>
 	    								</div>
 	    								<div class="col-sm-9" style="margin:5px 0px -7px -35px;padding-top:17px;">
-	      									<input type="text" class="form-control" id="entry" placeholder="我想�?">
+	      									<input type="text" class="form-control" id="entry" placeholder="我想说:">
 	    								</div>
 	    								<div class="col-sm-1" style="margin-top:20px;">
-	      									<button id="sendentry" class="btn btn-sm" style="width:90px;background-color:#128C73"><span style="font-size:16px;color:#FFFFFF;font-weight:bold;">发�?</span></button>
+	      									<button id="sendentry" class="btn btn-sm" style="width:90px;background-color:#128C73"><span style="font-size:16px;color:#FFFFFF;font-weight:bold;">发送</span></button>
 	    								</div>
 	  								</div>
 	  							</div>
 				    		</div>
 				    	</div>
 				    </div>
-				    <!-- 小编的评�?-->
+				    <!-- 小编的评论 -->
 				    <div class="tab-pane fade" id="profile" style="padding-bottom:10px;">
 				    	<div class="contain-fluid">
 				    		<div class="row chat-row">
-								<div class="col-md-1 chat-time">19分钟�?/div>
+								<div class="col-md-1 chat-time">19分钟前</div>
 								<div class="col-md-5 chat-container">
 									<div class="left-point"></div> 
 									<div class="col-md-12 chat-min-left-container">
@@ -263,13 +263,14 @@
 										<div class="col-md-10" style="margin-top:20px;">
 											<div class="chat-name-left">树枝孤鸟</div>
 											<p class="chat-content-left">
-												属�?如果单独属�?如果单独属�?如果单独属�?如果单独属�?如果单独属�?�?											</p>
+												属性如果单独属性如果单独属性如果单独属性如果单独属性如果单独属性如
+											</p>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="row chat-row">
-								<div class="col-md-1 chat-time">19分钟�?/div>
+								<div class="col-md-1 chat-time">19分钟前</div>
 								<div class="col-md-5 chat-container">
 									<div class="left-point"></div> 
 									<div class="col-md-12 chat-min-left-container">
@@ -279,13 +280,14 @@
 										<div class="col-md-10" style="margin-top:20px;">
 											<div class="chat-name-left">树枝孤鸟</div>
 											<p class="chat-content-left">
-											属�?如果单独属�?如果单独属�?如果单独属�?如果�?											</p>
+											属性如果单独属性如果单独属性如果单独属性如果单
+											</p>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="row chat-row">
-								<div class="col-md-1 chat-time">19分钟�?/div>
+								<div class="col-md-1 chat-time">19分钟前</div>
 								<div class="col-md-5 chat-container">
 									<div class="left-point"></div> 
 									<div class="col-md-12 chat-min-left-container">
@@ -295,20 +297,21 @@
 										<div class="col-md-10" style="margin-top:20px;">
 											<div class="chat-name-left">树枝孤鸟</div>
 											<p class="chat-content-left">
-												属�?如果单独属�?如果单独属�?如果单独属�?如果单独属�?如果单独属�?�?											</p>
+												属性如果单独属性如果单独属性如果单独属性如果单独属性如果单独属性如
+											</p>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="row chat-row">
-								<div class="col-md-1 chat-time">11�?9�?/div>
+								<div class="col-md-1 chat-time">11月19日</div>
 								<div class="col-md-4"></div>
 								<div class="col-md-6 chat-container">
 									<div class="col-md-11 chat-min-right-container">
 										<div class="col-md-10" style="margin-top:20px;">
 											<div class="chat-name-right">树枝孤鸟</div>
 											<p class="chat-content-right">
-												属�?如果单独属�?如果单独属�?如果单独属�?如果单独属�?如果
+												属性如果单独属性如果单独属性如果单独属性如果单独属性如果
 											</p>
 										</div>
 										<div class="col-md-2">
