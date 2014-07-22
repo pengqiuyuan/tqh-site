@@ -33,6 +33,7 @@
 		#nav{padding-left:30%;background:url(${ctx}/static/images/assets/example/dh_bg.png);}
  		#nav a{color:#FFFFFF;font-family:"Microsoft YaHei";font-size:16px;}
  		#nav a:hover{background-color:#15E2B9}
+ 		.copyRight{color:#FFFFFF;font-size:12px;}
 	</style>
 </head>
 

@@ -20,16 +20,18 @@
 		<script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap.js"></script>
 		<style type="text/css">
 			body{padding-bottom:0px}
-			.friend_link{padding-top:30px;padding-left:170px;color:#000;}
-		 	.friend_link a{color:#E9EBEB;}
+			
 			a:link {color: #000;text-decoration: none;}
 			 a:visited {color: #000;text-decoration: none;}
+			 .friend_link{padding-top:30px;padding-left:170px;color:#000;}
+			.friend_link a{color:#9ca3a2;font-size:14px;}
 			/*a:active {color: #bc2931;text-decoration: none;} */
 			.login_p{float:left; margin-left:50px; margin-top:25px; font-size:30px; color:#FFF; font-family:黑体;}
 			.login_p a{color:#FFFFFF;} 
 			.shar{margin-top:-30px;padding-left:170px;}
 			.shar span{padding-right:10px;}
 			.tqh_logo{margin-left:72%;margin-top:-100px;}
+			.copyRight{color:#9ca3a2;font-size:12px;}
 		</style>
 	</head>
 	<body>
@@ -135,12 +137,12 @@
 </div> 
  <div class="container-fluid" style="margin-top:30px;">
  	<div style="background:url(${ctx}/static/images/assets/example/friend_link_bg.png) repeat-x;margin-left:-15px;margin-right:-15px;padding-bottom:30px;">
-		<p class="friend_link">友情链接： <a href="http://www.appchina.com">应用汇| </a><a href="http://app.mi.com">小米应用商店 | </a><a href="http://apk.hiapk.com">安卓市场 | </a><a href="http://www.fzhuake.com">华科信息 </a></p>
+		<p class="friend_link"><label style="color:#9ca3a2;font-size:14px;">友情链接：</label> <a href="http://www.appchina.com">应用汇| </a><a href="http://app.mi.com">小米应用商店 | </a><a href="http://apk.hiapk.com">安卓市场 | </a><a href="http://www.fzhuake.com">华科信息 </a></p>
 		<span class="tqh_logo"><img style="margin-top:-30px;" src="${ctx}/static/images/assets/example/tqh_footer_logo.png"/></span>
 		<p class="shar">
 			<span><a href="http://weibo.com/yqkhengdeli"><img src="${ctx}/static/images/assets/example/sina_logo.png"/></a></span>
 			<span><img src="${ctx}/static/images/assets/example/tengxun_logo.png"/></span>
-			<span>版权所有 福州华科信息科技有限公司 保留一切权利 闽ICP备13018017</span>
+			<span class="copyRight">版权所有 福州华科信息科技有限公司 保留一切权利 闽ICP备13018017</span>
 		</p>
 	</div>
  </div>
