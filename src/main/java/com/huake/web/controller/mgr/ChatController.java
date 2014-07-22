@@ -45,6 +45,25 @@ public class ChatController {
 	}
 	
 	/**
+	 * 直播聊天
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/chat2",method = RequestMethod.GET)
+	public String chat(Model model) {
+		Member member = getCurrentMember();
+		if(member == null){
+			Member mem =new Member();
+			model.addAttribute("member",mem);
+			model.addAttribute("channelName",CHAT_ZHIBO);
+		}else{
+			model.addAttribute("member",member);
+			model.addAttribute("channelName",CHAT_ZHIBO);
+		}
+		return "/chat/chat2";
+	}
+	
+	/**
 	 * 获取当前用户信息
 	 * @return
 	 */
