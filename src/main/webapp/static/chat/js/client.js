@@ -68,10 +68,11 @@ function addMessage(from, target, text, img ,time) {
 	messageElement.addClass("message list-group");
 	// sanitize
 	text = util.toStaticHTML(text);
-	var content = '<tr class="list-group-item">' + '  <td class="date">' + util.timeString(time) + '</td>' + '  <td class="im"><img src="'+img+'" style="width: 60px; height: 60px;"></img></td>' +'  <td class="nick">' + util.toStaticHTML(from) + ' says to ' + name + ': ' + '</td>' + '  <td class="msg-text">' + text + '</td>' + '</tr>';
-	messageElement.html(content);
+	var content = '<div class="tab-content" style=" border:solid 1px red;" >' + '  <div class="tab-pane active" style=" border:solid 1px blue;" id="tab1"><div class="span2" style="padding-left:20px;color:#b8b8b8;border:solid 1px red;" ><p>' + util.timeString(time) + '</p></div>' + '  <div></div><div class="org_box" style=" border:solid 1px black;width:500px;height:180px;padding:10px 16px;" ><div class="pg"><img src="'+img+'"  class="img-rounded"></img></div>' +'  <span class="org_box_cor cor2"></span><div class="txt">' + util.toStaticHTML(from) + ' says to ' + name + ': ' + '</div><div></div>' + '  <div class="txt2">' + text + '</div></div>';
+	
+	
 	//the log is the stream that we view
-	$("#chatHistory").append(messageElement);
+	$("#chatHistory").append(content);
 	base += increase;
 	scrollDown(base);
 };
