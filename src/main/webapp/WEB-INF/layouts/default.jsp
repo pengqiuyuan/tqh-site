@@ -24,7 +24,7 @@
 	<sitemesh:head/>
 	<style type="text/css">
 		.header_footer_img{width:100%;}
-		.friend_link{padding-top:30px;padding-left:100px;color:#E9EBEB;}
+		.friend_link{padding-top:40px;padding-left:100px;color:#E9EBEB;}
 		 .friend_link a{color:#E9EBEB;}
 		a:link {text-decoration: none;} 
 		.tqh_logo{margin-left:72%;margin-top:-100px;}
@@ -37,7 +37,7 @@
 	</style>
 </head>
 
-<body>
+<body style="background:url(${ctx}/static/images/assets/example/body_bg.png) repeat;">
 		<%@ include file="/WEB-INF/layouts/header.jsp"%>
 			<sitemesh:body/>
 		<%@ include file="/WEB-INF/layouts/footer.jsp"%>

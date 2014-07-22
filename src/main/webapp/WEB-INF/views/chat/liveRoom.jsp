@@ -44,7 +44,7 @@
   font-size:0px;
   line-height:0px;
 }
-.tab-pan{padding-bottom:15px;}
+/* .tab-pan{padding-bottom:15px;} */
 .chat-row{margin-top:24px;}
 .chat-time-left{padding-top:60px;color:#b8b8b8;font-weight:normal;}
 .chat-time-right{padding-top:37px;color:#b8b8b8;font-weight:normal;}
@@ -57,6 +57,9 @@
 .chat-content-left{color:#727071;font-size:16px;font-weight:normal;margin-top:10px;}
 .chat-content-right{color:#666363;font-size:16px;font-weight:normal;margin-top:30px;}
 .chat-right-point{margin-top:30px;margin-left:-20px;}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {background-color: #148c74;color:#FFFFFF;}
+/* .nav-tabs > li > a {background:red;color:#FFFFFF;}*/
+/* .nav-tabs > li > a:hover {background:red;color:#FFFFFF;} */
 </style>
 </head>
 <body>

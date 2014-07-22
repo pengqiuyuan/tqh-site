@@ -2,7 +2,7 @@
 <!-- <div id="footer">
 	Copyright &copy; 2005-2012 <a href="http://www.springside.org.cn">springside.org.cn</a>
 </div> -->
-   <div class="container-fluid">
+   <div class="container-fluid" style="margin-top:20px;">
 		<footer>
 			<div class="row" >
 				<div style="background:url(${ctx}/static/images/assets/example/footer.png);background-size:cover;height:160px;">
