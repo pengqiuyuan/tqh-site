@@ -71,7 +71,8 @@
 	        	<input type="hidden" id="nickName" name="nickName" value="${member.nickName}" >
 	        	<input type="hidden" id="channelName" name="channelName" value="${channelName}" >       
 	        	<input type="hidden" id="avatar" name="avatar" value="${member.avatar}" > 
-	        	<input type="hidden" id="avatarMoRen" name="avatarMoRen" value="${ctx}/static/images/avatar.png" >               
+	        	<input type="hidden" id="avatarMoRen" name="avatarMoRen" value="${ctx}/static/images/avatar.png" >
+	        	<input type="hidden" id="zhiboMoRen" name="zhiboMoRen" value="${ctx}/static/images/zhibo.png" >                
 	            <div id="loginError">
         </div>    	
     	<div class="row">
@@ -251,78 +252,8 @@
 				    </div>
 				    <!-- 小编的评论 -->
 				    <div class="tab-pane fade" id="profile" style="padding-bottom:10px;">
-				    	<div class="contain-fluid">
-				    		<div class="row chat-row">
-								<div class="col-md-1 chat-time">19分钟前</div>
-								<div class="col-md-5 chat-container">
-									<div class="left-point"></div> 
-									<div class="col-md-12 chat-min-left-container">
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-left">树枝孤鸟</div>
-											<p class="chat-content-left">
-												属性如果单独属性如果单独属性如果单独属性如果单独属性如果单独属性如
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row chat-row">
-								<div class="col-md-1 chat-time">19分钟前</div>
-								<div class="col-md-5 chat-container">
-									<div class="left-point"></div> 
-									<div class="col-md-12 chat-min-left-container">
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-left">树枝孤鸟</div>
-											<p class="chat-content-left">
-											属性如果单独属性如果单独属性如果单独属性如果单
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row chat-row">
-								<div class="col-md-1 chat-time">19分钟前</div>
-								<div class="col-md-5 chat-container">
-									<div class="left-point"></div> 
-									<div class="col-md-12 chat-min-left-container">
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-left">树枝孤鸟</div>
-											<p class="chat-content-left">
-												属性如果单独属性如果单独属性如果单独属性如果单独属性如果单独属性如
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row chat-row">
-								<div class="col-md-1 chat-time">11月19日</div>
-								<div class="col-md-4"></div>
-								<div class="col-md-6 chat-container">
-									<div class="col-md-11 chat-min-right-container">
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-right">树枝孤鸟</div>
-											<p class="chat-content-right">
-												属性如果单独属性如果单独属性如果单独属性如果单独属性如果
-											</p>
-										</div>
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-									</div>
-									<div class="col-md-1 chat-right-point">
-										<div class="right-point"></div> 
-									</div>
-								</div>
-							</div>
+				    	<div id="chatOffHistory" class="contain-fluid">
+
 				   		</div>
 		   			</div><!-- 选项卡end-->
   				</div>
