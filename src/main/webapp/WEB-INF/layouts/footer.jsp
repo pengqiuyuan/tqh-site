@@ -11,6 +11,7 @@
 					<p class="shar">
 						<span><a href="http://weibo.com/yqkhengdeli"><img src="${ctx}/static/images/assets/example/sina_logo.png"/></a></span>
 						<span><img src="${ctx}/static/images/assets/example/tengxun_logo.png"/></span>
+						<span class="copyRight">版权所有 福州华科信息科技有限公司 保留一切权利 闽ICP备13018017</span>
 					</p>
 				</div>
 				<%-- <img class="header_footer_img" src="${ctx}/static/images/assets/example/footer.png"/> --%>

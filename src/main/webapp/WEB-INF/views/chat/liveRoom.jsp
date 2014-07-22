@@ -46,7 +46,8 @@
 }
 .tab-pan{padding-bottom:15px;}
 .chat-row{margin-top:24px;}
-.chat-time{padding-top:60px;color:#b8b8b8;font-weight:normal;}
+.chat-time-left{padding-top:60px;color:#b8b8b8;font-weight:normal;}
+.chat-time-right{padding-top:37px;color:#b8b8b8;font-weight:normal;}
 .chat-container{padding-left:10px;}
 .chat-min-left-container{margin-top:-80px;background-color:#c7c7c7;min-height:120px;}
 .chat-min-right-container{margin-top:0px;background-color:#c7c7c7;min-height:120px;}
@@ -276,7 +277,7 @@
 				    <div class="tab-pane fade" id="profile" style="padding-bottom:10px;">
 				    	<div class="contain-fluid">
 				    		<div class="row chat-row">
-								<div class="col-md-1 chat-time">19分钟前</div>
+								<div class="col-md-1 chat-time-left">19分钟前</div>
 								<div class="col-md-5 chat-container">
 									<div class="left-point"></div> 
 									<div class="col-md-12 chat-min-left-container">
@@ -293,7 +294,7 @@
 								</div>
 							</div>
 							<div class="row chat-row">
-								<div class="col-md-1 chat-time">19分钟前</div>
+								<div class="col-md-1 chat-time-left">19分钟前</div>
 								<div class="col-md-5 chat-container">
 									<div class="left-point"></div> 
 									<div class="col-md-12 chat-min-left-container">
@@ -310,7 +311,7 @@
 								</div>
 							</div>
 							<div class="row chat-row">
-								<div class="col-md-1 chat-time">19分钟前</div>
+								<div class="col-md-1 chat-time-left">19分钟前</div>
 								<div class="col-md-5 chat-container">
 									<div class="left-point"></div> 
 									<div class="col-md-12 chat-min-left-container">
@@ -327,7 +328,7 @@
 								</div>
 							</div>
 							<div class="row chat-row">
-								<div class="col-md-1 chat-time">11月19日</div>
+								<div class="col-md-1"></div>
 								<div class="col-md-4"></div>
 								<div class="col-md-6 chat-container">
 									<div class="col-md-11 chat-min-right-container">
@@ -345,6 +346,7 @@
 										<div class="right-point"></div> 
 									</div>
 								</div>
+								<div class="col-md-1 chat-time-right">11月19日</div>
 							</div>
 				   		</div>
 		   			</div><!-- 选项卡end-->
