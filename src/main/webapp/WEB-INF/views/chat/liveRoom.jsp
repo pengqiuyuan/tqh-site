@@ -57,6 +57,28 @@
 .chat-content-right{color:#666363;font-size:16px;font-weight:normal;margin-top:30px;}
 .chat-right-point{margin-top:30px;margin-left:-20px;}
 </style>
+        <title>视频直播间</title>
+        <script src="${ctx}/static/chat/js/jquery-1.8.0.min.js"></script>
+        <script src="${ctx}/static/chat/js/socket.io.js"></script>
+        <script src="${ctx}/static/chat/js/pomeloclient.js"></script>
+        <script src="${ctx}/static/chat/js/client.js"></script>
+        <script src="${ctx}/static/chat/js/pop.js"></script>   
+		<script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap.js"></script> 
+		
+		
+    <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-transition.js"></script>
+    <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-alert.js"></script>
+    <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-modal.js"></script>
+    <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-dropdown.js"></script>
+    <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-scrollspy.js"></script>
+    <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-tab.js"></script>
+    <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-tooltip.js"></script>
+    <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-popover.js"></script>
+    <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-button.js"></script>
+    <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-collapse.js"></script>
+    <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-carousel.js"></script>
+    <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap-typeahead.js"></script>
+     
 </head>
 <body>
     <div class="container-fluid">
@@ -211,81 +233,12 @@
 			    <div id="myTabContent" class="tab-content">
 			    <!-- 大家的评论 -->
 				    <div class="tab-pane fade active in" id="home">
-				    	<div class="contain-fluid">
-				    		<div class="row chat-row">
-								<div class="col-md-1 chat-time">19分钟前</div>
-								<div class="col-md-5 chat-container">
-									<div class="left-point"></div> 
-									<div class="col-md-12 chat-min-left-container">
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-left">树枝孤鸟</div>
-											<p class="chat-content-left">
-												属性如果单独属性如果单独属性如果单独属性如果单独属性如果单独属性如
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row chat-row">
-								<div class="col-md-1 chat-time">19分钟前</div>
-								<div class="col-md-5 chat-container">
-									<div class="left-point"></div> 
-									<div class="col-md-12 chat-min-left-container">
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-left">树枝孤鸟</div>
-											<p class="chat-content-left">
-											属性如果单独属性如果单独属性如果单独属性如果单
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row chat-row">
-								<div class="col-md-1 chat-time">11月19日</div>
-								<div class="col-md-4"></div>
-								<div class="col-md-6 chat-container">
-									<div class="col-md-11 chat-min-right-container">
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-right">树枝孤鸟</div>
-											<p class="chat-content-right">
-												属性如果单独属性如果单独属性如果单独属性如果单独属性如
-											</p>
-										</div>
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-									</div>
-									<div class="col-md-1 chat-right-point">
-										<div class="right-point"></div> 
-									</div>
-								</div>
-							</div>
-							<div class="row chat-row">
-								<div class="col-md-1 chat-time">11月19日</div>
-								<div class="col-md-4"></div>
-								<div class="col-md-6 chat-container">
-									<div class="col-md-11 chat-min-right-container">
-										<div class="col-md-10" style="margin-top:20px;">
-											<div class="chat-name-right">树枝孤鸟</div>
-											<p class="chat-content-right">
-												属性如果单独属性如果单独属性如果单独属性如果单独属性如果
-											</p>
-										</div>
-										<div class="col-md-2">
-											<img class="chat-img" src="${ctx}/static/images/assets/example/live_05.png"/> 
-										</div>
-									</div>
-									<div class="col-md-1 chat-right-point">
-										<div class="right-point"></div> 
-									</div>
-								</div>
-							</div>
+				    <input type="hidden" id="nickName" name="nickName" value="${member.nickName}" >
+	        	<input type="hidden" id="channelName" name="channelName" value="${channelName}" >       
+	        	<input type="hidden" id="avatar" name="avatar" value="${member.avatar}" > 
+	        	<input type="hidden" id="avatarMoRen" name="avatarMoRen" value="${ctx}/static/images/avatar.png" >  
+				    	<div class="contain-fluid" id="chatHistory">
+				    	
 				    	</div>
 				    	<!-- send message content-->
 				    	<div class="container-fluid" style="margin:24px -15px 0px -15px;padding:10px 20px 10px 20px;background-color:#c7c7c7;">
@@ -293,19 +246,32 @@
 					    		<div class="form-horizontal" role="form">
 	  								<div class="form-group">
 	  									<div class="col-sm-1" style="margin:5px 0px -7px 20px;">
-	    									<img src="${ctx}/static/images/assets/example/live_05.png" />
+	    									<c:choose>
+	    									<c:when test="${member.avatar ==null or member.avatar eq ''}">
+	    										<img class="img-rounded" style="width: 51px;height: 51px;" src="${ctx}/static/images/avatar.png" />
+	    									</c:when>
+	    									<c:otherwise>
+	    										<img class="img-rounded" style="width: 51px;height: 51px;" src="${member.avatar}" />
+	    									</c:otherwise>
+	    									</c:choose>
+	    								
 	    								</div>
 	    								<div class="col-sm-9" style="margin:5px 0px -7px -35px;padding-top:17px;">
-	      									<input type="text" class="form-control" id="content" placeholder="我想说:">
+	      									<input type="text" class="form-control" id="entry" placeholder="我想说:">
 	    								</div>
+  										 <input type="hidden" id="usersList"  value="*" > 
 	    								<div class="col-sm-1" style="margin-top:20px;">
-	      									<button  class="btn btn-sm" style="width:90px;background-color:#128C73"><span style="font-size:16px;color:#FFFFFF;font-weight:bold;">发送</span></button>
+	      									<button id="sayButton" class="btn btn-sm" style="width:90px;background-color:#128C73"><span style="font-size:16px;color:#FFFFFF;font-weight:bold;">发送</span></button>
 	    								</div>
 	  								</div>
 	  							</div>
 				    		</div>
 				    	</div>
 				    </div>
+				    
+				    
+				    
+				    
 				    <!-- 小编的评论 -->
 				    <div class="tab-pane fade" id="profile" style="padding-bottom:10px;">
 				    	<div class="contain-fluid">

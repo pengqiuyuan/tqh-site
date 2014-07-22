@@ -68,8 +68,8 @@ function addMessage(from, target, text, img ,time) {
 	messageElement.addClass("message list-group");
 	// sanitize
 	text = util.toStaticHTML(text);
-	var content = '<div class="tab-content" style=" border:solid 1px red;" >' + '  <div class="tab-pane active" style=" border:solid 1px blue;" id="tab1"><div class="span2" style="padding-left:20px;color:#b8b8b8;border:solid 1px red;" ><p>' + util.timeString(time) + '</p></div>' + '  <div></div><div class="org_box" style=" border:solid 1px black;width:500px;height:180px;padding:10px 16px;" ><div class="pg"><img src="'+img+'"  class="img-rounded"></img></div>' +'  <span class="org_box_cor cor2"></span><div class="txt">' + util.toStaticHTML(from) + ' says to ' + name + ': ' + '</div><div></div>' + '  <div class="txt2">' + text + '</div></div>';
-	
+//	var content = '<div class="tab-content" style=" border:solid 1px red;" >' + '  <div class="tab-pane active" style=" border:solid 1px blue;" id="tab1"><div class="span2" style="padding-left:20px;color:#b8b8b8;border:solid 1px red;" ><p>' + util.timeString(time) + '</p></div>' + '  <div></div><div class="org_box" style=" border:solid 1px black;width:500px;height:180px;padding:10px 16px;" ><div class="pg"><img src="'+img+'"  class="img-rounded"></img></div>' +'  <span class="org_box_cor cor2"></span><div class="txt">' + util.toStaticHTML(from) + ' says to ' + name + ': ' + '</div><div></div>' + '  <div class="txt2">' + text + '</div></div>';
+	var content = '<div class="row chat-row">' + '<div class="col-md-1 chat-time">' + util.timeString(time) + '</div>' + '<div class="col-md-5 chat-container"><div class="left-point"></div><div class="col-md-12 chat-min-left-container"><div class="col-md-2"><img src="'+img+'" class="img-rounded" style="width:31px;height:31px;"></img></div>' +'<div class="col-md-10" style="margin-top:20px;"><div class="chat-name-left">' + util.toStaticHTML(from) + ' says to ' + name + ': ' + '</div>' + '<p class="chat-content-left">' + text + '</p></div></div></div></div>';
 	
 	//the log is the stream that we view
 	$("#chatHistory").append(content);
@@ -365,4 +365,38 @@ $(document).ready(function() {
 			});
 		}
 	});
+	
+	$("#sayButton").click(function(){
+		var route = "chat.chatHandler.send";
+		var target = $("#usersList").val();
+
+        var fromId = null;
+        var targetId = null;
+        if(target =="*"){
+            targetId = "*";
+        }else{
+            targetId = null;
+        }
+
+		var msg = $("#entry").attr("value").replace("\n", "");
+		if(!util.isBlank(msg)) {
+			pomelo.request(route, {
+                    rid: rid,
+                    content: msg,
+                    from: username,
+                    target: target,
+                    fromId:fromId,
+                    targetId:targetId,
+                    avatar:avatar
+			}, function(data) {
+				$("#entry").attr("value", ""); // clear the entry field.
+				if(target != '*' && target != username) {
+					addMessage(username, data.route.target, msg,data.route.avatar);
+					$("#chatHistory").show();
+				}
+			});
+		}
+	});
+	
+	
 });
