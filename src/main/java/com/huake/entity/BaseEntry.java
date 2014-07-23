@@ -16,9 +16,18 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @MappedSuperclass
 public class BaseEntry {
 
+	/**
+	 * 有效 即审核通过
+	 */
 	public final static String STATUS_VALIDE="1";
+	/**
+	 * 无效 审核未通过
+	 */
 	public final static String STATUS_INVALIDE="0";
-	
+	/**
+	 * 未审核
+	 */
+	public final static String STATUS_NOT_CHECK="2";
 	protected Long id;
 	
 	private Date crtDate;

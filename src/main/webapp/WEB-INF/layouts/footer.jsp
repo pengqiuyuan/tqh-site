@@ -2,46 +2,20 @@
 <!-- <div id="footer">
 	Copyright &copy; 2005-2012 <a href="http://www.springside.org.cn">springside.org.cn</a>
 </div> -->
- <footer class="text-center">
-        <div class="footer-above">
-            <div class="container">
-                <div class="row">
-                    <div class="footer-col col-md-4">
-                        <h3>Location</h3>
-                        <p>3481 Melrose Place
-                            <br>Beverly Hills, CA 90210</p>
-                    </div>
-                    <div class="footer-col col-md-4">
-                        <h3>Around the Web</h3>
-                        <ul class="list-inline">
-                            <li><a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-                            </li>
-                            <li><a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                            </li>
-                            <li><a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-col col-md-4">
-                        <h3>About Freelance</h3>
-                        <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-below">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        Copyright &copy; 2014 - Your Name
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+   <div class="container-fluid">
+		<footer>
+			<div class="row" >
+				<div style="background:url(${ctx}/static/images/assets/example/footer.png);background-size:cover;height:160px;">
+					<p class="friend_link">友情链接： <a href="http://www.appchina.com">应用汇| </a><a href="http://app.mi.com">小米应用商店 | </a><a href="http://apk.hiapk.com">安卓市场 | </a><a href="http://www.fzhuake.com">华科信息 </a></p>
+					<span class="tqh_logo"><img style="margin-top:-30px;" src="${ctx}/static/images/assets/example/tqh_footer_logo.png"/></span>
+					<p class="shar">
+						<span><a href="http://weibo.com/yqkhengdeli"><img src="${ctx}/static/images/assets/example/sina_logo.png"/></a></span>
+						<span><img src="${ctx}/static/images/assets/example/tengxun_logo.png"/></span>
+						<span class="copyRight">版权所有 福州华科信息科技有限公司 保留一切权利 闽ICP备13018017</span>
+					</p>
+				</div>
+				<%-- <img class="header_footer_img" src="${ctx}/static/images/assets/example/footer.png"/> --%>
+			</div>
+		</footer>
+	</div>
    

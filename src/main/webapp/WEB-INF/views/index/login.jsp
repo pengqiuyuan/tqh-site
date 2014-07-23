@@ -10,7 +10,17 @@
 
 <html>
 <head>
-<title>登录-注册</title>
+	<title>登录-注册</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link type="image/x-icon" href="${ctx}/static/images/favicon.ico" rel="shortcut icon">
+	<link href="${ctx}/static/bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet" />
+	<script src="${ctx}/static/bootstrap/3.1.1/js/jquery-1.10.2.js"></script>
+	<script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap.js"></script>
+	<script src="${ctx}/static/jquery-validation/1.11.1/jquery.validate.min.js" type="text/javascript"></script>
+	<link href="${ctx}/static/jquery-validation/1.11.1/validate.css" type="text/css" rel="stylesheet" />
+	<script src="${ctx}/static/jquery-validation/1.11.1/messages_bs_zh.js" type="text/javascript"></script>
 <style type="text/css">
 	.rg{background:url(${ctx}/static/images/assets/example/login_bg.png);padding-top:30px;}
 	.rg_left{padding-top:70px;padding-bottom:70px;}
@@ -24,45 +34,16 @@
 	.nav li{ font-size:20px;  float:left; width:100px; height:34px;-webkit-transition:all 0.35s linear; cursor:pointer; text-align:center; line-height:32px; list-style-type:none;}
 	.nav li.on{ color:#f00;}
 	.line{width:1px;float:left; position:relative; left:36%; top:0px;height: 2px;background:#dadada;}
-	.s_line{
-		position: absolute;
-		display:block;
-		width:100px;
-		z-index: 1;
-		top: -7px;
-		left: 0;
-		height: 7px;
-		border-bottom: 2px solid #19A78D;
-		overflow: hidden;
-		text-align: center;
-	}
-	.s_line b{
-		display: inline-block;
-		margin-top: -8px;
-		width: 0;
-		height: 0;
-		border-style: dashed dashed solid;
-		border-width: 10px;
-		border-color: transparent transparent #E4393C;
-		overflow: hidden;
-		zoom: 1;
-		font-size: 0;
-	}
-	.zlbox_content{
-		width:500px; 
-		margin: 1px auto; 
-	}
-	.item_tab{
-		min-height: 310px; 
-		border:1px solid #dadada;
-		/* border-top:300px; */
-		padding: 20px;
-		text-align:center;
-		margin-top:5px;
-	}
-	/*测试样式  */
-	.border_red{border:1px solid red;}	
-	/* .border_green{border:1px solid green;} */	
+	.s_line{position: absolute;display:block;width:100px;z-index: 1;top: -7px;left: 0;height: 7px;border-bottom: 2px solid #19A78D;overflow: hidden;text-align: center;}
+	.s_line b{display: inline-block;margin-top: -8px;width: 0;height: 0;border-style: dashed dashed solid;border-width: 10px;border-color: transparent transparent #E4393C;overflow: hidden;zoom: 1;font-size: 0;}
+	.zlbox_content{width:500px; margin: 1px auto; }
+	.item_tab{min-height: 310px; border:1px solid #dadada;padding: 20px;text-align:center;margin-top:5px;}
+	.header_footer_img{width:100%;}
+	.friend_link{padding-top:30px;padding-left:100px;color:#E9EBEB;}
+	.friend_link a{color:#E9EBEB;}
+	a:link {text-decoration: none;} 
+	.shar{padding-top:30px;padding-left:100px;}
+	.shar span{padding-right:10px;}	
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -81,6 +62,11 @@
 </script>
 </head>
 <body>
+	<div class="container-fluid">
+		<div class="row">
+			<img class="header_footer_img" src="${ctx}/static/images/assets/example/header.png"/>
+		</div>
+	</div>
 	<div class="container-fluid rg">
 		<div class="row">
 			<div class="col-md-6 text-center rg_left">
@@ -100,22 +86,8 @@
 					<div style="clear: both;"></div>
 				</div>		
 				<div style="clear: both;"></div>
-		 		<!-- <div class="box_163css border_red">
-		 			<div class="text-center"></div>
-				    <ul class="nav">
-				        <li class="navs_li on">登录</li>
-				        <li class="navs_li">注册</li>
-				    </ul>
-	    			<div class="line">
-			    	<span class="s_line">	    		
-						<b></b>
-			    	</span>
-					<div style="clear: both;"></div>
-					</div>		
-					<div style="clear: both;"></div>
-				</div> -->
 				<div class="zlbox_content">
-				<br style="border:1px solid red;width:1px;"/>
+				<!-- <br style="width:1px;"/> -->
 					<div class="item_tab" style="display: block;">
 						<form id="loginForm" class="form-horizontal" name ="loginForm" action="${ctx }/login" method="post">
 							<c:if test="${not empty loginMember}">
@@ -151,24 +123,17 @@
   						<div class="form-group">
     						<div class="col-sm-offset-4 col-sm-4">
       							<div class="checkbox">
-        							<label>
-        								<input type="checkbox" id="rememberMe" value="1" name="rememberMe" />下次自动登录
+        							<label for="rememberMe">
+        								<input type="checkbox" id="rememberMe" name="rememberMe" />下次自动登录
         							</label>
         						</div>
         					</div>
   						</div>
   						<div class="form-group">
-    						<div class="col-sm-offset-3 col-sm-5">
-      							<button type="submit" id="loginSubmit" class=""><img src="${ctx}/static/images/assets/example/lg.png"/></button>
+    						<div class="col-sm-offset-4 col-sm-6">
+      							<button type="submit" id="loginSubmit" class="btn btn-sm btn-success" style="width:200px;"> 登录</button>
    							 </div>
   						</div>
-						<%-- <label>帐号：</label>
-						<input name="username" class="input-large required" value="${username}" placeholder="请输入邮箱"/>
-						<label>密码：</label>
-						<input type="password" name="password" class="input-large required" value="" placeholder="请输入密码"/><br/>
-						<label class="checkbox" for="rememberMe"><input type="checkbox" id="rememberMe" name="rememberMe"/> 下次自动登录，使用公用电脑勿勾选 </label>	
-						<!-- <input type="checkbox" >下次自动登录，使用公用电脑勿勾选 --><br/>
-						<button type="submit" id="loginSubmit" class="btn btn-primary">登录</button> --%>
 					</form>
 				</div>
 				<div class="item_tab" style="display: none;">
@@ -200,19 +165,22 @@
 	    					</div>
   						</div>
   						<div class="form-group">
-    						<div class="col-sm-offset-3 col-sm-5">
-      							<button type="button" id="registerSubmit" class=""><img src="${ctx}/static/images/assets/example/zc.png"/></button>
+    						<div class="col-sm-offset-4 col-sm-6">
+      							<button type="button" id="registerSubmit" class="btn btn-sm btn-success" style="width:200px;">快速注册</button>
    							 </div>
   						</div>
-						<!-- <div>帐号：<input name="email" placeholder="请输入邮箱" id="resiter_email"/><span id="back_email_message"></span></div>
-						<div>昵称：<input name="nickName" placeholder="请输入昵称" id="register_nickName"/><span id="back_nickName_message"></span></div>
-						<div>密码：<input type="password" id="password_" name="password_" placeholder="请输入密码"/></div>
-						<div>确认密码：<input type="password" id="surePassword" name="password" placeholder="请再次输入密码"/></div>
-						<button type="button" id="registerSubmit" class="btn btn-primary">注册</button> -->
 					</form> 
 				</div>
 			</div>
 		 </div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row" >
+		<div style="background:url(${ctx}/static/images/assets/example/footer.png);background-size:cover;height:200px;">
+			<p class="friend_link">友情链接： <a href="http://www.appchina.com">应用汇| </a><a href="http://app.mi.com">小米应用商店 | </a><a href="http://apk.hiapk.com">安卓市场 | </a><a href="http://www.fzhuake.com">华科信息 </a></p>
+			<p class="shar"><span><a href="http://weibo.com/yqkhengdeli"><img src="${ctx}/static/images/assets/example/sina_logo.png"/></a></span><span><img src="${ctx}/static/images/assets/example/tengxun_logo.png"/></span></p>
+		</div>
 	</div>
 </div>
 	<script type="text/javascript">
