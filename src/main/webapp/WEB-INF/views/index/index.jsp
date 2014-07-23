@@ -146,38 +146,38 @@
  <div class="container" style="padding-top:20px;padding-bottom:30px;">
   <!-- Three columns of text below the carousel --> 
   <div class="row">
-  	<div class="col-xs-2 text-center">
+  	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
     	<a href="${ctx}/place/index">
     		<img class="img-circle" src="${ctx}/static/images/assets/example/tqh_map_logo.png">
       		<h3>台球地图</h3>
       	</a>
     </div>
-    <div class="col-xs-2 text-center">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
     	<a href="${ctx}/chat/liveRoom">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/tqh_live_map.png">
       		<h3>赛事直播间</h3>
       	</a>
     </div>
-    <div class="col-xs-2 text-center">
-    	<a href="#">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+    	<a href="javascript:void(0)" class="unUse">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/tqh_active_logo.png">
       		<h3>活动</h3>
       	</a>
     </div>
-	<div class="col-xs-2 text-center">
-      	<a href="#">
+	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+      	<a href="javascript:void(0)" class="unUse">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/tqh_recomment_logo.png">
       		<h3>推荐</h3>
       	</a>
     </div>
-    <div class="col-xs-2 text-center">
-      	<a href="#">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+      	<a href="javascript:void(0)" class="unUse">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/tqh_mall_logo.png">
       		<h3>商城</h3>
       	</a>
     </div>
-    <div class="col-xs-2 text-center">
-      	<a href="#">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+      	<a href="javascript:void(0)" class="unUse">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/index_19.png">
    	  		<h3>台球圈子</h3>
    	  	</a>
@@ -204,6 +204,9 @@
     $(function(){
     	$("#left_pb").css("background-image","none");
     	$("#right_pb").css("background-image","none");
+    	$(".unUse").click(function(){
+    		alert("该功能正在开发中");
+    	});
     });
     </script>
 	</body>
