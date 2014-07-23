@@ -286,7 +286,7 @@
             // div id where player will be place
             "player",
             // width, height
-            "700", "485",
+            "700", "524",
             // minimum flash player version required
             "10.2",
             // other parameters
