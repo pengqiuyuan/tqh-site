@@ -18,12 +18,19 @@
 		<!-- script references -->
 	    <script src="${ctx}/static/bootstrap/3.1.1/js/jquery-1.10.2.js"></script>
 		<script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap.js"></script>
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 		<style type="text/css">
 			body{padding-bottom:0px}
-			
+			/* .carousel-control.left {background-image:none;}
+			.carousel-control.right {background-image:none;} */
 			a:link {color: #000;text-decoration: none;}
 			 a:visited {color: #000;text-decoration: none;}
-			 .friend_link{padding-top:30px;padding-left:170px;color:#000;}
+			 .friend_link{padding-top:40px;padding-left:170px;color:#000;}
 			.friend_link a{color:#9ca3a2;font-size:14px;}
 			/*a:active {color: #bc2931;text-decoration: none;} */
 			.login_p{float:left; margin-left:50px; margin-top:25px; font-size:30px; color:#FFF; font-family:黑体;}
@@ -34,11 +41,11 @@
 			.copyRight{color:#9ca3a2;font-size:12px;}
 		</style>
 	</head>
-	<body>
+	<body style="background:url(${ctx}/static/images/assets/example/body_bg.png) repeat;">
 <div class="navbar-wrapper">
 	<!-- login register-->
 	<div class="container">
-		<div style="margin-left:40px; height:101px;margin-top:-40px; background:url(${ctx}/static/images/assets/example/index1_02.png) no-repeat ">
+		<div style="margin-left:130px; height:101px;margin-top:-40px; background:url(${ctx}/static/images/assets/example/index1_02.png) no-repeat ">
 			<!-- <span class="nav-pills"></span> -->
 			<p class="login_p"> <a href="${ctx}/login">登录</a>  <a href="${ctx}/login">注册</a></p>
 		</div>
@@ -62,27 +69,41 @@
       		</c:choose>
       	</c:forEach>
       </ol>
-      <div class="carousel-inner" style="height:430px;min-height:430px;max-height:430px;" role="listbox">
+      <div class="carousel-inner" style="height:480px;min-height:480px;max-height:480px;" role="listbox">
       	<c:forEach items="${banners}" var="banner" varStatus="num">
       		<c:choose>
       			<c:when test="${num.index==0 }">
       				<div class="item active">
-          				<img style="width:100%;" data-src="" alt="First slide" src="${banner.thumb}">
+      					<c:choose>
+      						<c:when test="${banner.value !=null && banner.value!=''}">
+      							<a  href="${banner.value}"><img style="width:100%;" data-src="" alt="First slide" src="${banner.thumb}"></a>
+      						</c:when>
+      						<c:otherwise>
+      							<img style="width:100%;" data-src="" alt="First slide" src="${banner.thumb}">
+      						</c:otherwise>
+      					</c:choose>
         			</div>
       			</c:when>
       			<c:otherwise>
 	      			<div class="item">
-	          			<img style="width:100%;" data-src="" alt="Second slide" src="${banner.thumb}">
+	          			<c:choose>
+      						<c:when test="${banner.value !=null && banner.value!=''}">
+      							<a  href="${banner.value}"><img style="width:100%;" data-src="" alt="First slide" src="${banner.thumb}"></a>
+      						</c:when>
+      						<c:otherwise>
+      							<img style="width:100%;" data-src="" alt="First slide" src="${banner.thumb}">
+      						</c:otherwise>
+      					</c:choose>
 	        		</div>
       			</c:otherwise>
       	</c:choose>
       </c:forEach>
       </div>
-      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <a class="left carousel-control" id="left_pb" style="max-height:100px;margin-top:190px;" href="#carousel-example-generic" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <a class="right carousel-control" id="right_pb" style="max-height:100px;margin-top:190px;" href="#carousel-example-generic" role="button" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right"></span>
         <span class="sr-only">Next</span>
       </a>
@@ -92,7 +113,7 @@
 <!-- Marketing messaging and featurettes
 ================================================== -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
- <div class="container" style="padding-top:30px;padding-bottom:40px;">
+ <div class="container" style="padding-top:20px;padding-bottom:30px;">
   <!-- Three columns of text below the carousel --> 
   <div class="row">
   	<div class="col-md-2 text-center">
@@ -149,6 +170,10 @@
  <script>
     $('.carousel').carousel({
         interval: 3000 //changes the speed
+    });
+    $(function(){
+    	$("#left_pb").css("background-image","none");
+    	$("#right_pb").css("background-image","none");
     });
     </script>
 	</body>

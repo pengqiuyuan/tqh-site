@@ -39,11 +39,13 @@
 	.zlbox_content{width:500px; margin: 1px auto; }
 	.item_tab{min-height: 310px; border:1px solid #dadada;padding: 20px;text-align:center;margin-top:5px;}
 	.header_footer_img{width:100%;}
-	.friend_link{padding-top:30px;padding-left:100px;color:#E9EBEB;}
+	.friend_link{padding-top:50px;padding-left:100px;color:#E9EBEB;}
 	.friend_link a{color:#E9EBEB;}
 	a:link {text-decoration: none;} 
-	.shar{padding-top:30px;padding-left:100px;}
+	.tqh_logo{margin-left:72%;margin-top:-100px;}
+	.shar{margin-top:-15px;padding-left:100px;}
 	.shar span{padding-right:10px;}	
+	.copyRight{color:#FFFFFF;font-size:12px;}
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -179,7 +181,12 @@
 	<div class="row" >
 		<div style="background:url(${ctx}/static/images/assets/example/footer.png);background-size:cover;height:200px;">
 			<p class="friend_link">友情链接： <a href="http://www.appchina.com">应用汇| </a><a href="http://app.mi.com">小米应用商店 | </a><a href="http://apk.hiapk.com">安卓市场 | </a><a href="http://www.fzhuake.com">华科信息 </a></p>
-			<p class="shar"><span><a href="http://weibo.com/yqkhengdeli"><img src="${ctx}/static/images/assets/example/sina_logo.png"/></a></span><span><img src="${ctx}/static/images/assets/example/tengxun_logo.png"/></span></p>
+			<span class="tqh_logo"><img style="margin-top:-30px;" src="${ctx}/static/images/assets/example/tqh_footer_logo.png"/></span>
+			<p class="shar">
+				<span><a href="http://weibo.com/yqkhengdeli"><img src="${ctx}/static/images/assets/example/sina_logo.png"/></a></span>
+				<span><img src="${ctx}/static/images/assets/example/tengxun_logo.png"/></span>
+				<span class="copyRight">版权所有 福州华科信息科技有限公司 保留一切权利 闽ICP备13018017</span>
+			</p>
 		</div>
 	</div>
 </div>
