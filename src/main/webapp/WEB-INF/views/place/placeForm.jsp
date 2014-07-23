@@ -116,6 +116,16 @@
 			 var cityCode = $("#city").val();
              return cityCode !='';
          },"请选择城市");
+		  $.validator.addMethod("telVali",function(value,element){
+			 var phone = /^(([0\+]\d{2,3}-)?(0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/;
+			 var tel=/^1[358]\d{9}$/;
+			 var telValue = $("#place_tel").val();
+			 var b = false;
+			 if(phone.test(telValue) || tel.test(telValue)){
+				 b = true;
+			 }
+             return b;
+         },"请输入正确的联系方式");
 		$("#inputForm").validate({
 			errorPlacement: function(error, element) {  
 			    error.appendTo(element.parent().parent());  
@@ -125,7 +135,8 @@
 					required:true
 				},
 				tel:{
-					required:true
+					required:true,
+					telVali:""
 				},
 				addr:{
 					required:true
@@ -142,7 +153,8 @@
 					required:"请输入球房名称"
 				},
 				tel:{
-					required:"请输入联系方式"
+					required:"请输入联系方式",
+					telVali:"请输入正确的联系方式"
 				},
 				addr:{
 					required:"请输入球房地址"
