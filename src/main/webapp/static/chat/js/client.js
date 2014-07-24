@@ -10,6 +10,7 @@ var LENGTH_ERROR = "Name/Channel is too long or too short. 20 character max.";
 var NAME_ERROR = "Bad character in Name/Channel. Can only have letters, numbers, Chinese characters, and '_'";
 var DUPLICATE_ERROR = "Please change your name to login.";
 var avatar;
+var LiveName = "台球会官方直播员";
 
 util = {
 	urlRE: /https?:\/\/([-\w\.]+)+(:\d+)?(\/([^\s]*(\?\S+)?)?)?/g,
@@ -65,15 +66,26 @@ function addMessage(from, target, text, img ,time) {
 	//messageElement.addClass("row chat-row");
 	// sanitize
 	text = util.toStaticHTML(text);
-	var content = '<div class="row chat-row"><div class="col-md-1 chat-time">' + util.timeString(time) + '</div>' + '<div class="col-md-5 chat-container"><div class="left-point"></div><div class="col-md-12 chat-min-left-container"><div class="col-md-2"><img style="width: 51px; height: 51px;" src="'+img+'"  class="chat-img"></img></div>' +'  <div class="col-md-10" style="margin-top:20px;"><div class="chat-name-left">' + util.toStaticHTML(from) + '</div>' + '  <p class="chat-content-left">' + text + '</p></div></div></div></div>';
+	var content = '<div class="row chat-row"><div class="col-md-1 chat-time">' + util.timeString(time) + '</div>' 
+	+ '<div class="col-md-5 chat-container"><div class="left-point"></div><div class="col-md-12 chat-min-left-container"><div class="col-md-2"><img style="width: 51px; height: 51px;" src="'+img+'"  class="chat-img"></img></div>' 
+	+'  <div class="col-md-10" style="margin-top:20px;"><div class="chat-name-left">' + util.toStaticHTML(from) + '</div>' 
+	+ '  <p class="chat-content-left">' + text + '</p></div></div></div></div>';
 	//the log is the stream that we view
 	$("#chatHistory").append(content);
+	
+	if(from == LiveName){
+		text = util.toStaticHTML(text);
+		var content = '<div class="row chat-row"><div class="col-md-1 chat-time">' + util.timeString(time) + '</div>' 
+		+ '<div class="col-md-5 chat-container"><div class="left-point"></div><div class="col-md-12 chat-min-left-container"><div class="col-md-2"><img style="width: 51px; height: 51px;" src="'+img+'"  class="chat-img"></img></div>' 
+		+'  <div class="col-md-10" style="margin-top:20px;"><div class="chat-name-left">' + util.toStaticHTML(from) + '</div>' 
+		+ '  <p class="chat-content-left">' + text + '</p></div></div></div></div>';
+		//the log is the stream that we view
+		$("#chatOffHistory").append(content);
+	}
 
 	base += increase;
 	scrollDown(base);
 };
-
-
 
 function addMessageUser(from, target, text, img ,time) {
 	var name = (target == '*' ? 'all' : target);
@@ -85,12 +97,23 @@ function addMessageUser(from, target, text, img ,time) {
 	}
 	text = util.toStaticHTML(text);
 	var content = '<div class="row chat-row"><div class="col-md-1 chat-time">' + util.timeString(time) + '</div>' 
-	+'  <div class="col-md-4"></div><div class="col-md-6 chat-container"><div class="col-md-11 chat-min-right-container"> <div class="col-md-10" style="margin-top:20px;"><div class="chat-name-right">' + util.toStaticHTML(from) + '</div>' 
+	+'  <div class="col-md-4"></div><div class="col-md-6 chat-container"><div class="col-md-11 chat-min-right-container"><div class="col-md-10" style="margin-top:20px;"><div class="chat-name-right">' + util.toStaticHTML(from) + '</div>' 
 	+ '  <p class="chat-content-right">' + text + '</p>'
 	+ '</div><div class="col-md-2"><img class="chat-img" style="width: 51px; height: 51px;" src="'+img+'"  class="chat-img"></img></div>' 
-	+'</div><div class="col-md-1 chat-right-point"><div class="right-point"></div></div></div>';
+	+'<div class="col-md-1 chat-right-point"><div class="right-point"></div></div></div></div>';
 	
 	$("#chatHistory").append(content);
+	
+	if(from == LiveName){
+		text = util.toStaticHTML(text);
+		var content = '<div class="row chat-row"><div class="col-md-1 chat-time">' + util.timeString(time) + '</div>' 
+		+ '<div class="col-md-5 chat-container"><div class="left-point"></div><div class="col-md-12 chat-min-left-container"><div class="col-md-2"><img style="width: 51px; height: 51px;" src="'+img+'"  class="chat-img"></img></div>' 
+		+'  <div class="col-md-10" style="margin-top:20px;"><div class="chat-name-left">' + util.toStaticHTML(from) + '</div>' 
+		+ '  <p class="chat-content-left">' + text + '</p></div></div></div></div>';
+		//the log is the stream that we view
+		$("#chatOffHistory").append(content);
+	}
+	
 	base += increase;
 	scrollDown(base);
 };
@@ -295,7 +318,9 @@ $(document).ready(function() {
         var route = "chat.chatHandler.defMessage";
         var rid = "zhibo";
         pomelo.request(route, {
-            rid:rid
+            rid:rid,
+            frist:0,
+            max:10
         }, function(data) {
             for(var i in data.route){
                 alert(data.route[i].from_name+ "  "  + data.route[i].message
@@ -303,6 +328,32 @@ $(document).ready(function() {
             }
         });
     });
+    
+    
+    $("#tadayMessage").click(function(){
+        var route = "chat.chatHandler.tadayMessage";
+        var rid = "zhibo";
+        pomelo.request(route, {
+            rid:rid,
+            frist:0,
+            max:5
+        }, function(data) {
+
+        });
+    });
+    
+    $("#offtadayMessage").click(function(){
+        var route = "chat.chatHandler.offtadayMessage";
+        var rid = "zhibo";
+        pomelo.request(route, {
+            rid:rid,
+            frist:0,
+            max:5
+        }, function(data) {
+
+        });
+    });
+    
 
 	//deal with login button click.
 	$(document).ready(function(){
