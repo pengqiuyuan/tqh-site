@@ -13,6 +13,7 @@
          -->
          <pattern>/place/*</pattern>
          <pattern>/chat/liveRoom</pattern>
+         <pattern>/chat/live</pattern>
          <pattern>/login</pattern>
     </decorator>
 </decorators>

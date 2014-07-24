@@ -153,7 +153,7 @@
       	</a>
     </div>
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-    	<a href="${ctx}/chat/liveRoom">
+    	<a href="${ctx}/chat/live">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/tqh_live_map.png">
       		<h3>赛事直播间</h3>
       	</a>
