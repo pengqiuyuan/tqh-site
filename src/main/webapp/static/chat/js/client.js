@@ -322,9 +322,38 @@ $(document).ready(function() {
             frist:0,
             max:10
         }, function(data) {
-        	
+            for(var i in data.route){
+                alert(data.route[i].from_name+ "  "  + data.route[i].message
+                );
+            }
         });
     });
+    
+    
+    $("#tadayMessage").click(function(){
+        var route = "chat.chatHandler.tadayMessage";
+        var rid = "zhibo";
+        pomelo.request(route, {
+            rid:rid,
+            frist:0,
+            max:5
+        }, function(data) {
+
+        });
+    });
+    
+    $("#offtadayMessage").click(function(){
+        var route = "chat.chatHandler.offtadayMessage";
+        var rid = "zhibo";
+        pomelo.request(route, {
+            rid:rid,
+            frist:0,
+            max:5
+        }, function(data) {
+
+        });
+    });
+    
 
 	//deal with login button click.
 	$(document).ready(function(){
