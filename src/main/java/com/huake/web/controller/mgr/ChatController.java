@@ -144,6 +144,7 @@ public class ChatController {
 	
 	@RequestMapping(value="live",method=RequestMethod.GET)
 	public ModelAndView live(@RequestParam(value = "id", required = false) Integer id){
+
 		ModelAndView mav = new ModelAndView();
 		Member member = getCurrentMember();
 		if(member == null){

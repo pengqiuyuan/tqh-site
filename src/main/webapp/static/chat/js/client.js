@@ -36,6 +36,13 @@ util = {
 		var hours = date.getHours().toString();
 		return this.zeroPad(2, hours) + ":" + this.zeroPad(2, minutes);
 	},
+	
+	timeStr: function(date) {
+		var year = date.getFullYear().toString();
+		var month = (date.getMonth()+1).toString();
+		var day = date.getDate().toString();
+		return year+"/"+this.zeroPad(2, month) + "/" + this.zeroPad(2, day);
+	},
 
 	//does the argument only contain whitespace?
 	isBlank: function(text) {
@@ -65,58 +72,29 @@ function addMessage(from, target, text, img ,time) {
 	//var messageElement = $(document.createElement("div"));
 	//messageElement.addClass("row chat-row");
 	// sanitize
-	text = util.toStaticHTML(text);
-	var content = '<div class="row chat-row"><div class="col-md-1 chat-time">' + util.timeString(time) + '</div>' 
-	+ '<div class="col-md-5 chat-container"><div class="left-point"></div><div class="col-md-12 chat-min-left-container"><div class="col-md-2"><img style="width: 51px; height: 51px;" src="'+img+'"  class="chat-img"></img></div>' 
-	+'  <div class="col-md-10" style="margin-top:20px;"><div class="chat-name-left">' + util.toStaticHTML(from) + '</div>' 
-	+ '  <p class="chat-content-left">' + text + '</p></div></div></div></div>';
-	//the log is the stream that we view
-	$("#chatHistory").append(content);
-	
 	if(from == LiveName){
 		text = util.toStaticHTML(text);
-		var content = '<div class="row chat-row"><div class="col-md-1 chat-time">' + util.timeString(time) + '</div>' 
-		+ '<div class="col-md-5 chat-container"><div class="left-point"></div><div class="col-md-12 chat-min-left-container"><div class="col-md-2"><img style="width: 51px; height: 51px;" src="'+img+'"  class="chat-img"></img></div>' 
-		+'  <div class="col-md-10" style="margin-top:20px;"><div class="chat-name-left">' + util.toStaticHTML(from) + '</div>' 
-		+ '  <p class="chat-content-left">' + text + '</p></div></div></div></div>';
+		var content = '<div class="container-fluid chat-container"><div class="row chat-container-head"><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">' + util.toStaticHTML(from) + '</div>' 
+		+ '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">'+util.timeStr(time)+'</div>' 
+		+ '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">'+util.timeString(time)+'</div>' 
+		+ '</div><div class="row chat-content"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' + text + '</div></div></div>';
 		//the log is the stream that we view
 		$("#chatOffHistory").append(content);
+		$('#chatOffHistory').scrollTop(chatOffHistory.scrollHeight);
+	}else{
+		text = util.toStaticHTML(text);
+		var content = '<div class="container-fluid chat-container"><div class="row chat-container-head"><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">' + util.toStaticHTML(from) + '</div>' 
+		+ '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">'+util.timeStr(time)+'</div>' 
+		+ '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">'+util.timeString(time)+'</div>' 
+		+ '</div><div class="row chat-content"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' + text + '</div></div></div>';
+		//the log is the stream that we view
+		$("#chatHistory").append(content);
+		$('#chatHistory').scrollTop(chatHistory.scrollHeight);
 	}
-
 	base += increase;
 	scrollDown(base);
 };
 
-function addMessageUser(from, target, text, img ,time) {
-	var name = (target == '*' ? 'all' : target);
-	if(text === null) return;
-	if(time == null) {
-		time = new Date();
-	} else if((time instanceof Date) === false) {
-		time = new Date(time);
-	}
-	text = util.toStaticHTML(text);
-	var content = '<div class="row chat-row"><div class="col-md-1 chat-time">' + util.timeString(time) + '</div>' 
-	+'  <div class="col-md-4"></div><div class="col-md-6 chat-container"><div class="col-md-11 chat-min-right-container"><div class="col-md-10" style="margin-top:20px;"><div class="chat-name-right">' + util.toStaticHTML(from) + '</div>' 
-	+ '  <p class="chat-content-right">' + text + '</p>'
-	+ '</div><div class="col-md-2"><img class="chat-img" style="width: 51px; height: 51px;" src="'+img+'"  class="chat-img"></img></div>' 
-	+'<div class="col-md-1 chat-right-point"><div class="right-point"></div></div></div></div>';
-	
-	$("#chatHistory").append(content);
-	
-	if(from == LiveName){
-		text = util.toStaticHTML(text);
-		var content = '<div class="row chat-row"><div class="col-md-1 chat-time">' + util.timeString(time) + '</div>' 
-		+ '<div class="col-md-5 chat-container"><div class="left-point"></div><div class="col-md-12 chat-min-left-container"><div class="col-md-2"><img style="width: 51px; height: 51px;" src="'+img+'"  class="chat-img"></img></div>' 
-		+'  <div class="col-md-10" style="margin-top:20px;"><div class="chat-name-left">' + util.toStaticHTML(from) + '</div>' 
-		+ '  <p class="chat-content-left">' + text + '</p></div></div></div></div>';
-		//the log is the stream that we view
-		$("#chatOffHistory").append(content);
-	}
-	
-	base += increase;
-	scrollDown(base);
-};
 
 // show tip
 function tip(type, name) {
@@ -187,7 +165,6 @@ function showError(content) {
 
 // show login panel
 function showLogin() {
-	$("#chatHistory").hide();
 	$("#toolbar").show();
 	$("#loginError").hide();
 	$("#loginUser").focus();
@@ -228,12 +205,7 @@ $(document).ready(function() {
 
 	//wait message from the server.
 	pomelo.on('onChat', function(data) {
-		if(data.from == username){
-			addMessageUser(data.from, data.target, data.msg,data.avatar);
-		}else{
-			addMessage(data.from, data.target, data.msg,data.avatar);
-		}
-		$("#chatHistory").show();
+		addMessage(data.from, data.target, data.msg,data.avatar);
 		if(data.from !== username)
 			tip('message', data.from);
 	});
@@ -329,36 +301,54 @@ $(document).ready(function() {
         });
     });
     
-    
-    $("#tadayMessage").click(function(){
+    function initTadayMessage() {
         var route = "chat.chatHandler.tadayMessage";
         var rid = "zhibo";
         pomelo.request(route, {
             rid:rid,
             frist:0,
-            max:5
+            max:150
         }, function(data) {
+            for(var i in data.route){
+        		var content = '<div class="container-fluid chat-container"><div class="row chat-container-head"><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">' + data.route[i].from_name + '</div>' 
+        		+ '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">'+data.route[i].created_at.replace("-","/").substr(0,10)+'</div>' 
+        		+ '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">'+data.route[i].created_at.substr(10,6)+'</div>' 
+        		+ '</div><div class="row chat-content"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' + data.route[i].message + '</div></div></div>';
+        		//the log is the stream that we view
+        		$("#chatHistory").append(content);
+        		$('#chatHistory').scrollTop(chatHistory.scrollHeight);
+            }
 
         });
-    });
+    };
     
-    $("#offtadayMessage").click(function(){
+    function initOffTadayMessage() {
         var route = "chat.chatHandler.offtadayMessage";
         var rid = "zhibo";
         pomelo.request(route, {
             rid:rid,
             frist:0,
-            max:5
+            max:150
         }, function(data) {
+            for(var i in data.route){
+        		var content = '<div class="container-fluid chat-container"><div class="row chat-container-head"><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">' + data.route[i].from_name + '</div>' 
+        		+ '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">'+data.route[i].created_at.replace("-","/").substr(0,10)+'</div>' 
+        		+ '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">'+data.route[i].created_at.substr(10,6)+'</div>' 
+        		+ '</div><div class="row chat-content"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' + data.route[i].message + '</div></div></div>';
+        		//the log is the stream that we view
+        		$("#chatOffHistory").append(content);
+        		$('#chatOffHistory').scrollTop(chatOffHistory.scrollHeight);
+            }
 
         });
-    });
+    };
     
 
 	//deal with login button click.
 	$(document).ready(function(){
 		username = $("#nickName").attr("value");
 		rid = $('#channelName').val();
+		$("#nickna").html(username);
 		avatar = $('#avatar').val();	
 		if(!username){
 			var Num=""; 
@@ -367,6 +357,7 @@ $(document).ready(function() {
 			Num+=Math.floor(Math.random()*10); 
 			} 
 			username="游客"+Num;
+			$("#nickna").html(username);
 			avatar=$('#avatarMoRen').val()
 		}
 		if(username.length > 20 || username.length == 0 || rid.length > 20 || rid.length == 0) {
@@ -400,6 +391,8 @@ $(document).ready(function() {
 					setAvatar();
 					showChat();
 					initUserList(data);
+					initTadayMessage();
+					initOffTadayMessage();
 				});
 			});
 		});
@@ -433,7 +426,6 @@ $(document).ready(function() {
 				$("#entry").attr("value", ""); // clear the entry field.
 				if(target != '*' && target != username) {
 					addMessage(username, data.route.target, msg,data.route.avatar);
-					$("#chatHistory").show();
 				}
 			});
 		}
@@ -465,7 +457,6 @@ $(document).ready(function() {
 				$("#entry").attr("value", ""); // clear the entry field.
 				if(target != '*' && target != username) {
 					addMessage(username, data.route.target, msg,data.route.avatar);
-					$("#chatHistory").show();
 				}
 			});
 		}
