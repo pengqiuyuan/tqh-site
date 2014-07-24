@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.huake.entity.Member;
 import com.huake.service.member.MemberService;
@@ -106,6 +107,12 @@ public class ChatController {
 		return "/chat/chat2";
 	}
 	
+	@RequestMapping(value="live",method=RequestMethod.GET)
+	public ModelAndView live(){
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/chat/live");
+		return mav;
+	}
 	/**
 	 * 获取当前用户信息
 	 * @return

@@ -18,12 +18,20 @@
 		<!-- script references -->
 	    <script src="${ctx}/static/bootstrap/3.1.1/js/jquery-1.10.2.js"></script>
 		<script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap.js"></script>
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 		<style type="text/css">
 			body{padding-bottom:0px}
-			
+			.down-des{color:#a9a8a8;margin-right:5px;font-size:16px;}
+			.head-container{background-color:#faf9f9;padding-top:4px;}
+			.member-name{color:#ff9900;}
 			a:link {color: #000;text-decoration: none;}
 			 a:visited {color: #000;text-decoration: none;}
-			 .friend_link{padding-top:30px;padding-left:170px;color:#000;}
+			 .friend_link{padding-top:40px;padding-left:170px;color:#000;}
 			.friend_link a{color:#9ca3a2;font-size:14px;}
 			/*a:active {color: #bc2931;text-decoration: none;} */
 			.login_p{float:left; margin-left:50px; margin-top:25px; font-size:30px; color:#FFF; font-family:黑体;}
@@ -32,15 +40,44 @@
 			.shar span{padding-right:10px;}
 			.tqh_logo{margin-left:72%;margin-top:-100px;}
 			.copyRight{color:#9ca3a2;font-size:12px;}
+			.red-border{border:1px solid red}
+			.green-border{border:1px solid green}
 		</style>
 	</head>
-	<body>
-<div class="navbar-wrapper">
+	<body style="background:url(${ctx}/static/images/assets/example/body_bg.png) repeat;">
+<%-- <div class="navbar-wrapper">
 	<!-- login register-->
 	<div class="container">
-		<div style="margin-left:40px; height:101px;margin-top:-40px; background:url(${ctx}/static/images/assets/example/index1_02.png) no-repeat ">
+		<div style="margin-left:130px; height:101px;margin-top:-40px; background:url(${ctx}/static/images/assets/example/index1_02.png) no-repeat ">
 			<!-- <span class="nav-pills"></span> -->
 			<p class="login_p"> <a href="${ctx}/login">登录</a>  <a href="${ctx}/login">注册</a></p>
+		</div>
+	</div>
+</div> --%>
+<div class="container-fluid head-container">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<img src="${ctx}/static/images/assets/example/nav-tqh.png" />
+				<label class="down-des">去下载台球会</label>
+				<a href="#"><img src="${ctx}/static/images/assets/example/nav-down.png" /></a>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<div class="pull-right">
+					<c:choose>
+						<c:when test="${memberName != null}">
+							<img src="${ctx}/static/images/assets/example/user.png">
+							<label class="member-name">${memberName }</label>
+							<a href="${ctx }/logout"><img src="${ctx}/static/images/assets/example/nav-logout.png" /></a>
+							<a href="${ctx }/login"><img src="${ctx}/static/images/assets/example/nav-register.png" /></a>
+						</c:when>
+						<c:otherwise>
+							<a href="${ctx }/login"><img src="${ctx}/static/images/assets/example/nav-login.png" /></a>
+							<a href="${ctx }/login"><img src="${ctx}/static/images/assets/example/nav-register.png" /></a>
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -62,27 +99,41 @@
       		</c:choose>
       	</c:forEach>
       </ol>
-      <div class="carousel-inner" style="height:430px;min-height:430px;max-height:430px;" role="listbox">
+      <div class="carousel-inner" style="height:480px;min-height:480px;max-height:480px;" role="listbox">
       	<c:forEach items="${banners}" var="banner" varStatus="num">
       		<c:choose>
       			<c:when test="${num.index==0 }">
       				<div class="item active">
-          				<img style="width:100%;" data-src="" alt="First slide" src="${banner.thumb}">
+      					<c:choose>
+      						<c:when test="${banner.value !=null && banner.value!=''}">
+      							<a  href="${banner.value}"><img style="width:100%;" data-src="" alt="First slide" src="${banner.thumb}"></a>
+      						</c:when>
+      						<c:otherwise>
+      							<img style="width:100%;" data-src="" alt="First slide" src="${banner.thumb}">
+      						</c:otherwise>
+      					</c:choose>
         			</div>
       			</c:when>
       			<c:otherwise>
 	      			<div class="item">
-	          			<img style="width:100%;" data-src="" alt="Second slide" src="${banner.thumb}">
+	          			<c:choose>
+      						<c:when test="${banner.value !=null && banner.value!=''}">
+      							<a  href="${banner.value}"><img style="width:100%;" data-src="" alt="First slide" src="${banner.thumb}"></a>
+      						</c:when>
+      						<c:otherwise>
+      							<img style="width:100%;" data-src="" alt="First slide" src="${banner.thumb}">
+      						</c:otherwise>
+      					</c:choose>
 	        		</div>
       			</c:otherwise>
       	</c:choose>
       </c:forEach>
       </div>
-      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <a class="left carousel-control" id="left_pb" style="max-height:100px;margin-top:190px;" href="#carousel-example-generic" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <a class="right carousel-control" id="right_pb" style="max-height:100px;margin-top:190px;" href="#carousel-example-generic" role="button" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right"></span>
         <span class="sr-only">Next</span>
       </a>
@@ -92,41 +143,41 @@
 <!-- Marketing messaging and featurettes
 ================================================== -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
- <div class="container" style="padding-top:30px;padding-bottom:40px;">
+ <div class="container" style="padding-top:20px;padding-bottom:30px;">
   <!-- Three columns of text below the carousel --> 
   <div class="row">
-  	<div class="col-md-2 text-center">
+  	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
     	<a href="${ctx}/place/index">
     		<img class="img-circle" src="${ctx}/static/images/assets/example/tqh_map_logo.png">
       		<h3>台球地图</h3>
       	</a>
     </div>
-    <div class="col-md-2 text-center">
-    	<a href="${ctx}/chat/liveRoom">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+    	<a href="${ctx}/chat/live">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/tqh_live_map.png">
       		<h3>赛事直播间</h3>
       	</a>
     </div>
-    <div class="col-md-2 text-center">
-    	<a href="#">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+    	<a href="javascript:void(0)" class="unUse">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/tqh_active_logo.png">
       		<h3>活动</h3>
       	</a>
     </div>
-	<div class="col-md-2 text-center">
-      	<a href="#">
+	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+      	<a href="javascript:void(0)" class="unUse">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/tqh_recomment_logo.png">
       		<h3>推荐</h3>
       	</a>
     </div>
-    <div class="col-md-2 text-center">
-      	<a href="#">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+      	<a href="javascript:void(0)" class="unUse">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/tqh_mall_logo.png">
       		<h3>商城</h3>
       	</a>
     </div>
-    <div class="col-md-2 text-center">
-      	<a href="#">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+      	<a href="javascript:void(0)" class="unUse">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/index_19.png">
    	  		<h3>台球圈子</h3>
    	  	</a>
@@ -149,6 +200,13 @@
  <script>
     $('.carousel').carousel({
         interval: 3000 //changes the speed
+    });
+    $(function(){
+    	$("#left_pb").css("background-image","none");
+    	$("#right_pb").css("background-image","none");
+    	$(".unUse").click(function(){
+    		alert("该功能正在开发中");
+    	});
     });
     </script>
 	</body>

@@ -4,7 +4,7 @@
 		<pattern>/static/*</pattern>
 		<pattern>/api/*</pattern>
 		<pattern>/index</pattern>
-		<pattern>/login</pattern>
+		<!-- <pattern>/login</pattern> -->
 		<!-- <pattern>/member/move</pattern> -->
 		<pattern>/chat</pattern>
 	</excludes>
@@ -13,5 +13,7 @@
          -->
          <pattern>/place/*</pattern>
          <pattern>/chat/liveRoom</pattern>
+         <pattern>/chat/live</pattern>
+         <pattern>/login</pattern>
     </decorator>
 </decorators>
