@@ -108,10 +108,17 @@ public class ChatController {
 	}
 	
 	@RequestMapping(value="live",method=RequestMethod.GET)
-	public ModelAndView live(){
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/chat/live");
-		return mav;
+	public String live(Model model){
+		Member member = getCurrentMember();
+		if(member == null){
+			Member mem =new Member();
+			model.addAttribute("member",mem);
+			model.addAttribute("channelName",CHAT_ZHIBO);
+		}else{
+			model.addAttribute("member",member);
+			model.addAttribute("channelName",CHAT_ZHIBO);
+		}
+		return "/chat/live";
 	}
 	/**
 	 * 获取当前用户信息

@@ -10,14 +10,14 @@
 <html>
 <head>
 <title>整改的直播间</title>
-<%-- <script src="${ctx}/static/chat/js/jquery-1.8.0.min.js"></script>
+<script src="${ctx}/static/chat/js/jquery-1.8.0.min.js"></script>
 <script src="${ctx}/static/chat/js/socket.io.js"></script>
 <script src="${ctx}/static/chat/js/pomeloclient.js"></script>
 <script src="${ctx}/static/chat/js/client.js"></script>
 <script src="${ctx}/static/chat/js/pop.js"></script>   
 <link href="${ctx}/static/bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet" type="text/css">
 <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap.js"></script> 
-<script src="${ctx}/static/chat/swfobject.js"></script> --%>
+<script src="${ctx}/static/chat/swfobject.js"></script>
 
  <style type="text/css">
  .red_border{border:1px solid red;}
@@ -46,12 +46,21 @@
 </head>
 <body>
     <div class="container-fluid" style="min-width:1000px;margin-bottom:-55px;">
+    	<input type="hidden" id="nickName" name="nickName" value="${member.nickName}" >
+	    <input type="hidden" id="channelName" name="channelName" value="${channelName}" >       
+	    <input type="hidden" id="avatar" name="avatar" value="${member.avatar}" > 
+	    <input type="hidden" id="avatarMoRen" name="avatarMoRen" value="${ctx}/static/images/avatar.png" >
+	    <input type="hidden" id="zhiboMoRen" name="zhiboMoRen" value="${ctx}/static/images/zhibo.png" >  
+	  	<input style="display: none" class="form-control" id="usersList" value="*">
+	  	<input style="display: none" class="form-control" id="name" >
+	  	<input style="display: none" class="form-control" id="room" >	        
     	<div class="row">
     		<!-- 直播模块背景图片 -->
     		<img src="${ctx}/static/images/assets/example/live_02.jpg" style="width:100%;min-height:544px;max-height:544px;position:absolute;z-index:-666;"/>
        		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 chat-container-left">
           		<div class="">
-          			<img style="float:right;" src="${ctx}/static/images/assets/example/r.jpg" />
+          			<div id="player" class="" style="float:right;">
+          			</div>
           		</div>
     		</div>
     		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 chat-container-right">
@@ -66,80 +75,34 @@
     			<div class="row tab-pan">
 		       		<div class="bs-example bs-example-tabs">
 					    <ul id="myTab" class="nav nav-tabs" role="tablist">
-					      <li class="active"><a href="#home" role="tab" data-toggle="tab">官方直播</a></li>
-					      <li class=""><a href="#profile" role="tab" data-toggle="tab">聊天室</a></li>
+					      <li class="active"><a href="#chat" role="tab" data-toggle="tab" id="downchat">聊天室</a></li>
+					      <li class=""><a href="#chatoff" role="tab" data-toggle="tab" id="downoffchat">官方直播</a></li>
 					      <li class=""><a href="#core" role="tab" data-toggle="tab">比分</a></li>
 					    </ul>
 					    <div id="myTabContent" class="tab-content">
 					    	<!-- 官方直播 -->
-						    <div class="tab-pane fade active in chat-office-container" id="home">
-						    	<div class="container-fluid chat-container">
-						    		<div class="row chat-container-head">
-						    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">官方直播员</div>
-						    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">2014/7/23</div>
-						    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">10:51</div>
-						    		</div>
-						    		<div class="row chat-content">
-						    			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">比赛开始了，大家速度集合了</div>
-						    		</div>
-						    	</div>
-						    	<div class="container-fluid chat-container">
-						    		<div class="row chat-container-head">
-						    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">官方直播员</div>
-						    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">2014/7/23</div>
-						    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">10:51</div>
-						    		</div>
-						    		<div class="row chat-content">
-						    			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">比赛开始了，大家速度集合了</div>
+						    <div class="tab-pane fade" id="chatoff">
+						    	<div class="container-fluid">
+						  			<div class="row chat-office-container" id="chatOffHistory">
 						    		</div>
 						    	</div>
 						    </div>
 						    <!-- 聊天室-->
-						    <div class="tab-pane fade" id="profile">
+						    <div class="tab-pane fade active in" id="chat">
 						    	<div class="container-fluid">
-						    		<div class="row chat-visitor-container">
-						    			<div class="container-fluid chat-container">
-						    				<div class="row chat-container-head">
-								    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">树袋熊</div>
-								    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">2014/7/23</div>
-								    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">10:51</div>
-						    				</div>
-								    		<div class="row chat-content">
-								    			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">比赛开始了，大家速度集合了</div>
-								    		</div>
-						    			</div>
-								    	<div class="container-fluid chat-container">
-								    		<div class="row chat-container-head">
-								    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">树袋熊</div>
-								    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">2014/7/23</div>
-								    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">10:51</div>
-								    		</div>
-								    		<div class="row chat-content">
-								    			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">比赛开始了，大家速度集合了</div>
-								    		</div>
-								    	</div>
-								    	<div class="container-fluid chat-container">
-								    		<div class="row chat-container-head">
-								    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">树袋熊</div>
-								    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">2014/7/23</div>
-								    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">10:51</div>
-								    		</div>
-								    		<div class="row chat-content">
-								    			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">比赛开始了，大家速度集合了</div>
-								    		</div>
-								    	</div>
+						    		<div class="row chat-visitor-container" id="chatHistory">
 						    		</div>
-						    		<div class="row" id="sendMessage" style="background-color:#C7C7C7;height:65px;">
+						    		<div class="row" style="background-color:#C7C7C7;height:65px;">
 						    			<div class="container-fluid">
 						    				<div class="row" style="color:#148c74;margin-top:5px;">
-						    					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">游客：大笨熊</div>
+						    					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="nickna"></div>
 						    				</div>
 						    				<div class="row">
 						    					<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-						    						 <input type="text" class="form-control" id="msgContent" placeholder="我想说...">
+						    						 <input id="entry" type="text" class="form-control" id="msgContent" placeholder="我想说...">
 						    					</div>
 						    					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-						    							<button type="button" class="btn msg-button">发送</button>
+						    							<button id="sendentry" type="button" class="btn msg-button">发送</button>
 						    					</div>
 						    				</div>
 						    			</div>
@@ -281,7 +244,45 @@
 		</div>   
 	</div>
 	<script>
-    
+	$(document).ready(function() {
+	    $("#downchat").click(function(){
+			$('#chatHistory').scrollTop(chatHistory.scrollHeight);
+	    });
+	    $("#downoffchat").click(function(){
+			$('#chatOffHistory').scrollTop(chatOffHistory.scrollHeight);
+	    });
+	});
+	
+    var flashvars = {
+            // M3U8 url, or any other url which compatible with SMP player (flv, mp4, f4m)
+            // escaped it for urls with ampersands
+            src: escape("http://video.taiqiuhui.cn/hls/test.m3u8"),
+            // url to OSMF HLS Plugin
+            plugin_m3u8: "${ctx}/static/chat/HLSProviderOSMF.swf",
+        };
+        var params = {
+            // self-explained parameters
+            allowFullScreen: true,
+            allowScriptAccess: "always",
+            bgcolor: "#000000"
+        };
+        var attrs = {
+            name: "player",
+            style:"visibility: visible;float: right;"
+        };
+
+        swfobject.embedSWF(
+            // url to SMP player
+            "${ctx}/static/chat/StrobeMediaPlayback.swf",
+            // div id where player will be place
+            "player",
+            // width, height
+            "700", "524",
+            // minimum flash player version required
+            "10.2",
+            // other parameters
+            null, flashvars, params, attrs
+        );
 	</script>
 
 </body>
