@@ -8,7 +8,7 @@
 		<img class="header_footer_img" src="${ctx}/static/images/assets/example/header.png"/>
 	</div>
 </div>
-<ul class="nav nav-pills" id="nav" role="tablist">
+<ul class="nav nav-pills" id="nav" role="tablist" style="min-width:1000px;">
 	<li id="index"><a href="${ctx }/index">首页</a></li>
 	<li id="map"><a href="${ctx}/place/index">台球地图</a></li>
 	<li><a href="${ctx}/chat/liveRoom">赛事直播间</a></li>
