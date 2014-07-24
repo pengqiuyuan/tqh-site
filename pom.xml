@@ -381,7 +381,8 @@
 			<version>${h2.version}</version>
 		</dependency>
 		-->
-
+		
+		
 		<!-- jetty -->
 		<dependency>
 			<groupId>org.eclipse.jetty.aggregate</groupId>
@@ -395,7 +396,25 @@
 			<version>${jetty.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- TEST end -->
+		
+<!--htmlPareser  -->
+		<dependency>
+            <groupId>org.htmlparser</groupId>
+            <artifactId>htmlparser</artifactId>
+            <version>2.1</version>
+        </dependency>
+        
+       <dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.7.3</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>		<!-- TEST end -->
 	</dependencies>
 
 	<dependencyManagement>
@@ -517,7 +536,6 @@
 								<bannedDependencies>
 									<searchTransitive>true</searchTransitive>
 									<excludes>
-										<exclude>commons-logging</exclude>
 										<exclude>aspectj:aspectj*</exclude>
 										<exclude>org.springframework</exclude>
 									</excludes>
