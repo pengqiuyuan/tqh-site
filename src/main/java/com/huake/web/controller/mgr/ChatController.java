@@ -142,10 +142,37 @@ public class ChatController {
 		return "/chat/chat2";
 	}
 	
-	@RequestMapping(value="live/{id}",method=RequestMethod.GET)
-	public ModelAndView live(@PathVariable final String id){
+	@RequestMapping(value="live",method=RequestMethod.GET)
+	public ModelAndView live(@RequestParam(value = "id", required = false) Integer id){
 		ModelAndView mav = new ModelAndView();
+		Member member = getCurrentMember();
+		if(member == null){
+			Member mem =new Member();
+			mav.addObject("member",mem);
+			mav.addObject("channelName",CHAT_ZHIBO);
+		}else{
+			mav.addObject("member",member);
+			mav.addObject("channelName",CHAT_ZHIBO);
+		}
 		
+		String url=livePath+id;
+		Map<String,String> tagMap=new HashMap<String,String>();
+		Map<String,String> removeMap=new HashMap<String,String>();
+		tagMap.put("id=live-matches", "div");
+		removeMap.put("class=title", "div");
+		removeMap.put("class=left", "th");
+		
+		String htmlContent="";//捕捉内容
+		try {
+//			htmlContent=remoteParser.parseHtmlContent(url, tagMap, null, "utf-8");
+			htmlContent=remoteParser.parseHtmlContent("http://192.168.1.50/specials/test1.html", tagMap, removeMap, "utf-8");
+
+		} catch (Exception e) {
+			logger.debug("***********************************异常************");
+		}
+		
+		mav.addObject("htmlContent",htmlContent);
+		mav.addObject("id",id);
 		mav.setViewName("/chat/live");
 		return mav;
 	}
