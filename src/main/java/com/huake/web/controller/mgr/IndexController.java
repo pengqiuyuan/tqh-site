@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.huake.entity.Member;
 import com.huake.entity.TqhSiteBanner;
 import com.huake.service.banner.TqhSiteBannerService;
+import com.huake.service.member.MemberService;
 
 @Controller
 @RequestMapping(value = "/index")
@@ -22,6 +24,9 @@ public class IndexController {
 	
 	@Autowired
 	private TqhSiteBannerService tqhSiteBannerService;
+	
+	@Autowired
+	private MemberService memberService;
 	/**
 	 * 首页
 	 * @return
@@ -30,6 +35,9 @@ public class IndexController {
 	public ModelAndView index() {
 		ModelAndView mav = new ModelAndView();
 		List<TqhSiteBanner> banners = tqhSiteBannerService.findAllBannners();
+		Member member = memberService.getCurrentMember();
+		System.out.println("当前会员"+member);
+		mav.addObject("memberName",member != null ? member.getNickName() : null);
 		mav.addObject("banners",banners);
 		mav.setViewName("index/index");
 		return mav;
