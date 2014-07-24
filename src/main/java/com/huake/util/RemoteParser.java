@@ -137,7 +137,10 @@ public class RemoteParser {
 				contentHtml=contentHtml.replace("<tr><th><span style=\"visibility:hidden;\">TableName</span></th><th class=\"right\"> Player 1</th><th>v</th><th class=\"left\">Player 2</th></tr> ", "");
 				
 				contentHtml=contentHtml.replace("<table class=\"outer\">", "<table class=\"outer container-fluid against active\" style=\"background-color: #c7c7c7;margin-top:5px;\">");
+				
+				contentHtml=contentHtml.replace("<td class=\"players right\">", "<td class=\"players right\" style=\"padding-left:10px;\" >");
 
+				
 				Document doc = Jsoup.parse(contentHtml);
 				Elements links = doc.select("span[style=visibility:hidden;]").parents().parents();
 				for(Element ele:links){

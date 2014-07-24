@@ -8,12 +8,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.huake.entity.Member;
@@ -88,6 +92,37 @@ public class ChatController {
 		model.addAttribute("id",id);
 		return "/chat/liveRoom";
 	}
+	
+	/**
+	 * 60刷新一次比赛比分
+	 */
+	@RequestMapping(value="/refreshLiving",method=RequestMethod.GET,consumes="application/json", produces="application/json")
+	@ResponseBody
+	@ResponseStatus(value=HttpStatus.OK)
+	public Map<String,String> refreshLiving(@RequestParam(value = "id", required = false) Integer id)
+	{
+		Map<String,String> map=new HashMap<String,String>();
+		String url=livePath+id;
+		Map<String,String> tagMap=new HashMap<String,String>();
+		Map<String,String> removeMap=new HashMap<String,String>();
+		tagMap.put("id=live-matches", "div");
+		removeMap.put("class=title", "div");
+		removeMap.put("class=left", "th");
+		String htmlContent="";//捕捉内容
+		try {
+//			htmlContent=remoteParser.parseHtmlContent(url, tagMap, null, "utf-8");
+			htmlContent=remoteParser.parseHtmlContent("http://192.168.1.50/specials/test1.html", tagMap, removeMap, "utf-8");
+
+		} catch (Exception e) {
+			logger.debug("***********************************异常************");
+		}
+		map.put("html", htmlContent);
+		return map;
+	}
+	
+	
+	
+	
 	/**
 	 * 直播聊天
 	 * @param model
@@ -119,6 +154,14 @@ public class ChatController {
 			model.addAttribute("channelName",CHAT_ZHIBO);
 		}
 		return "/chat/live";
+	}
+	
+	@RequestMapping(value="live/{id}",method=RequestMethod.GET)
+	public ModelAndView live(@PathVariable final String id){
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("/chat/live");
+		return mav;
 	}
 	/**
 	 * 获取当前用户信息
