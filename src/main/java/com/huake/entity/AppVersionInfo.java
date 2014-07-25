@@ -22,11 +22,19 @@ public class AppVersionInfo implements Serializable {
 	/**
 	 * 台球会越狱版本
 	 */
-	public static final String APP_CATEGORY_IOS="IOS-TQH-FREE";
+	public static final String APP_CATEGORY_TQH_IOS="IOS-TQH-FREE";
 	/**
 	 * 台球会android版
 	 */
-	public static final String APP_CATEGORY_ANDROID="ANDROID-TQH";
+	public static final String APP_CATEGORY_TQH_ANDROID="ANDROID-TQH";
+	/**
+	 * 台球视界android版
+	 */
+	public static final String APP_CATEGORY_TQSJ_ANDROID="ANDROID-BILLIARDSVIDEO";
+	/**
+	 * 台球会视界iPhone版
+	 */
+	public static final String APP_CATEGORY_TQSJ_IOS="IOS-BILLIARDSVIDEO";
 	
 	@Id
     @Column(name = "id")

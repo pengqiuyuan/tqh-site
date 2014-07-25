@@ -69,12 +69,12 @@
 			<img class="header_footer_img" src="${ctx}/static/images/assets/example/header.png"/>
 		</div>
 	</div> --%>
-	<div class="container-fluid rg">
+	<div class="container-fluid rg" style="min-width:1100px;">
 		<div class="row">
-			<div class="col-md-6 text-center rg_left">
+			<div class="col-md-6 text-center rg_left" style="min-width:500px;">
 				<img alt="" src="${ctx}/static/images/assets/example/logo.png">
 			</div>
-		 	<div class="col-md-5 border_green">
+		 	<div class="col-md-5 border_green" style="min-width:500px;">
 		 		<div class="text-center">
 		 			<ul class="nav" id="lg_nav">
 				        <li class="navs_li on">登录</li>
