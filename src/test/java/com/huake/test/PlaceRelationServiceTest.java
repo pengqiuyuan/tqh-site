@@ -61,7 +61,7 @@ public class PlaceRelationServiceTest extends SpringTransactionalTestCase{
 	 */
 	@Test
 	public void findApp(){
-		System.out.println("app Android下载地址:"+appVersionInfoService.findApp(AppVersionInfo.APP_CATEGORY_ANDROID));
-		System.out.println("app IOS下载地址:"+appVersionInfoService.findApp(AppVersionInfo.APP_CATEGORY_IOS));
+		System.out.println("app Android下载地址:"+appVersionInfoService.findApp(AppVersionInfo.APP_CATEGORY_TQH_ANDROID));
+		System.out.println("app IOS下载地址:"+appVersionInfoService.findApp(AppVersionInfo.APP_CATEGORY_TQH_IOS));
 	}
 }

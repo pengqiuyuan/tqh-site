@@ -16,4 +16,5 @@
 	<li><a href="#">推荐</a></li>
 	<li><a href="#">商城</a></li>
 	<li><a href="#">圈子话题</a></li>
+	<li><a href="${ctx }/app/tqh">客户端下载</a></li>
 </ul>

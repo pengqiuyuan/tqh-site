@@ -60,7 +60,7 @@
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 				<img src="${ctx}/static/images/assets/example/nav-tqh.png" />
 				<label class="down-des">去下载台球会</label>
-				<a href="#"><img src="${ctx}/static/images/assets/example/nav-down.png" /></a>
+				<a href="${ctx }/app/tqh"><img src="${ctx}/static/images/assets/example/nav-down.png" /></a>
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 				<div class="pull-right">

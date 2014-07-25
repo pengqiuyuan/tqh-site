@@ -66,13 +66,13 @@
     			<div class="row tab-pan">
 		       		<div class="bs-example bs-example-tabs">
 					    <ul id="myTab" class="nav nav-tabs" role="tablist">
-					      <li class="active"><a href="#home" role="tab" data-toggle="tab">官方直播</a></li>
-					      <li class=""><a href="#profile" role="tab" data-toggle="tab">聊天室</a></li>
+					      <li class=""><a href="#home" role="tab" data-toggle="tab">官方直播</a></li>
+					      <li class="active"><a href="#profile" role="tab" data-toggle="tab">聊天室</a></li>
 					      <li class=""><a href="#core" role="tab" data-toggle="tab">比分</a></li>
 					    </ul>
 					    <div id="myTabContent" class="tab-content">
 					    	<!-- 官方直播 -->
-						    <div class="tab-pane fade active in chat-office-container" id="home">
+						    <div class="tab-pane fade  chat-office-container" id="home">
 						    	<div class="container-fluid chat-container">
 						    		<div class="row chat-container-head">
 						    			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">官方直播员</div>
@@ -95,7 +95,7 @@
 						    	</div>
 						    </div>
 						    <!-- 聊天室-->
-						    <div class="tab-pane fade" id="profile">
+						    <div class="tab-pane fade active in" id="profile">
 						    	<div class="container-fluid">
 						    		<div class="row chat-visitor-container">
 						    			<div class="container-fluid chat-container">
