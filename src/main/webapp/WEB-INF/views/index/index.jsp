@@ -24,6 +24,11 @@
       <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- Add fancybox mousewheel plugin (this is optional) -->
+	<script type="text/javascript" src="${ctx}/static/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+	<!-- Add fancyBox -->
+	<link rel="stylesheet" href="${ctx}/static/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+	<script type="text/javascript" src="${ctx}/static/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 		<style type="text/css">
 			body{padding-bottom:0px}
 			.down-des{color:#a9a8a8;margin-right:5px;font-size:16px;}
@@ -159,33 +164,38 @@
       	</a>
     </div>
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-    	<a href="javascript:void(0)" class="unUse">
+    	<a href="${ctx}/static/images/assets/example/notice.png"  class="fancybox">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/tqh_active_logo.png">
       		<h3>活动</h3>
       	</a>
     </div>
 	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-      	<a href="javascript:void(0)" class="unUse">
+      	<a href="${ctx}/static/images/assets/example/notice.png"  class="fancybox">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/tqh_recomment_logo.png">
       		<h3>推荐</h3>
       	</a>
     </div>
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-      	<a href="javascript:void(0)" class="unUse">
+      	<a href="${ctx}/static/images/assets/example/notice.png"  class="fancybox">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/tqh_mall_logo.png">
       		<h3>商城</h3>
       	</a>
     </div>
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-      	<a href="javascript:void(0)" class="unUse">
+      	<a href="${ctx}/static/images/assets/example/notice.png"  class="fancybox">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/index_19.png">
    	  		<h3>台球圈子</h3>
    	  	</a>
     </div>
   </div><!-- /.row -->
-  <!-- START THE FEATURETTES -->
   <!-- FOOTER -->
 </div> 
+<!-- toolTips测试 -->
+<div class="container-fluid">
+	<div class="row">
+	</div>
+</div>
+<!-- toolTips end test -->
  <div class="container-fluid" style="margin-top:30px;">
  	<div style="background:url(${ctx}/static/images/assets/example/friend_link_bg.png) repeat-x;margin-left:-15px;margin-right:-15px;padding-bottom:30px;">
 		<p class="friend_link"><label style="color:#9ca3a2;font-size:14px;">友情链接：</label> <a href="http://www.appchina.com">应用汇| </a><a href="http://app.mi.com">小米应用商店 | </a><a href="http://apk.hiapk.com">安卓市场 | </a><a href="http://www.fzhuake.com">华科信息 </a></p>
@@ -204,10 +214,13 @@
     $(function(){
     	$("#left_pb").css("background-image","none");
     	$("#right_pb").css("background-image","none");
-    	$(".unUse").click(function(){
+    	/* $(".unUse").click(function(){
     		alert("该功能正在开发中");
-    	});
+    	}); */ 
     });
+    $(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
     </script>
 	</body>
 </html>
