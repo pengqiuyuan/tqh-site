@@ -42,6 +42,8 @@
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {background-color: #148c74;color:#FFFFFF;}
 .nav-tabs > li > a {background:#A0CBC2;color:#FFFFFF;font-weight:bold;}
 .nav-tabs > li > a:hover {background:#A0CBC2;color:#FFFFFF;font-weight:bold;}
+#live-matches >table.outer:hover {background-color: red;background:#FFFFFF;color:#FFFFFF;font-weight:bold;}
+
 </style>
 </head>
 <body>
@@ -148,7 +150,7 @@
 	};
 	
 	setInterval(function() {
-		refase();
+		//refase();
 	}, 60000);
 
 	$(document).ready(function() {
