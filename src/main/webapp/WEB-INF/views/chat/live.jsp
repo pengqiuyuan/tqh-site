@@ -54,10 +54,11 @@
 	  	<input style="display: none" class="form-control" id="usersList" value="*">
 	  	<input style="display: none" class="form-control" id="name" >
 	  	<input style="display: none" class="form-control" id="room" >	        
+        		<img src="${ctx}/static/images/assets/example/live_02.jpg" style="width:100%;min-height:544px;max-height:544px;position:absolute;z-index:-666;margin-right: -15px;margin-left: -15px;"/>
+ 		
     	<div class="row">
     		<!-- 直播模块背景图片 -->
-    		<img src="${ctx}/static/images/assets/example/live_02.jpg" style="width:100%;min-height:544px;max-height:544px;position:absolute;z-index:-666;float: left;"/>
-       		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 chat-container-left">
+      		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 chat-container-left">
           		<div class="">
           			<div id="player" class="" style="float:right;">
           			</div>
@@ -124,9 +125,6 @@
 		</div>   
 	</div>
 	<script>
-    if (!document.addEventListener ){
-    	alert("您的浏览器有系统不支持的特性，建议使用谷歌，苹果浏览器访问");
-    }
 
 		var flashvars = {
 			// M3U8 url, or any other url which compatible with SMP player (flv, mp4, f4m)
@@ -157,6 +155,10 @@
 		"10.2",
 		// other parameters
 		null, flashvars, params, attrs);
+		
+	    if (!document.addEventListener ){
+	    	alert("您的浏览器有系统不支持的特性，建议使用谷歌，苹果浏览器访问");
+	    }
 	</script>
 
 </body>
