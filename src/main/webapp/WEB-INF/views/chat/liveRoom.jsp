@@ -76,7 +76,6 @@
 	        	<input type="hidden" id="avatar" name="avatar" value="${member.avatar}" > 
 	        	<input type="hidden" id="avatarMoRen" name="avatarMoRen" value="${ctx}/static/images/avatar.png" >
 	        	<input type="hidden" id="zhiboMoRen" name="zhiboMoRen" value="${ctx}/static/images/zhibo.png" >                
-	            <div id="loginError">
         </div>    	
     	<div class="row">
     		<!-- 直播模块背景图片 -->
@@ -86,15 +85,18 @@
           		</div>
     		</div>
     		<div class="col-md-4" style="margin-top:15px;margin-bottom:60px;">
+            	<div class="more_against"> 
+					<span>2014英国国际锦标赛 1/4决赛</span>
+					<span>赛事名称与时间暂时未设置</span>
+				</div> 
+    			<!--比分模块  -->
     			<ul class="nav nav-list" style="background-color:#EDEDED;">
               		<input type="hidden" value="id" value="${id}"/>
-<div id="showLiving">
-${htmlContent }
-</div>
+					<div id="showLiving" style="height:400px;overflow:auto;">
+					${htmlContent }
+					</div>
             	</ul>
-            	<div class="more_against"> 
-					<span>1/5<a href="#"><img src="${ctx}/static/images/assets/example/live1_12.png"></a></span>
-				</div> 
+            	
     		</div>
 		</div>   
 		<!-- 评论模块 -->    

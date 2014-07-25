@@ -124,9 +124,9 @@ public class RemoteParser {
 				contentHtml=contentHtml.replace("<th class=\"right\">Player 1</th>", "");
 				contentHtml=contentHtml.replace("<th class=\"left\">Player 2</th>", "");
 
-				contentHtml=contentHtml.replace("<h1>Frames</h1>", "<p>场次</p>");
-				contentHtml=contentHtml.replace("<h1>Points</h1>", "<p>比分</p>");
-				contentHtml=contentHtml.replace("<h1>Break</h1>", "<p>Break</p>");
+				contentHtml=contentHtml.replace("<h1>Frames</h1>", "<span>场次</span>");
+				contentHtml=contentHtml.replace("<h1>Points</h1>", "<span>比分</span>");
+				contentHtml=contentHtml.replace("<h1>Break</h1>", "<span>Break</span>");
 				//去除包含nbsp;的th tr td
 				contentHtml=contentHtml.replace("<tr>&nbsp;</tr>", "");
 				contentHtml=contentHtml.replace("<th>&nbsp;</th>", "");
@@ -136,8 +136,16 @@ public class RemoteParser {
 				contentHtml=contentHtml.replace("<tr><th><span style=\"visibility:hidden;\">TableName</span></th><th class=\"right\">Player 1</th><th>v</th<th class=\"left\">Player 2</th><th class=\"left\"><a href=\"http://www.worldsnooker.livesport.tv/\"><img src=\"http://3f76916fc51b3e65f1fe-732c75fe8657c98942557ae4ad757ff6.r18.cf3.rackcdn.com/icn_tv.png\" alt=\"TV\" width=\"15\" height=\"15\"></a></th></tr>", "");
 				contentHtml=contentHtml.replace("<tr><th><span style=\"visibility:hidden;\">TableName</span></th><th class=\"right\"> Player 1</th><th>v</th><th class=\"left\">Player 2</th></tr> ", "");
 				
-				contentHtml=contentHtml.replace("<table class=\"outer\">", "<table class=\"outer container-fluid against active\" style=\"background-color: #c7c7c7;margin-top:5px;\">");
-
+				
+				contentHtml=contentHtml.replace("<span style=\"visibility:hidden;\">TableName</span>", "<span style=\"visibility:hidden;\"></span>");
+				contentHtml=contentHtml.replace("<table class=\"outer\">", "<table class=\"outer container-fluid against active\" style=\"background-color: #c7c7c7;margin-top:5px;margin-bottom:5px;\">");
+				contentHtml=contentHtml.replace("<td class=\"players left\">", "<td class=\"players left\" style=\"padding-right:5px;\" >");
+				contentHtml=contentHtml.replace("<td class=\"players right\">", "<td class=\"players right\" style=\"padding-left:5px;width:90px; \" >");
+				contentHtml=contentHtml.replace("<td class=\"frames right\">", "<td class=\"frames right\" style=\"padding-left:5px;\" >");
+				contentHtml=contentHtml.replace("<td class=\"points right\">", "<td class=\"points right\" style=\"padding-left:5px;\" >");
+				contentHtml=contentHtml.replace("<td class=\"breaks right\">", "<td class=\"breaks right\" style=\"padding-left:5px;\" >");
+				
+				
 				Document doc = Jsoup.parse(contentHtml);
 				Elements links = doc.select("span[style=visibility:hidden;]").parents().parents();
 				for(Element ele:links){
