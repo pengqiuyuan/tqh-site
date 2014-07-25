@@ -30,7 +30,7 @@
 		.tqh_logo{margin-left:72%;margin-top:-100px;}
 		.shar{margin-top:-20px;padding-left:100px;}
 		.shar span{padding-right:10px;}
-		#nav{padding-left:30%;background:url(${ctx}/static/images/assets/example/dh_bg.png);}
+		#nav{padding-left:27%;background:url(${ctx}/static/images/assets/example/dh_bg.png);}
  		#nav a{color:#FFFFFF;font-family:"Microsoft YaHei";font-size:16px;}
  		#nav a:hover{background-color:#15E2B9}
  		.copyRight{color:#FFFFFF;font-size:12px;}

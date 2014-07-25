@@ -15,5 +15,7 @@
          <pattern>/chat/liveRoom</pattern>
          <pattern>/chat/live</pattern>
          <pattern>/login</pattern>
+         <pattern>/app/tqh</pattern>
+         <pattern>/app/tqsj</pattern>
     </decorator>
 </decorators>
