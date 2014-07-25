@@ -56,7 +56,7 @@
 	  	<input style="display: none" class="form-control" id="room" >	        
     	<div class="row">
     		<!-- 直播模块背景图片 -->
-    		<img src="${ctx}/static/images/assets/example/live_02.jpg" style="width:100%;min-height:544px;max-height:544px;position:absolute;z-index:-666;"/>
+    		<img src="${ctx}/static/images/assets/example/live_02.jpg" style="width:100%;min-height:544px;max-height:544px;position:absolute;z-index:-666;float: left;"/>
        		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 chat-container-left">
           		<div class="">
           			<div id="player" class="" style="float:right;">
@@ -244,7 +244,10 @@
 		</div>   
 	</div>
 	<script>
-	$(document).ready(function() {
+    if (!document.addEventListener ){
+    	alert("您的浏览器有系统不支持的特性，建议使用谷歌，苹果浏览器访问");
+    }
+	$(document).ready(function() {	
 	    $("#downchat").click(function(){
 			$('#chatHistory').scrollTop(chatHistory.scrollHeight);
 	    });
@@ -252,37 +255,36 @@
 			$('#chatOffHistory').scrollTop(chatOffHistory.scrollHeight);
 	    });
 	});
-	
-    var flashvars = {
-            // M3U8 url, or any other url which compatible with SMP player (flv, mp4, f4m)
-            // escaped it for urls with ampersands
-            src: escape("http://video.taiqiuhui.cn/hls/test.m3u8"),
-            // url to OSMF HLS Plugin
-            plugin_m3u8: "${ctx}/static/chat/HLSProviderOSMF.swf",
-        };
-        var params = {
-            // self-explained parameters
-            allowFullScreen: true,
-            allowScriptAccess: "always",
-            bgcolor: "#000000"
-        };
-        var attrs = {
-            name: "player",
-            style:"visibility: visible;float: right;"
-        };
 
-        swfobject.embedSWF(
-            // url to SMP player
-            "${ctx}/static/chat/StrobeMediaPlayback.swf",
-            // div id where player will be place
-            "player",
-            // width, height
-            "700", "524",
-            // minimum flash player version required
-            "10.2",
-            // other parameters
-            null, flashvars, params, attrs
-        );
+		var flashvars = {
+			// M3U8 url, or any other url which compatible with SMP player (flv, mp4, f4m)
+			// escaped it for urls with ampersands
+			src : escape("http://video.taiqiuhui.cn/hls/test.m3u8"),
+			// url to OSMF HLS Plugin
+			plugin_m3u8 : "${ctx}/static/chat/HLSProviderOSMF.swf",
+		};
+		var params = {
+			// self-explained parameters
+			allowFullScreen : true,
+			allowScriptAccess : "always",
+			bgcolor : "#000000"
+		};
+		var attrs = {
+			name : "player",
+			style : "visibility: visible;float: right;"
+		};
+
+		swfobject.embedSWF(
+		// url to SMP player
+		"${ctx}/static/chat/StrobeMediaPlayback.swf",
+		// div id where player will be place
+		"player",
+		// width, height
+		"700", "524",
+		// minimum flash player version required
+		"10.2",
+		// other parameters
+		null, flashvars, params, attrs);
 	</script>
 
 </body>
