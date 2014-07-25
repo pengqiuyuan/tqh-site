@@ -111,7 +111,7 @@
 						    		</div>
 						    	</div>
 						    </div>
-						    <!-- 比分 -->
+						    <!-- 比分。 -->
 						    <div class="tab-pane fade" id="core">
 						    	<ul class="nav nav-list" style="background-color:#EDEDED;">
 				              		<input type="hidden" id="id"  value="${id}"/>
