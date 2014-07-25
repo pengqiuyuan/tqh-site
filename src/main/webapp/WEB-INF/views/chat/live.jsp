@@ -42,8 +42,6 @@
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {background-color: #148c74;color:#FFFFFF;}
 .nav-tabs > li > a {background:#A0CBC2;color:#FFFFFF;font-weight:bold;}
 .nav-tabs > li > a:hover {background:#A0CBC2;color:#FFFFFF;font-weight:bold;}
-#live-matches >table.outer:hover {background-color: red;background:#FFFFFF;color:#FFFFFF;font-weight:bold;}
-
 </style>
 </head>
 <body>
@@ -58,7 +56,7 @@
 	  	<input style="display: none" class="form-control" id="room" >	        
     	<div class="row">
     		<!-- 直播模块背景图片 -->
-    		<img src="${ctx}/static/images/assets/example/live_02.jpg" style="width:100%;min-height:544px;max-height:544px;position:absolute;z-index:-666;"/>
+    		<img src="${ctx}/static/images/assets/example/live_02.jpg" style="width:100%;min-height:544px;max-height:544px;position:absolute;z-index:-666;float: left;"/>
        		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 chat-container-left">
           		<div class="">
           			<div id="player" class="" style="float:right;">
@@ -114,11 +112,130 @@
 						    <!-- 比分 -->
 						    <div class="tab-pane fade" id="core">
 						    	<ul class="nav nav-list" style="background-color:#EDEDED;">
-				              		<input type="hidden" id="id"  value="${id}"/>
-					<div id="showLiving" style="height:400px;overflow:auto;">
-					${htmlContent }
-					</div>
+				              		<li class="active" style="background-color: #c7c7c7;margin-top:5px;max-height:110px;">
+				              			<a href="#">
+				              				<div class="container-fluid against">
+				              					<div class="row" style="max-height:56px;">
+				              						<div class="col-xs-3 col-sm-3 col-md-3" style="max-height:56px;">
+				              							<p><img src="${ctx}/static/images/assets/example/live1_04.png" class="img-circle"></p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="against_head">16</p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="against_head">：</p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="against_head">24</p>
+				              						</div>
+				              						<div class="col-xs-3 col-sm-3 col-md-3">
+				              							<p><img src="${ctx}/static/images/assets/example/live1_04.png" class="img-circle"></p>
+				              						</div>
+				              					</div>
+				              					<div class="row" style="max-height:10px;">
+				              						<div class="col-xs-3 col-sm-3 col-md-3">
+				              							<p class="against_foot">丁俊晖啊</p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="against_foot">(2)</p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="turn_num against_foot">第(5)轮</p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="against_foot">(1)</p>
+				              						</div>
+				              						<div class="col-xs-3 col-sm-3 col-md-3">
+				              							<p class="against_foot">奥沙利文</p>
+				              						</div>
+				              					</div>
+				              				</div>
+										</a>
+									</li>
+									<li class="active" style="background-color: #c7c7c7;margin-top:5px;max-height:110px;">
+				              			<a href="#">
+				              				<div class="container-fluid against">
+				              					<div class="row" style="max-height:56px;">
+				              						<div class="col-xs-3 col-sm-3 col-md-3" style="max-height:56px;">
+				              							<p><img src="${ctx}/static/images/assets/example/live1_04.png" class="img-circle"></p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="against_head">16</p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="against_head">：</p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="against_head">24</p>
+				              						</div>
+				              						<div class="col-xs-3 col-sm-3 col-md-3">
+				              							<p><img src="${ctx}/static/images/assets/example/live1_04.png" class="img-circle"></p>
+				              						</div>
+				              					</div>
+				              					<div class="row" style="max-height:10px;">
+				              						<div class="col-xs-3 col-sm-3 col-md-3">
+				              							<p class="against_foot">丁俊晖啊</p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="against_foot">(2)</p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="turn_num against_foot">第(5)轮</p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="against_foot">(1)</p>
+				              						</div>
+				              						<div class="col-xs-3 col-sm-3 col-md-3">
+				              							<p class="against_foot">奥沙利文</p>
+				              						</div>
+				              					</div>
+				              				</div>
+										</a>
+									</li>
+									<li class="active" style="background-color: #c7c7c7;margin-top:5px;max-height:110px;">
+				              			<a href="#">
+				              				<div class="container-fluid against">
+				              					<div class="row" style="max-height:56px;">
+				              						<div class="col-xs-3 col-sm-3 col-md-3" style="max-height:56px;">
+				              							<p><img src="${ctx}/static/images/assets/example/live1_04.png" class="img-circle"></p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="against_head">16</p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="against_head">：</p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="against_head">24</p>
+				              						</div>
+				              						<div class="col-xs-3 col-sm-3 col-md-3">
+				              							<p><img src="${ctx}/static/images/assets/example/live1_04.png" class="img-circle"></p>
+				              						</div>
+				              					</div>
+				              					<div class="row" style="max-height:10px;">
+				              						<div class="col-xs-3 col-sm-3 col-md-3">
+				              							<p class="against_foot">丁俊晖啊</p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="against_foot">(2)</p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="turn_num against_foot">第(5)轮</p>
+				              						</div>
+				              						<div class="col-xs-2 col-sm-2 col-md-2">
+				              							<p class="against_foot">(1)</p>
+				              						</div>
+				              						<div class="col-xs-3 col-sm-3 col-md-3">
+				              							<p class="against_foot">奥沙利文</p>
+				              						</div>
+				              					</div>
+				              				</div>
+										</a>
+									</li>
 	          					</ul>
+				            	<div class="more_against"> 
+									<span>1/5<a href="#"><img src="${ctx}/static/images/assets/example/live1_12.png"></a></span>
+								</div> 
 				   			</div>
 		  				</div><!-- 选项卡end-->
 					</div>
@@ -126,72 +243,40 @@
     		</div>
 		</div>   
 	</div>
-	
-	
-	<script type="text/javascript">
-	var id=$("#id").val();
-	function refase(){
+	<script>
+    if (!document.addEventListener ){
+    	alert("您的浏览器有系统不支持的特性，建议使用谷歌，苹果浏览器访问");
+    }
 
-		
-		$.ajax({
-			url: "<%=request.getContextPath()%>/chat/refreshLiving?id=" + id, 
-			type: 'GET',
-			async:false,
-			contentType: "application/json;charset=UTF-8",
-			success: function(data){
-				$("#showLiving").html(data.html);
-				
-			},error:function(data){
-				alert("出错了");
-			}
-		});
-		
-		
-	};
-	
-	setInterval(function() {
-		//refase();
-	}, 60000);
+		var flashvars = {
+			// M3U8 url, or any other url which compatible with SMP player (flv, mp4, f4m)
+			// escaped it for urls with ampersands
+			src : escape("http://video.taiqiuhui.cn/hls/test.m3u8"),
+			// url to OSMF HLS Plugin
+			plugin_m3u8 : "${ctx}/static/chat/HLSProviderOSMF.swf",
+		};
+		var params = {
+			// self-explained parameters
+			allowFullScreen : true,
+			allowScriptAccess : "always",
+			bgcolor : "#000000"
+		};
+		var attrs = {
+			name : "player",
+			style : "visibility: visible;float: right;"
+		};
 
-	$(document).ready(function() {
-	    $("#downchat").click(function(){
-			$('#chatHistory').scrollTop(chatHistory.scrollHeight);
-	    });
-	    $("#downoffchat").click(function(){
-			$('#chatOffHistory').scrollTop(chatOffHistory.scrollHeight);
-	    });
-	});
-	
-    var flashvars = {
-            // M3U8 url, or any other url which compatible with SMP player (flv, mp4, f4m)
-            // escaped it for urls with ampersands
-            src: escape("http://video.taiqiuhui.cn/hls/test.m3u8"),
-            // url to OSMF HLS Plugin
-            plugin_m3u8: "${ctx}/static/chat/HLSProviderOSMF.swf",
-        };
-        var params = {
-            // self-explained parameters
-            allowFullScreen: true,
-            allowScriptAccess: "always",
-            bgcolor: "#000000"
-        };
-        var attrs = {
-            name: "player",
-            style:"visibility: visible;float: right;"
-        };
-
-        swfobject.embedSWF(
-            // url to SMP player
-            "${ctx}/static/chat/StrobeMediaPlayback.swf",
-            // div id where player will be place
-            "player",
-            // width, height
-            "700", "524",
-            // minimum flash player version required
-            "10.2",
-            // other parameters
-            null, flashvars, params, attrs
-        );
+		swfobject.embedSWF(
+		// url to SMP player
+		"${ctx}/static/chat/StrobeMediaPlayback.swf",
+		// div id where player will be place
+		"player",
+		// width, height
+		"700", "524",
+		// minimum flash player version required
+		"10.2",
+		// other parameters
+		null, flashvars, params, attrs);
 	</script>
 
 </body>
