@@ -247,14 +247,6 @@
     if (!document.addEventListener ){
     	alert("您的浏览器有系统不支持的特性，建议使用谷歌，苹果浏览器访问");
     }
-	$(document).ready(function() {	
-	    $("#downchat").click(function(){
-			$('#chatHistory').scrollTop(chatHistory.scrollHeight);
-	    });
-	    $("#downoffchat").click(function(){
-			$('#chatOffHistory').scrollTop(chatOffHistory.scrollHeight);
-	    });
-	});
 
 		var flashvars = {
 			// M3U8 url, or any other url which compatible with SMP player (flv, mp4, f4m)
