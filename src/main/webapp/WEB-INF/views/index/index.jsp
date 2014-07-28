@@ -188,14 +188,7 @@
    	  	</a>
     </div>
   </div><!-- /.row -->
-  <!-- FOOTER -->
 </div> 
-<!-- toolTips测试 -->
-<div class="container-fluid">
-	<div class="row">
-	</div>
-</div>
-<!-- toolTips end test -->
  <div class="container-fluid" style="margin-top:30px;">
  	<div style="background:url(${ctx}/static/images/assets/example/friend_link_bg.png) repeat-x;margin-left:-15px;margin-right:-15px;padding-bottom:30px;">
 		<p class="friend_link"><label style="color:#9ca3a2;font-size:14px;">友情链接：</label> <a href="http://www.appchina.com">应用汇| </a><a href="http://app.mi.com">小米应用商店 | </a><a href="http://apk.hiapk.com">安卓市场 | </a><a href="http://www.fzhuake.com">华科信息 </a></p>
