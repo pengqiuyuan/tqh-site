@@ -44,56 +44,6 @@ public class ChatController {
 	private String livePath;
 	
 	/**
-	 * 首页
-	 * @return
-	 */
-	@RequestMapping(method = RequestMethod.GET)
-	public String index(Model model) {
-		Member member = getCurrentMember();
-		if(member == null){
-			Member mem =new Member();
-			model.addAttribute("member",mem);
-			model.addAttribute("channelName",CHAT_ZHIBO);
-		}else{
-			model.addAttribute("member",member);
-			model.addAttribute("channelName",CHAT_ZHIBO);
-		}
-		return "/chat/index";
-	}
-	
-	@RequestMapping(value="liveRoom/{id}",method = RequestMethod.GET)
-	public String liveRoom(Model model,@PathVariable final String id){
-		Member member = getCurrentMember();
-		if(member == null){
-			Member mem =new Member();
-			model.addAttribute("member",mem);
-			model.addAttribute("channelName",CHAT_ZHIBO);
-		}else{
-			model.addAttribute("member",member);
-			model.addAttribute("channelName",CHAT_ZHIBO);
-		}
-		
-		String url=livePath+id;
-		Map<String,String> tagMap=new HashMap<String,String>();
-		Map<String,String> removeMap=new HashMap<String,String>();
-		tagMap.put("id=live-matches", "div");
-		removeMap.put("class=title", "div");
-		removeMap.put("class=left", "th");
-		String htmlContent="";//捕捉内容
-		try {
-//			htmlContent=remoteParser.parseHtmlContent(url, tagMap, null, "utf-8");
-			htmlContent=remoteParser.parseHtmlContent("http://192.168.1.50/specials/test1.html", tagMap, removeMap, "utf-8");
-
-		} catch (Exception e) {
-			logger.debug("***********************************异常************");
-		}
-		
-		model.addAttribute("htmlContent",htmlContent);
-		model.addAttribute("id",id);
-		return "/chat/liveRoom";
-	}
-	
-	/**
 	 * 60刷新一次比赛比分
 	 */
 	@RequestMapping(value="/refreshLiving",method=RequestMethod.GET,consumes="application/json", produces="application/json")
@@ -120,31 +70,9 @@ public class ChatController {
 		return map;
 	}
 	
-	
-	
-	
-	/**
-	 * 直播聊天
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value="/chat2",method = RequestMethod.GET)
-	public String chat(Model model) {
-		Member member = getCurrentMember();
-		if(member == null){
-			Member mem =new Member();
-			model.addAttribute("member",mem);
-			model.addAttribute("channelName",CHAT_ZHIBO);
-		}else{
-			model.addAttribute("member",member);
-			model.addAttribute("channelName",CHAT_ZHIBO);
-		}
-		return "/chat/chat2";
-	}
-	
 	@RequestMapping(value="live",method=RequestMethod.GET)
 	public ModelAndView live(@RequestParam(value = "id", required = false) Integer id){
-
+		
 		ModelAndView mav = new ModelAndView();
 		Member member = getCurrentMember();
 		if(member == null){
