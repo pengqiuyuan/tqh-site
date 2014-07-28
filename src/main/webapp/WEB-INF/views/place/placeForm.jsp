@@ -11,9 +11,23 @@
 <title>球房入驻</title>
  <link href="${ctx}/static/jasny/css/jasny-bootstrap.css" rel="stylesheet" type="text/css"> 
  <script src="${ctx}/static/jasny/js/jasny-bootstrap.js" type="text/javascript"></script>
+ <!-- Add fancybox mousewheel plugin (this is optional) -->
+ <script type="text/javascript" src="${ctx}/static/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+ <!-- Add fancyBox -->
+ <link rel="stylesheet" href="${ctx}/static/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+ <script type="text/javascript" src="${ctx}/static/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
  <style type="text/css">
  .form_bg{background:url(${ctx}/static/images/assets/example/place_form_bg.png);}
  .palce_form_head{padding-left:50px;background:url(${ctx}/static/images/assets/example/dh_bg.png);height:32px;padding-top:6px;color:#FFFFFF;font-size:14px;}
+ .instruction{float:right;margin-right:10px;}
+ .expander {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 25px;
+    height: 25px;
+    background: #FFFFFF url(${ctx}/static/images/assets/example/place_close.png?raw=true) center center no-repeat;
+   }
  </style>
 </head>
 <body>
@@ -25,6 +39,7 @@
 							<div class="form-group">
 								<div class="palce_form_head">
 		                    		<span >台球地图&gt;球房入驻</span>
+		                    		<div class="instruction"><a href="${ctx}/static/images/assets/example/place_des.png" id="place_des" style="text-decoration:underline;color:#FFFFFF;" href="#">球房入驻说明</a></div>
 		                		</div>
 							</div> 
 							<div class="form-group">
@@ -206,6 +221,20 @@
 		$("#pics .fileinput").remove();
 	});
 	
-	</script>
+	 $(document).ready(function() {
+		$("#place_des").fancybox({
+			openEffect: 'none',
+		    closeEffect: 'none',
+		    autoScale : false,
+		    closeBtn:false,
+			afterShow: function() { 
+		        $('<div class="expander"></div>').appendTo(this.inner).click(function() {
+		        	$.fancybox.close();
+		        });
+		    },
+		}
+	);
+});
+</script>
 </body>
 </html>
