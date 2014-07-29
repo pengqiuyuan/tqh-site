@@ -125,6 +125,30 @@
 		</div>   
 	</div>
 	<script>
+	
+	var id=$("#id").val();
+	function refase(){
+
+		
+		$.ajax({
+			url: "<%=request.getContextPath()%>/chat/refreshLiving?id=" + id, 
+			type: 'GET',
+			async:false,
+			contentType: "application/json;charset=UTF-8",
+			success: function(data){
+				$("#showLiving").html(data.html);
+				
+			},error:function(data){
+				alert("出错了");
+			}
+		});
+		
+		
+	};
+	
+	setInterval(function() {
+		//refase();
+	}, 60000);
 
 		var flashvars = {
 			// M3U8 url, or any other url which compatible with SMP player (flv, mp4, f4m)
