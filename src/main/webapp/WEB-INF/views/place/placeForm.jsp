@@ -28,6 +28,8 @@
     height: 25px;
     background: #FFFFFF url(${ctx}/static/images/assets/example/place_close.png?raw=true) center center no-repeat;
    }
+   .red{border:1px solid red}
+   .green{border:1px solid green}
  </style>
 </head>
 <body>
@@ -45,13 +47,13 @@
 							<div class="form-group">
    								<label for="name" class="col-sm-2 control-label">*球房名称:</label>
     							<div class="col-sm-4">
-      								<input class="form-control" type="text" id="place_name" name="name" value="${place.name}" placeholder="请输入球房名称">
+      								<input class="form-control" type="text" id="place_name" name="name" value="${place.name}" placeholder="请输入球房名称" data-container="body" data-trigger="hover focus" data-toggle="popover" data-placement="right" data-content="/*球房名称不超过20个字符*/">
     							</div>
   							</div>
   							<div class="form-group">
    								<label for="name" class="col-sm-2 control-label">*球房电话:</label>
     							<div class="col-sm-4">
-      								<input class="form-control" type="text" id="place_tel" name="tel" value="${place.tel}" placeholder="请输入联系方式">
+      								<input class="form-control" type="text" id="place_tel" name="tel" value="${place.tel}" placeholder="请输入联系方式" data-container="body" data-trigger="hover focus" data-toggle="popover" data-placement="right" data-content="/*手机号为11位，电话格式如：0568-5858888 或者5858888*/">
     							</div>
   							</div> 
   							<div class="form-group">
@@ -123,6 +125,7 @@
 	<script>
 	//$("#map").addClass("active");
 	$(function(){
+		 $("[data-toggle='popover']").popover();
 		$.validator.addMethod("selectProvince",function(value,element){
 			 var provinceCode = $("#province").val();
             return provinceCode !='';
@@ -227,6 +230,10 @@
 		    closeEffect: 'none',
 		    autoScale : false,
 		    closeBtn:false,
+		    minWidth:1040,
+		    minHeight:644,
+		    maxWidth:1040,
+		    maxHeight:644,
 			afterShow: function() { 
 		        $('<div class="expander"></div>').appendTo(this.inner).click(function() {
 		        	$.fancybox.close();

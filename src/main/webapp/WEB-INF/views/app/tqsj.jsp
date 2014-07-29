@@ -49,20 +49,20 @@
 	</div><!--app head end  -->
 	<!-- app description -->
 	<div class="container-fluid" style="background-color:#FFFFFF;margin-top:0px;padding-top:60px;">
-		<div class="row">
-			<img src="${ctx}/static/images/assets/app/tqsj_1.png" style="width:100%;"/>
+		<div class="row text-center">
+			<img src="${ctx}/static/images/assets/app/tqsj_1.png" style="width:1268px;height:431px;"/>
 		</div>
-		<div class="row">
-			<img src="${ctx}/static/images/assets/app/tqsj_2.png" style="width:100%;"/>
+		<div class="row text-center">
+			<img src="${ctx}/static/images/assets/app/tqsj_2.png" style="width:1268px;height:480px;"/>
 		</div>
-		<div class="row">
-			<img src="${ctx}/static/images/assets/app/tqsj_3.png" style="width:100%;"/>
+		<div class="row text-center">
+			<img src="${ctx}/static/images/assets/app/tqsj_3.png" style="width:1268px;height:375px;"/>
 		</div>
-		<div class="row">
-			<img src="${ctx}/static/images/assets/app/tqsj_4.png" style="width:100%;"/>
+		<div class="row text-center">
+			<img src="${ctx}/static/images/assets/app/tqsj_4.png" style="width:1268px;height:417px;"/>
 		</div>
-		<div class="row">
-			<img src="${ctx}/static/images/assets/app/tqsj_5.png" style="width:100%;"/>
+		<div class="row text-center">
+			<img src="${ctx}/static/images/assets/app/tqsj_5.png" style="width:1268px;height:501px;"/>
 		</div>
 	</div><!--app description end  -->
 	<script type="text/javascript">

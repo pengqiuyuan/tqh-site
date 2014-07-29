@@ -76,9 +76,9 @@
     			<div class="row tab-pan">
 		       		<div class="bs-example bs-example-tabs">
 					    <ul id="myTab" class="nav nav-tabs" role="tablist">
-					      <li class="active"><a href="#chat" role="tab" data-toggle="tab" id="downchat">聊天室</a></li>
-					      <li class=""><a href="#chatoff" role="tab" data-toggle="tab" id="downoffchat">官方直播</a></li>
-					      <li class=""><a href="#core" role="tab" data-toggle="tab">比分</a></li>
+					      <li class="active" style="width:94px;text-align:center;"><a href="#chat" role="tab" data-toggle="tab" id="downchat">聊天室</a></li>
+					      <li class="" style="width:94px;text-align:center;"><a href="#chatoff" role="tab" data-toggle="tab" id="downoffchat">官方直播</a></li>
+					      <li class="" style="width:94px;text-align:center;"><a href="#core" role="tab" data-toggle="tab">比分</a></li>
 					    </ul>
 					    <div id="myTabContent" class="tab-content">
 					    	<!-- 官方直播 -->
