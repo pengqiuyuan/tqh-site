@@ -17,6 +17,7 @@
 .head_container >button:hover,.head_container >button:focus{color:#FFFFFF;}
 .btn-tqh{background:#847683;}
 .btn-tqsj{background:none;}
+.back-corlor{background:#FFFFFF;}
 </style>
 </head>
 <body>
@@ -48,21 +49,21 @@
 		</div>
 	</div><!--app head end  -->
 	<!-- app description -->
-	<div class="container-fluid">
-		<div class="row">
-			<img src="${ctx}/static/images/assets/app/tqh_1.png" style="width:100%;"/>
+	<div class="container-fluid back-corlor">
+		<div class="row text-center">
+			<img src="${ctx}/static/images/assets/app/tqh_1.png" style="width:1268px;height:415px;"/>
 		</div>
-		<div class="row">
-			<img src="${ctx}/static/images/assets/app/tqh_2.png" style="width:100%;"/>
+		<div class="row text-center">
+			<img src="${ctx}/static/images/assets/app/tqh_2.png" style="width:1268px;height:444px;"/>
 		</div>
-		<div class="row">
-			<img src="${ctx}/static/images/assets/app/tqh_3.png" style="width:100%;"/>
+		<div class="row text-center">
+			<img src="${ctx}/static/images/assets/app/tqh_3.png" style="width:1268px;height:416px;"/>
 		</div>
-		<div class="row">
-			<img src="${ctx}/static/images/assets/app/tqh_4.png" style="width:100%;"/>
+		<div class="row text-center">
+			<img src="${ctx}/static/images/assets/app/tqh_4.png" style="width:1268px;height:378px;"/>
 		</div>
-		<div class="row">
-			<img src="${ctx}/static/images/assets/app/tqh_5.png" style="width:100%;"/>
+		<div class="row text-center">
+			<img src="${ctx}/static/images/assets/app/tqh_5.png" style="width:1268px;height:550px;"/>
 		</div>
 	</div><!--app description end  -->
 	<script type="text/javascript">
@@ -71,6 +72,9 @@
 		});
 		$("#tqsj_app").click(function(){
 			window.location.href="${ctx}/app/tqsj";
+		});
+		$(function(){
+			$("body").css({background:"#FFFFFF"});
 		});
 	</script>
 </body>

@@ -9,7 +9,7 @@
 
 <html>
 <head>
-<title>整改的直播间</title>
+<title>直播间</title>
 <script src="${ctx}/static/chat/js/jquery-1.8.0.min.js"></script>
 <script src="${ctx}/static/chat/js/socket.io.js"></script>
 <script src="${ctx}/static/chat/js/pomeloclient.js"></script>
@@ -54,10 +54,11 @@
 	  	<input style="display: none" class="form-control" id="usersList" value="*">
 	  	<input style="display: none" class="form-control" id="name" >
 	  	<input style="display: none" class="form-control" id="room" >	        
+        		<img src="${ctx}/static/images/assets/example/live_02.jpg" style="width:100%;min-height:544px;max-height:544px;position:absolute;z-index:-666;margin-right: -15px;margin-left: -15px;"/>
+ 		
     	<div class="row">
     		<!-- 直播模块背景图片 -->
-    		<img src="${ctx}/static/images/assets/example/live_02.jpg" style="width:100%;min-height:544px;max-height:544px;position:absolute;z-index:-666;float: left;"/>
-       		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 chat-container-left">
+      		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 chat-container-left">
           		<div class="">
           			<div id="player" class="" style="float:right;">
           			</div>
@@ -75,9 +76,9 @@
     			<div class="row tab-pan">
 		       		<div class="bs-example bs-example-tabs">
 					    <ul id="myTab" class="nav nav-tabs" role="tablist">
-					      <li class="active"><a href="#chat" role="tab" data-toggle="tab" id="downchat">聊天室</a></li>
-					      <li class=""><a href="#chatoff" role="tab" data-toggle="tab" id="downoffchat">官方直播</a></li>
-					      <li class=""><a href="#core" role="tab" data-toggle="tab">比分</a></li>
+					      <li class="active" style="width:94px;text-align:center;"><a href="#chat" role="tab" data-toggle="tab" id="downchat">聊天室</a></li>
+					      <li class="" style="width:94px;text-align:center;"><a href="#chatoff" role="tab" data-toggle="tab" id="downoffchat">官方直播</a></li>
+					      <li class="" style="width:94px;text-align:center;"><a href="#core" role="tab" data-toggle="tab">比分</a></li>
 					    </ul>
 					    <div id="myTabContent" class="tab-content">
 					    	<!-- 官方直播 -->
@@ -109,144 +110,21 @@
 						    		</div>
 						    	</div>
 						    </div>
-						    <!-- 比分。 -->
-						    <div class="tab-pane fade" id="core">
-						    	<ul class="nav nav-list" style="background-color:#EDEDED;">
-				              		<li class="active" style="background-color: #c7c7c7;margin-top:5px;max-height:110px;">
-				              			<a href="#">
-				              				<div class="container-fluid against">
-				              					<div class="row" style="max-height:56px;">
-				              						<div class="col-xs-3 col-sm-3 col-md-3" style="max-height:56px;">
-				              							<p><img src="${ctx}/static/images/assets/example/live1_04.png" class="img-circle"></p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="against_head">16</p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="against_head">：</p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="against_head">24</p>
-				              						</div>
-				              						<div class="col-xs-3 col-sm-3 col-md-3">
-				              							<p><img src="${ctx}/static/images/assets/example/live1_04.png" class="img-circle"></p>
-				              						</div>
-				              					</div>
-				              					<div class="row" style="max-height:10px;">
-				              						<div class="col-xs-3 col-sm-3 col-md-3">
-				              							<p class="against_foot">丁俊晖啊</p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="against_foot">(2)</p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="turn_num against_foot">第(5)轮</p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="against_foot">(1)</p>
-				              						</div>
-				              						<div class="col-xs-3 col-sm-3 col-md-3">
-				              							<p class="against_foot">奥沙利文</p>
-				              						</div>
-				              					</div>
-				              				</div>
-										</a>
-									</li>
-									<li class="active" style="background-color: #c7c7c7;margin-top:5px;max-height:110px;">
-				              			<a href="#">
-				              				<div class="container-fluid against">
-				              					<div class="row" style="max-height:56px;">
-				              						<div class="col-xs-3 col-sm-3 col-md-3" style="max-height:56px;">
-				              							<p><img src="${ctx}/static/images/assets/example/live1_04.png" class="img-circle"></p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="against_head">16</p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="against_head">：</p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="against_head">24</p>
-				              						</div>
-				              						<div class="col-xs-3 col-sm-3 col-md-3">
-				              							<p><img src="${ctx}/static/images/assets/example/live1_04.png" class="img-circle"></p>
-				              						</div>
-				              					</div>
-				              					<div class="row" style="max-height:10px;">
-				              						<div class="col-xs-3 col-sm-3 col-md-3">
-				              							<p class="against_foot">丁俊晖啊</p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="against_foot">(2)</p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="turn_num against_foot">第(5)轮</p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="against_foot">(1)</p>
-				              						</div>
-				              						<div class="col-xs-3 col-sm-3 col-md-3">
-				              							<p class="against_foot">奥沙利文</p>
-				              						</div>
-				              					</div>
-				              				</div>
-										</a>
-									</li>
-									<li class="active" style="background-color: #c7c7c7;margin-top:5px;max-height:110px;">
-				              			<a href="#">
-				              				<div class="container-fluid against">
-				              					<div class="row" style="max-height:56px;">
-				              						<div class="col-xs-3 col-sm-3 col-md-3" style="max-height:56px;">
-				              							<p><img src="${ctx}/static/images/assets/example/live1_04.png" class="img-circle"></p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="against_head">16</p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="against_head">：</p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="against_head">24</p>
-				              						</div>
-				              						<div class="col-xs-3 col-sm-3 col-md-3">
-				              							<p><img src="${ctx}/static/images/assets/example/live1_04.png" class="img-circle"></p>
-				              						</div>
-				              					</div>
-				              					<div class="row" style="max-height:10px;">
-				              						<div class="col-xs-3 col-sm-3 col-md-3">
-				              							<p class="against_foot">丁俊晖啊</p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="against_foot">(2)</p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="turn_num against_foot">第(5)轮</p>
-				              						</div>
-				              						<div class="col-xs-2 col-sm-2 col-md-2">
-				              							<p class="against_foot">(1)</p>
-				              						</div>
-				              						<div class="col-xs-3 col-sm-3 col-md-3">
-				              							<p class="against_foot">奥沙利文</p>
-				              						</div>
-				              					</div>
-				              				</div>
-										</a>
-									</li>
-	          					</ul>
-				            	<div class="more_against"> 
-									<span>1/5<a href="#"><img src="${ctx}/static/images/assets/example/live1_12.png"></a></span>
-								</div> 
-				   			</div>
-		  				</div><!-- 选项卡end-->
+						    <!-- 比分 -->
+							<div class="tab-pane fade" id="core">
+								<ul class="nav nav-list" style="background-color: #EDEDED;">
+									<input type="hidden" id="id" value="${id}" />
+									<div id="showLiving" style="height: 400px; overflow: auto;">
+										${htmlContent }</div>
+								</ul>
+							</div>
+						</div><!-- 选项卡end-->
 					</div>
 				</div>
     		</div>
 		</div>   
 	</div>
 	<script>
-    if (!document.addEventListener ){
-    	alert("您的浏览器有系统不支持的特性，建议使用谷歌，苹果浏览器访问");
-    }
 
 		var flashvars = {
 			// M3U8 url, or any other url which compatible with SMP player (flv, mp4, f4m)
@@ -277,6 +155,10 @@
 		"10.2",
 		// other parameters
 		null, flashvars, params, attrs);
+		
+	    if (!document.addEventListener ){
+	    	alert("您的浏览器有系统不支持的特性，建议使用谷歌，苹果浏览器访问");
+	    }
 	</script>
 
 </body>
