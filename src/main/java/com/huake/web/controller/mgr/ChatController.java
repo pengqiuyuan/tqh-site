@@ -95,7 +95,9 @@ public class ChatController {
 		try {
 //			htmlContent=remoteParser.parseHtmlContent(url, tagMap, null, "utf-8");
 			htmlContent=remoteParser.parseHtmlContent("http://192.168.1.50/specials/test1.html", tagMap, removeMap, "utf-8");
-
+			System.out.println("----------------");
+			System.out.println(htmlContent);
+			System.out.println("----------------");
 		} catch (Exception e) {
 			logger.debug("***********************************异常************");
 		}
