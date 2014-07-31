@@ -150,7 +150,8 @@
 			},
 			rules:{
 				name:{
-					required:true
+					required:true,
+					maxlength:20
 				},
 				tel:{
 					required:true,
@@ -168,7 +169,8 @@
 			},
 			messages:{
 				name:{
-					required:"请输入球房名称"
+					required:"请输入球房名称",
+					maxlength:"名称最多20个字符"
 				},
 				tel:{
 					required:"请输入联系方式",
