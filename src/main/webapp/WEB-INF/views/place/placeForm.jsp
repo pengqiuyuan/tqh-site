@@ -158,7 +158,8 @@
 					telVali:""
 				},
 				addr:{
-					required:true
+					required:true,
+					maxlength:100
 				},
 				province:{
 					selectProvince:""
@@ -177,7 +178,8 @@
 					telVali:"请输入正确的联系方式"
 				},
 				addr:{
-					required:"请输入球房地址"
+					required:"请输入球房地址",
+					maxlength:"地址最多100个字符"
 				}
 			}
 		}); 
