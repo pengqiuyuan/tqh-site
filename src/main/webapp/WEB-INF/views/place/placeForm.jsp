@@ -26,6 +26,7 @@
     right: -2px;
     width: 25px;
     height: 25px;
+    cursor:pointer;
     background: #FFFFFF url(${ctx}/static/images/assets/example/place_close.png?raw=true) center center no-repeat;
    }
    .red{border:1px solid red}
