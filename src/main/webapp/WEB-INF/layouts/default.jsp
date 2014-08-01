@@ -24,20 +24,20 @@
 	<sitemesh:head/>
 	<style type="text/css">
 		.header_footer_img{width:100%;}
-		.friend_link{padding-top:30px;padding-left:100px;color:#E9EBEB;}
+		.friend_link{padding-top:40px;padding-left:100px;color:#E9EBEB;}
 		 .friend_link a{color:#E9EBEB;}
 		a:link {text-decoration: none;} 
 		.tqh_logo{margin-left:72%;margin-top:-100px;}
 		.shar{margin-top:-20px;padding-left:100px;}
 		.shar span{padding-right:10px;}
-		#nav{padding-left:30%;background:url(${ctx}/static/images/assets/example/dh_bg.png);}
+		#nav{padding-left:27%;background:url(${ctx}/static/images/assets/example/dh_bg.png);}
  		#nav a{color:#FFFFFF;font-family:"Microsoft YaHei";font-size:16px;}
  		#nav a:hover{background-color:#15E2B9}
  		.copyRight{color:#FFFFFF;font-size:12px;}
 	</style>
 </head>
 
-<body>
+<body style="background:url(${ctx}/static/images/assets/example/body_bg.png) repeat;">
 		<%@ include file="/WEB-INF/layouts/header.jsp"%>
 			<sitemesh:body/>
 		<%@ include file="/WEB-INF/layouts/footer.jsp"%>

@@ -11,16 +11,6 @@
 <html>
 <head>
 	<title>登录-注册</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link type="image/x-icon" href="${ctx}/static/images/favicon.ico" rel="shortcut icon">
-	<link href="${ctx}/static/bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet" />
-	<script src="${ctx}/static/bootstrap/3.1.1/js/jquery-1.10.2.js"></script>
-	<script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap.js"></script>
-	<script src="${ctx}/static/jquery-validation/1.11.1/jquery.validate.min.js" type="text/javascript"></script>
-	<link href="${ctx}/static/jquery-validation/1.11.1/validate.css" type="text/css" rel="stylesheet" />
-	<script src="${ctx}/static/jquery-validation/1.11.1/messages_bs_zh.js" type="text/javascript"></script>
 <style type="text/css">
 	.rg{background:url(${ctx}/static/images/assets/example/login_bg.png);padding-top:30px;}
 	.rg_left{padding-top:70px;padding-bottom:70px;}
@@ -29,31 +19,30 @@
 	.display{display:none}
 	*{ margin:0; padding:0;}
 	a{ text-decoration:none; color:#333;}
-	.box_163css{position:relative;}
-	.nav{ width:100%;padding-left:200px;height:34px;}
-	.nav li{ font-size:20px;  float:left; width:100px; height:34px;-webkit-transition:all 0.35s linear; cursor:pointer; text-align:center; line-height:32px; list-style-type:none;}
-	.nav li.on{ color:#f00;}
-	.line{width:1px;float:left; position:relative; left:36%; top:0px;height: 2px;background:#dadada;}
+	 .box_163css{position:relative;}
+	#lg_nav{ width:100%;padding-left:200px;height:34px;}
+	#lg_nav li{font-size:20px;  float:left; width:100px; height:34px;-webkit-transition:all 0.35s linear; cursor:pointer; text-align:center; line-height:32px; list-style-type:none;}
+	#lg_nav li.on{border-bottom:2px solid #19A78D;color:#f00;}
+	/* .line{width:1px;float:left; position:relative; left:36%; top:0px;height: 2px;background:#dadada;}
 	.s_line{position: absolute;display:block;width:100px;z-index: 1;top: -7px;left: 0;height: 7px;border-bottom: 2px solid #19A78D;overflow: hidden;text-align: center;}
-	.s_line b{display: inline-block;margin-top: -8px;width: 0;height: 0;border-style: dashed dashed solid;border-width: 10px;border-color: transparent transparent #E4393C;overflow: hidden;zoom: 1;font-size: 0;}
+	.s_line b{display: inline-block;margin-top: -8px;width: 0;height: 0;border-style: dashed dashed solid;border-width: 10px;border-color: transparent transparent #E4393C;overflow: hidden;zoom: 1;font-size: 0;} */
 	.zlbox_content{width:500px; margin: 1px auto; }
 	.item_tab{min-height: 310px; border:1px solid #dadada;padding: 20px;text-align:center;margin-top:5px;}
-	.header_footer_img{width:100%;}
-	.friend_link{padding-top:30px;padding-left:100px;color:#E9EBEB;}
+	.header_footer_img{width:100%;} 
+	.friend_link{padding-top:50px;padding-left:100px;color:#E9EBEB;}
 	.friend_link a{color:#E9EBEB;}
 	a:link {text-decoration: none;} 
-	.shar{padding-top:30px;padding-left:100px;}
+	.tqh_logo{margin-left:72%;margin-top:-100px;}
+	.shar{margin-top:-15px;padding-left:100px;}
 	.shar span{padding-right:10px;}	
+	.copyRight{color:#FFFFFF;font-size:12px;}
 </style>
 <script type="text/javascript">
 	$(function(){
-		//var l=0;
-		$('.navs_li').hover(function(){
+		$('.navs_li').click(function(){
 			$(this).siblings().removeClass('on');
 			$(this).addClass('on');
-			var i=$(this).index();	
-			var a1=100*i;	
-			$(".s_line").animate({left:a1},100);
+			$(this).animate({borderBottomWidth:"2px"},50);
 			var index = $(".navs_li").index($(this));
 			$(".item_tab").hide();
 			$(".item_tab").eq(index).show();
@@ -62,19 +51,19 @@
 </script>
 </head>
 <body>
-	<div class="container-fluid">
+	<%-- <div class="container-fluid">
 		<div class="row">
 			<img class="header_footer_img" src="${ctx}/static/images/assets/example/header.png"/>
 		</div>
-	</div>
-	<div class="container-fluid rg">
-		<div class="row">
-			<div class="col-md-6 text-center rg_left">
+	</div> --%>
+	<div class="container-fluid rg" style="min-width:1200px;">
+		<div class="row" style="min-width:1200px;">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center rg_left" style="min-width:600px;">
 				<img alt="" src="${ctx}/static/images/assets/example/logo.png">
 			</div>
-		 	<div class="col-md-5 border_green">
+		 	<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 border_green" style="min-width:600px;">
 		 		<div class="text-center">
-		 			<ul class="nav">
+		 			<ul class="nav" id="lg_nav">
 				        <li class="navs_li on">登录</li>
 				        <li class="navs_li">快速注册</li>
 				    </ul>
@@ -175,14 +164,19 @@
 		 </div>
 	</div>
 </div>
-<div class="container-fluid">
+<%-- <div class="container-fluid">
 	<div class="row" >
 		<div style="background:url(${ctx}/static/images/assets/example/footer.png);background-size:cover;height:200px;">
 			<p class="friend_link">友情链接： <a href="http://www.appchina.com">应用汇| </a><a href="http://app.mi.com">小米应用商店 | </a><a href="http://apk.hiapk.com">安卓市场 | </a><a href="http://www.fzhuake.com">华科信息 </a></p>
-			<p class="shar"><span><a href="http://weibo.com/yqkhengdeli"><img src="${ctx}/static/images/assets/example/sina_logo.png"/></a></span><span><img src="${ctx}/static/images/assets/example/tengxun_logo.png"/></span></p>
+			<span class="tqh_logo"><img style="margin-top:-30px;" src="${ctx}/static/images/assets/example/tqh_footer_logo.png"/></span>
+			<p class="shar">
+				<span><a href="http://weibo.com/yqkhengdeli"><img src="${ctx}/static/images/assets/example/sina_logo.png"/></a></span>
+				<span><img src="${ctx}/static/images/assets/example/tengxun_logo.png"/></span>
+				<span class="copyRight">版权所有 福州华科信息科技有限公司 保留一切权利 闽ICP备13018017</span>
+			</p>
 		</div>
 	</div>
-</div>
+</div> --%>
 	<script type="text/javascript">
 		function vilidateEmailOrNickName(category, value){
 			var element;

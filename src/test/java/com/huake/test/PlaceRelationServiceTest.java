@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springside.modules.test.spring.SpringTransactionalTestCase;
+
+import com.huake.entity.AppVersionInfo;
 import com.huake.entity.PlaceRelation;
 import com.huake.entity.TqhSiteBanner;
+import com.huake.service.app.AppVersionInfoService;
 import com.huake.service.banner.TqhSiteBannerService;
 import com.huake.service.place.PlaceRelationService;
 
@@ -21,6 +24,9 @@ public class PlaceRelationServiceTest extends SpringTransactionalTestCase{
 	
 	@Autowired
 	private TqhSiteBannerService tqhSiteBannerService;
+	
+	@Autowired
+	private AppVersionInfoService appVersionInfoService;
 	
 	@Test
 	public void getAllProvince(){
@@ -49,5 +55,13 @@ public class PlaceRelationServiceTest extends SpringTransactionalTestCase{
 		for(TqhSiteBanner t :tb){
 			System.out.println("ID"+t.getId()+"    名字"+t.getTitle()+"   时间"+t.getSeqDate());
 		}
+	}
+	/**
+	 * 查询app下载链接
+	 */
+	@Test
+	public void findApp(){
+		System.out.println("app Android下载地址:"+appVersionInfoService.findApp(AppVersionInfo.APP_CATEGORY_TQH_ANDROID));
+		System.out.println("app IOS下载地址:"+appVersionInfoService.findApp(AppVersionInfo.APP_CATEGORY_TQH_IOS));
 	}
 }
