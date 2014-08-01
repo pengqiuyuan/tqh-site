@@ -11,9 +11,10 @@
 <head>
 <title>直播间</title>
 <script src="${ctx}/static/chat/js/jquery-1.8.0.min.js"></script>
+<script src="${ctx}/static/chat/js/json2.js"></script>
 <script src="${ctx}/static/chat/js/socket.io.js"></script>
 <script src="${ctx}/static/chat/js/pomeloclient.js"></script>
-<script src="${ctx}/static/chat/js/client.js"></script>
+<%-- <script src="${ctx}/static/chat/js/client.js"></script> --%>
 <script src="${ctx}/static/chat/js/pop.js"></script>   
 <link href="${ctx}/static/bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet" type="text/css">
 <script src="${ctx}/static/bootstrap/3.1.1/js/bootstrap.js"></script> 
@@ -156,9 +157,6 @@
 		// other parameters
 		null, flashvars, params, attrs);
 		
-	    if (!document.addEventListener ){
-	    	alert("您的浏览器有系统不支持的特性，建议使用谷歌，苹果浏览器访问");
-	    }
 	</script>
 
 </body>
