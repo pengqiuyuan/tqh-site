@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -30,11 +31,14 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.jsoup.select.Evaluator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.huake.entity.PlayAgainst;
 
 
 //Spring Bean的标识.
@@ -119,199 +123,23 @@ public class RemoteParser {
 				// 第三步过滤注释
 				filter = new NodeClassFilter(RemarkNode.class);
 				contentHtml = removeHtmlByFilter(parser, filter, contentHtml);
-				contentHtml=contentHtml.replace("View Game", "");
-				contentHtml=contentHtml.replace("<th>v</th>", "");
-				contentHtml=contentHtml.replace("<th class=\"right\">Player 1</th>", "");
-				contentHtml=contentHtml.replace("<th class=\"left\">Player 2</th>", "");
-
-				contentHtml=contentHtml.replace("<h1>Frames</h1>", "<span>场次</span>");
-				contentHtml=contentHtml.replace("<h1>Points</h1>", "<span>比分</span>");
-				contentHtml=contentHtml.replace("<h1>Break</h1>", "<span>Break</span>");
-				//去除包含nbsp;的th tr td
-				contentHtml=contentHtml.replace("<tr>&nbsp;</tr>", "");
-				contentHtml=contentHtml.replace("<th>&nbsp;</th>", "");
-				contentHtml=contentHtml.replace("<td>&nbsp;</td>", "");
-				contentHtml=contentHtml.replace("<td colspan=\"3\">", "<td colspan=\"2\">");
-				
-				contentHtml=contentHtml.replace("<tr><th><span style=\"visibility:hidden;\">TableName</span></th><th class=\"right\">Player 1</th><th>v</th<th class=\"left\">Player 2</th><th class=\"left\"><a href=\"http://www.worldsnooker.livesport.tv/\"><img src=\"http://3f76916fc51b3e65f1fe-732c75fe8657c98942557ae4ad757ff6.r18.cf3.rackcdn.com/icn_tv.png\" alt=\"TV\" width=\"15\" height=\"15\"></a></th></tr>", "");
-				contentHtml=contentHtml.replace("<tr><th><span style=\"visibility:hidden;\">TableName</span></th><th class=\"right\"> Player 1</th><th>v</th><th class=\"left\">Player 2</th></tr> ", "");
-				
-				
-				contentHtml=contentHtml.replace("<span style=\"visibility:hidden;\">TableName</span>", "<span style=\"visibility:hidden;\"></span>");
-				contentHtml=contentHtml.replace("<table class=\"outer\">", "<table class=\"outer container-fluid against active\" style=\"background-color: #c7c7c7;margin-top:5px;margin-bottom:5px;\">");
-				contentHtml=contentHtml.replace("<td class=\"players left\">", "<td class=\"players left\" style=\"padding-right:5px;\" >");
-				contentHtml=contentHtml.replace("<td class=\"players right\">", "<td class=\"players right\" style=\"padding-left:5px;width:90px; \" >");
-				contentHtml=contentHtml.replace("<td class=\"frames right\">", "<td class=\"frames right\" style=\"padding-left:5px;\" >");
-				contentHtml=contentHtml.replace("<td class=\"points right\">", "<td class=\"points right\" style=\"padding-left:5px;\" >");
-				contentHtml=contentHtml.replace("<td class=\"breaks right\">", "<td class=\"breaks right\" style=\"padding-left:5px;\" >");
-				
-				
 				Document doc = Jsoup.parse(contentHtml);
-				Elements links = doc.select("span[style=visibility:hidden;]").parents().parents();
-				for(Element ele:links){
-					ele.toString().replaceAll(ele.toString(), "");
-					logger.debug("############    "+ele.html());
+				Elements tables = doc.select("table.outer");
+				Elements colgroups = doc.select("colgroup");
+				colgroups.remove();
+				for(Element el :tables){
+					Element firstTr = el.getElementsByTag("tr").first();
+					Element lastTr = el.getElementsByTag("tr").last();
+					firstTr.remove();
+					lastTr.remove();
 				}
-				
-				Elements colgroup = doc.select("colgroup");
-				for(Element ele:colgroup){
-					ele.html("");
-					ele.toString().replace(ele.toString(), "");
-					ele.remove();
-				}
-				return contentHtml;
+				return tables.toString();
 			} catch (ParserException e) {
 				logger.error("parse exception:", e);
 			}
 			return "";
 		}
 		
-		
-		
-		
-//		public Player parseBasketballPlayerContentWithQQHtml(String content, Map<String, String> needTagMap, String encoding) {
-//			final Player player = new Player();
-//			try{
-//				Parser parser = new Parser();
-//				parser.setInputHTML( StringUtil.replace(content, "&nbsp;", ""));
-//				parser.setEncoding(encoding);
-//				
-//				NodeVisitor visitor = new NodeVisitor() {
-//					@Override
-//					public void visitTag(Tag tag) {
-//						if (tag.getTagName().equals("DIV")) {
-//							/*获取名字，位置，球队，号码*/
-//							if("pt".equals(tag.getAttribute("class"))){
-//								NodeList nodelist = tag.getChildren();
-//	                            for (int i = 0; i < nodelist.size(); i++) {
-//	                            	Node node = (Node) nodelist.elementAt(i);
-//	                        		 if (node instanceof HeadingTag) {
-//	                        			 HeadingTag head = (HeadingTag) nodelist.elementAt(i);
-//	                        			 /*处理字符*/
-//	                        			 String[] names = StringUtil.split(head.toPlainTextString().trim(), " ");
-//	                        			 
-//	                        			 if( names.length > 0){
-//	                        				 if(names[0].indexOf("(") > 0){
-//	                            				 Pattern pattern = Pattern.compile("(.*)\\((.*)\\)", Pattern.CASE_INSENSITIVE);
-//	                        					 Matcher m = pattern.matcher(names[0]);
-//	                        					 while(m.find()){
-//	                        						 player.setName(m.group(1));
-//	                        						 player.setEnName(m.group(2));
-//	                        					 }
-//	                        				 }else player.setName(names[0]);
-//	                        				 
-//	                        				 //得分后卫 | 洛杉矶湖人 | 24
-//	                        				 String[] other = StringUtil.split(names[1], "|");
-//	                        				 player.setPlayAs(other[0]);
-//	                        				 player.setClubTeamNumber(Integer.parseInt(other[2]));
-//	                        				 //TODO 关联俱乐部
-//	                        				 player.setClubTeam(other[1]);
-//	                        			 }
-//	                        		 }
-//	                        		 
-//	                        		 if( node instanceof ImageTag ){
-//	                        			 ImageTag avatar = (ImageTag) nodelist.elementAt(i);
-//	                        			 String imageURL = avatar.getAttribute("src");
-//	                        			 String finishAccessURL = avatarService.fetchImage(imageURL, ImageService.PLAYER_AVATAR);
-//	                        			 player.setAvatar(finishAccessURL);
-//	                        			 
-//	                        		 }
-//	                        		 
-//	                            }
-//							}
-//							
-//							if("pp".equals(tag.getAttribute("class"))){
-//								NodeList nodelist = tag.getChildren();
-//	                            for (int i = 0; i < nodelist.size(); i++) {
-//	                            	Node node = (Node) nodelist.elementAt(i);
-//	                            	
-//	                            	if( node instanceof ImageTag ){
-//			               			 	ImageTag avatar = (ImageTag) nodelist.elementAt(i);
-//			               			 	String imageURL = avatar.getAttribute("src");
-//			               			 	System.out.println("Image URl:>>>" + imageURL);
-//			               			 	String finishAccessURL = avatarService.fetchImage(imageURL, ImageService.PLAYER_AVATAR);
-//			               			 	player.setAvatar(finishAccessURL);
-//		               		 		}
-//	                            }
-//							}
-//							
-//							/*获取身高，体重等*/
-//							if("pileft".equals(tag.getAttribute("class"))){
-//								NodeList nodelist = tag.getChildren();
-//	                            for (int i = 0; i < nodelist.size(); i++) {
-//	                            	Node node = (Node) nodelist.elementAt(i);
-//	                        		 if (node instanceof org.htmlparser.tags.BulletList) {
-//	                        			 BulletList bullet = (BulletList) nodelist.elementAt(i);
-//	                        			 NodeList bullets = bullet.getChildren();
-//	                        			 for (int j = 0; j < bullets.size(); j++) {
-//	                        				 Node bulletNode = (Node) bullets.elementAt(j);
-//	                        				 if (bulletNode instanceof org.htmlparser.tags.Bullet) {
-//	                        					 Pattern pattern = Pattern.compile("(出生年月:)(.*)", Pattern.CASE_INSENSITIVE);
-//	                        					 Matcher m = pattern.matcher(bulletNode.toPlainTextString().trim());
-//	                        					 while (m.find()) {
-//	                        						SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-//	                        						try{
-//	                        							player.setBirth( sdf.parse(m.group(2)));
-//	                        						}catch(Exception e){
-//	                        							logger.error("date format exception:", e);
-//	                        						}
-//	                        						
-//	                        					 }//end birth
-//	                        					 
-//	                        					 pattern = Pattern.compile("(身高:)(.*)", Pattern.CASE_INSENSITIVE);
-//	                        					 m = pattern.matcher(bulletNode.toPlainTextString().trim());
-//	                        					 while (m.find()) {
-//	                        						player.setHeight( m.group(2));
-//	                        					 }//end height
-//	                        					 
-//	                        					 pattern = Pattern.compile("(体重:)(.*)", Pattern.CASE_INSENSITIVE);
-//	                        					 m = pattern.matcher(bulletNode.toPlainTextString().trim());
-//	                        					 while (m.find()) {
-//	                        						player.setWeight( m.group(2));
-//	                        					 }//end weight
-//	                        					 
-//	                        					 pattern = Pattern.compile("(出生地点:)(.*)", Pattern.CASE_INSENSITIVE);
-//	                        					 m = pattern.matcher(bulletNode.toPlainTextString().trim());
-//	                        					 while (m.find()) {
-//	                        						player.setBirthplace( m.group(2));
-//	                        					 }//end birthplace
-//	                        					 
-//	                        					 pattern = Pattern.compile("(目前年薪:)(.*)", Pattern.CASE_INSENSITIVE);
-//	                        					 m = pattern.matcher(bulletNode.toPlainTextString().trim());
-//	                        					 while (m.find()) {
-//	                        						player.setSalary( m.group(2));
-//	                        					 }//end birthplace
-//	                        					 
-//	                        					 pattern = Pattern.compile("(毕业大学:)(.*)", Pattern.CASE_INSENSITIVE);
-//	                        					 m = pattern.matcher(bulletNode.toPlainTextString().trim());
-//	                        					 while (m.find()) {
-//	                        						player.setUniversity( m.group(2));
-//	                        					 }//end birthplace
-//	                        				 }
-//	                        			 }
-//	                        		 }
-//	                            }
-//							}
-//						}
-//					}
-//					
-//				};
-//				
-//				parser.visitAllNodesWith(visitor);
-//			}catch(Exception e){
-//				logger.error("parser exception:", e);
-//			}
-////			logger.debug(">>>中文姓名:" + player.getName());
-////			logger.debug(">>>英文姓名:" + player.getEnName());
-////			logger.debug(">>>生日:" + player.getBirth());
-////			logger.debug(">>>身高:" + player.getHeight());
-////			logger.debug(">>>体重:" + player.getWeight());
-////			logger.debug(">>>出生地点:" + player.getBirthplace());
-////			logger.debug(">>>年薪:" + player.getSalary());
-//			
-//			return player;
-//		}
-
 		/**
 		 * 组装过滤器
 		 * 
@@ -416,12 +244,91 @@ public class RemoteParser {
 			}
 			return buffer.toString();
 		}
-
-
-
-
-
-
-
+		/**
+		 * 将页面中的对阵信息取出封装
+		 * @param html
+		 * @return
+		 */
+		public List<PlayAgainst> playList(String html){
+			List<PlayAgainst> list = new ArrayList<PlayAgainst>();
+			Document doc = Jsoup.parse(html);
+			Elements tables = doc.select("table.outer");
+			for(Element el :tables){
+				PlayAgainst pa = new PlayAgainst();
+				String playerOneName = el.getElementsByTag("img").first().attr("alt");
+				String playerTwoName = el.getElementsByTag("img").last().attr("alt");
+				String playerOnePic = el.getElementsByTag("img").first().attr("src");
+				String playerTwoPic = el.getElementsByTag("img").last().attr("src");
+				String playerOneNum = el.getElementsByClass("frames").first().text().toString();
+				String playerTwoNum = el.getElementsByClass("frames").last().text().toString();
+				String playerOneCore = el.getElementsByClass("points").first().text().toString();
+				String playerTwoCore = el.getElementsByClass("points").last().text().toString();
+				String playerOneBreak = el.getElementsByClass("breaks").first().text().toString();
+				String playerTwoBreak = el.getElementsByClass("breaks").last().text().toString();
+				pa.setPlayerOneName(playerOneName);
+				pa.setPlayerTwoName(playerTwoName);
+				pa.setPlayerOnePic(playerOnePic);
+				pa.setPlayerTwoPic(playerTwoPic);
+				pa.setPlayerOneNum(playerOneNum);
+				pa.setPlayerTwoNum(playerTwoNum);
+				pa.setPlayerOneCore(playerOneCore);
+				pa.setPlayerTwoCore(playerTwoCore);
+				pa.setPlayerOneBreak(playerOneBreak);
+				pa.setPlayerTwoBreak(playerTwoBreak);
+				list.add(pa);
+			}
+			return list;
+		}
+		/**
+		 * 60秒刷新比分表进行html组装
+		 * @param list
+		 * @return
+		 */
+		public String instructHtml(List<PlayAgainst> list){
+			String html="";
+			for(PlayAgainst pa : list){
+				 html += "<li class='active' style='background-color: #c7c7c7;margin-top:5px;max-height:110px;'>"+
+              			"<a href='#'>"+
+          				"<div class='container-fluid against'>"+
+          					"<div class='row' style='max-height:56px;'>"+
+          						"<div class='col-xs-3 col-sm-3 col-md-3' style='max-height:56px;'>"+
+          							"<p><img src='"+pa.getPlayerOnePic()+"'class='player_thunm'></p>"+
+          						"</div>"+
+          						"<div class='col-xs-2 col-sm-2 col-md-2'>"+
+          							"<p class='against_head'>"+pa.getPlayerOneCore()+"</p>"+
+          						"</div>"+
+          						"<div class='col-xs-2 col-sm-2 col-md-2'>"+
+          							"<p class='against_head'>：</p>"+
+          						"</div>"+
+          						"<div class='col-xs-2 col-sm-2 col-md-2'>"+
+          							"<p class='against_head'>"+pa.getPlayerTwoCore()+"</p>"+
+          						"</div>"+
+          						"<div class='col-xs-3 col-sm-3 col-md-3'>"+
+          							"<p><img src='"+pa.getPlayerTwoPic()+"' class='player_thunm'></p>"+
+          						"</div>"+
+          						"</div>"+
+          						"<div class='row' style='max-height:10px;'>"+
+          						"<div class='col-xs-3 col-sm-3 col-md-3'>"+
+          							"<p class='against_foot'>"+pa.getPlayerOneName()+"</p>"+
+          						"</div>"+
+          						"<div class='col-xs-2 col-sm-2 col-md-2'>"+
+          							"<p class='against_foot'>("+pa.getPlayerOneNum()+")</p>"+
+          						"</div>"+
+          						"<div class='col-xs-2 col-sm-2 col-md-2'>"+
+          							"<p class='turn_num against_foot'>"+pa.getPlayerOneBreak()+" break "+pa.getPlayerTwoBreak()+"</p>"+
+          						"</div>"+
+          						"<div class='col-xs-2 col-sm-2 col-md-2'>"+
+          							"<p class='against_foot'>("+pa.getPlayerTwoNum()+")</p>"+
+          						"</div>"+
+          						"<div class='col-xs-3 col-sm-3 col-md-3'>"+
+          							"<p class='against_foot'>"+pa.getPlayerTwoName()+"</p>"+
+          						"</div>"+
+          					"</div>"+
+          				"</div>"+
+					"</a>"+
+				"</li>"	;
+			}
+			return html;
+		}
 	}
 

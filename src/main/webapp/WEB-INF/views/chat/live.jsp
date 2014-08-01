@@ -27,7 +27,7 @@
  .against p{text-align:center;}
  .against_head{padding:10px 0px;font-size:20px;color:#666666;}
  .against_foot{font-size:12px;color:#666666;}
- .turn_num{width:56px;margin-left:-10px;}
+ .turn_num{width:56px;margin-left:-20px;}
  .more_against{background-color:#EDEDED;margin-top:0px;height:65px;text-align:center;padding-top:20px;font-size:22px;color:#666666;}
  .more_against a{font-size:22px;padding-left:10px;color:#666666;}
 /* .tab-pan{padding-bottom:15px;} */
@@ -43,6 +43,7 @@
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {background-color: #148c74;color:#FFFFFF;}
 .nav-tabs > li > a {background:#A0CBC2;color:#FFFFFF;font-weight:bold;}
 .nav-tabs > li > a:hover {background:#A0CBC2;color:#FFFFFF;font-weight:bold;}
+.player_thunm{width:50px;height:50px;}
 </style>
 </head>
 <body>
@@ -69,17 +70,17 @@
     			<div class="row">
     				<ul class="nav nav-list" style="background-color:#EDEDED;">
 	              		<li class="nav-header" style="background:#323232;height:74px;">
-		              		<div class="" style="font-size:18px;color:#cfcfcf; font-family:宋体;padding-top:15px;padding-left:15px;">2014英国国际锦标赛 1/4决赛</div>
-		              		<div class="" style="font-size:16px;color:#989797; font-family:宋体;margin-top:6px;padding-left:15px;">时间：10月17日-10月27日</div>
+		              		<div class="" style="font-size:18px;color:#cfcfcf; font-family:宋体;padding-top:15px;padding-left:15px;">${gamePoint.name }</div>
+		              		<div class="" style="font-size:16px;color:#989797; font-family:宋体;margin-top:6px;padding-left:15px;">${gamePoint.date }</div>
 	              		</li>
               		</ul>
     			</div>
     			<div class="row tab-pan">
 		       		<div class="bs-example bs-example-tabs">
 					    <ul id="myTab" class="nav nav-tabs" role="tablist">
-					      <li class="active"><a href="#chat" role="tab" data-toggle="tab" id="downchat">聊天室</a></li>
-					      <li class=""><a href="#chatoff" role="tab" data-toggle="tab" id="downoffchat">官方直播</a></li>
-					      <li class=""><a href="#core" role="tab" data-toggle="tab">比分</a></li>
+					      <li class="active" style="width:94px;text-align:center;"><a href="#chat" role="tab" data-toggle="tab" id="downchat">聊天室</a></li>
+					      <li class="" style="width:94px;text-align:center;"><a href="#chatoff" role="tab" data-toggle="tab" id="downoffchat">官方直播</a></li>
+					      <li class="" style="width:94px;text-align:center;"><a href="#core" role="tab" data-toggle="tab">比分</a></li>
 					    </ul>
 					    <div id="myTabContent" class="tab-content">
 					    	<!-- 官方直播 -->
@@ -112,11 +113,50 @@
 						    	</div>
 						    </div>
 						    <!-- 比分 -->
-							<div class="tab-pane fade" id="core">
-								<ul class="nav nav-list" style="background-color: #EDEDED;">
-									<input type="hidden" id="id" value="${id}" />
-									<div id="showLiving" style="height: 400px; overflow: auto;">
-										${htmlContent }</div>
+							<div class="tab-pane fade chat-office-container" id="core">
+								<ul class="nav nav-list" style="background-color: #EDEDED;" id="core_des">
+									<c:forEach items="${listPa}" var="pa">
+										<li class="active" style="background-color: #c7c7c7;margin-top:5px;max-height:110px;">
+					              			<a href="#">
+					              				<div class="container-fluid against">
+					              					<div class="row" style="max-height:56px;">
+					              						<div class="col-xs-3 col-sm-3 col-md-3" style="max-height:56px;">
+					              							<p><img src="${pa.playerOnePic }" class="player_thunm"></p>
+					              						</div>
+					              						<div class="col-xs-2 col-sm-2 col-md-2">
+					              							<p class="against_head">${pa.playerOneCore }</p>
+					              						</div>
+					              						<div class="col-xs-2 col-sm-2 col-md-2">
+					              							<p class="against_head">：</p>
+					              						</div>
+					              						<div class="col-xs-2 col-sm-2 col-md-2">
+					              							<p class="against_head">${pa.playerTwoCore }</p>
+					              						</div>
+					              						<div class="col-xs-3 col-sm-3 col-md-3">
+					              							<p><img src="${pa.playerTwoPic }" class="player_thunm"></p>
+					              						</div>
+					              					</div>
+					              					<div class="row" style="max-height:10px;">
+					              						<div class="col-xs-3 col-sm-3 col-md-3">
+					              							<p class="against_foot">${pa.playerOneName }</p>
+					              						</div>
+					              						<div class="col-xs-2 col-sm-2 col-md-2">
+					              							<p class="against_foot">(${pa.playerOneNum })</p>
+					              						</div>
+					              						<div class="col-xs-2 col-sm-2 col-md-2">
+					              							<p class="turn_num against_foot">${pa.playerOneBreak } break ${pa.playerTwoBreak }</p>
+					              						</div>
+					              						<div class="col-xs-2 col-sm-2 col-md-2">
+					              							<p class="against_foot">(${pa.playerTwoNum })</p>
+					              						</div>
+					              						<div class="col-xs-3 col-sm-3 col-md-3">
+					              							<p class="against_foot">${pa.playerTwoName }</p>
+					              						</div>
+					              					</div>
+					              				</div>
+											</a>
+										</li>
+									</c:forEach>
 								</ul>
 							</div>
 						</div><!-- 选项卡end-->
@@ -126,7 +166,27 @@
 		</div>   
 	</div>
 	<script>
-
+	//var id=$("#id").val();
+	function refase(){
+		$.ajax({
+			url: "<%=request.getContextPath()%>/chat/refreshLiving?url="+'${gamePoint.url}', 
+			type: 'GET',
+			async:false,
+			contentType: "application/json;charset=UTF-8",
+			success: function(data){
+				$("#core_des").empty();
+				$("#core_des").append(data.html);
+			},error:function(data){
+				alert("刷新比分出错");
+			}
+		});
+	};
+	$(function(){
+		setInterval(function() {
+			refase();
+		}, 60000);
+	});
+	
 		var flashvars = {
 			// M3U8 url, or any other url which compatible with SMP player (flv, mp4, f4m)
 			// escaped it for urls with ampersands

@@ -59,7 +59,7 @@
 		</div>
 	</div>
 </div> --%>
-<div class="container-fluid head-container">
+<div class="container-fluid head-container" style="min-width:1000px;">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -104,7 +104,7 @@
       		</c:choose>
       	</c:forEach>
       </ol>
-      <div class="carousel-inner" style="height:480px;min-height:480px;max-height:480px;" role="listbox">
+      <div class="carousel-inner" style="height:480px;min-height:480px;min-width:1000px;max-height:480px;" role="listbox">
       	<c:forEach items="${banners}" var="banner" varStatus="num">
       		<c:choose>
       			<c:when test="${num.index==0 }">
@@ -148,7 +148,7 @@
 <!-- Marketing messaging and featurettes
 ================================================== -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
- <div class="container" style="padding-top:20px;padding-bottom:30px;">
+ <div class="container" style="padding-top:20px;padding-bottom:30px;min-width:1000px;">
   <!-- Three columns of text below the carousel --> 
   <div class="row">
   	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
@@ -182,26 +182,19 @@
       	</a>
     </div>
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-      	<a href="${ctx}/static/images/assets/example/notice.png"  class="fancybox">
+      	<a href="${ctx}/static/images/assets/example/notice.png"  rel="gallery" class="fancybox">
       		<img class="img-circle" src="${ctx}/static/images/assets/example/index_19.png">
    	  		<h3>台球圈子</h3>
    	  	</a>
     </div>
   </div><!-- /.row -->
-  <!-- FOOTER -->
 </div> 
-<!-- toolTips测试 -->
-<div class="container-fluid">
-	<div class="row">
-	</div>
-</div>
-<!-- toolTips end test -->
  <div class="container-fluid" style="margin-top:30px;">
  	<div style="background:url(${ctx}/static/images/assets/example/friend_link_bg.png) repeat-x;margin-left:-15px;margin-right:-15px;padding-bottom:30px;">
-		<p class="friend_link"><label style="color:#9ca3a2;font-size:14px;">友情链接：</label> <a href="http://www.appchina.com">应用汇| </a><a href="http://app.mi.com">小米应用商店 | </a><a href="http://apk.hiapk.com">安卓市场 | </a><a href="http://www.fzhuake.com">华科信息 </a></p>
+		<p class="friend_link"><label style="color:#9ca3a2;font-size:14px;">友情链接：</label> <a href="http://www.appchina.com" target="_blank">应用汇| </a><a href="http://app.mi.com" target="_blank">小米应用商店 | </a><a href="http://apk.hiapk.com" target="_blank">安卓市场 | </a><a href="http://www.fzhuake.com" target="_blank">华科信息 </a></p>
 		<span class="tqh_logo"><img style="margin-top:-30px;" src="${ctx}/static/images/assets/example/tqh_footer_logo.png"/></span>
 		<p class="shar">
-			<span><a href="http://weibo.com/yqkhengdeli"><img src="${ctx}/static/images/assets/example/sina_logo.png"/></a></span>
+			<span><a href="http://weibo.com/yqkhengdeli" target="_blank"><img src="${ctx}/static/images/assets/example/sina_logo.png"/></a></span>
 			<span><img src="${ctx}/static/images/assets/example/tengxun_logo.png"/></span>
 			<span class="copyRight">版权所有 福州华科信息科技有限公司 保留一切权利 闽ICP备13018017</span>
 		</p>

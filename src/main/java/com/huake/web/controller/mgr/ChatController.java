@@ -1,7 +1,9 @@
 package com.huake.web.controller.mgr;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -20,7 +22,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.huake.entity.GamePoint;
 import com.huake.entity.Member;
+import com.huake.entity.PlayAgainst;
+import com.huake.service.live.GamePointService;
 import com.huake.service.member.MemberService;
 import com.huake.util.RemoteParser;
 
@@ -40,19 +45,17 @@ public class ChatController {
 	@Autowired
 	private RemoteParser remoteParser;
 	
-	@Value("#{envProps.livePath}")
-	private String livePath;
+	@Autowired
+	private GamePointService gamePointService;
 	
 	/**
 	 * 60刷新一次比赛比分
 	 */
-	@RequestMapping(value="/refreshLiving",method=RequestMethod.GET,consumes="application/json", produces="application/json")
+	@RequestMapping(value="/refreshLiving",method=RequestMethod.GET)
 	@ResponseBody
 	@ResponseStatus(value=HttpStatus.OK)
-	public Map<String,String> refreshLiving(@RequestParam(value = "id", required = false) Integer id)
-	{
+	public Map<String,String> refreshLiving(@RequestParam(value="url",required=false) final String url){
 		Map<String,String> map=new HashMap<String,String>();
-		String url=livePath+id;
 		Map<String,String> tagMap=new HashMap<String,String>();
 		Map<String,String> removeMap=new HashMap<String,String>();
 		tagMap.put("id=live-matches", "div");
@@ -60,9 +63,8 @@ public class ChatController {
 		removeMap.put("class=left", "th");
 		String htmlContent="";//捕捉内容
 		try {
-//			htmlContent=remoteParser.parseHtmlContent(url, tagMap, null, "utf-8");
-			htmlContent=remoteParser.parseHtmlContent("http://192.168.1.50/specials/test1.html", tagMap, removeMap, "utf-8");
-
+			htmlContent=remoteParser.parseHtmlContent(url, tagMap, removeMap, "utf-8");
+			htmlContent = remoteParser.instructHtml(remoteParser.playList(htmlContent));
 		} catch (Exception e) {
 			logger.debug("***********************************异常************");
 		}
@@ -71,9 +73,9 @@ public class ChatController {
 	}
 	
 	@RequestMapping(value="live",method=RequestMethod.GET)
-	public ModelAndView live(@RequestParam(value = "id", required = false) Integer id){
-		
+	public ModelAndView live(){
 		ModelAndView mav = new ModelAndView();
+		List<PlayAgainst> listPa = new ArrayList<PlayAgainst>();
 		Member member = getCurrentMember();
 		if(member == null){
 			Member mem =new Member();
@@ -83,8 +85,7 @@ public class ChatController {
 			mav.addObject("member",member);
 			mav.addObject("channelName",CHAT_ZHIBO);
 		}
-		
-		String url=livePath+id;
+		GamePoint gamePoint = gamePointService.findByStatusOrderByUpDateDesc(GamePoint.STATUS_VALID);
 		Map<String,String> tagMap=new HashMap<String,String>();
 		Map<String,String> removeMap=new HashMap<String,String>();
 		tagMap.put("id=live-matches", "div");
@@ -93,15 +94,13 @@ public class ChatController {
 		
 		String htmlContent="";//捕捉内容
 		try {
-//			htmlContent=remoteParser.parseHtmlContent(url, tagMap, null, "utf-8");
-			htmlContent=remoteParser.parseHtmlContent("http://192.168.1.50/specials/test1.html", tagMap, removeMap, "utf-8");
-
+			htmlContent=remoteParser.parseHtmlContent(gamePoint.getUrl(), tagMap, removeMap, "utf-8");
+			listPa = remoteParser.playList(htmlContent);
 		} catch (Exception e) {
-			logger.debug("***********************************异常************");
+			logger.debug("***********异常************");
 		}
-		
-		mav.addObject("htmlContent",htmlContent);
-		mav.addObject("id",id);
+		mav.addObject("listPa",listPa);
+		mav.addObject("gamePoint",gamePoint);
 		mav.setViewName("/chat/live");
 		return mav;
 	}
