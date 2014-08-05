@@ -259,18 +259,13 @@
  *
  */
 Protocol.encode = function(id,route,msg){
+	
+	var isIE = !-[1,];
 	var msgStr = JSON2.stringify(msg);
     if (route.length>255) { throw new Error('route maxlength is overflow'); }
     
     if (!document.addEventListener ){
-    	var ind = 0;
-    	 var byteArr = new Array(5);
-    	 byteArr[ind++] = id & 0xFF;
-    	 byteArr[ind++] = id & 0xFF;
-    	 byteArr[ind++] = id & 0xFF;
-    	 byteArr[ind++] = id & 0xFF;
-    	 byteArr[ind++] = route.length & 0xFF;
-        return bt2StrIE(byteArr,0,byteArr.length,route,msgStr);
+        return bt2StrIE(isIE,id,route,msgStr);
     }else{
         var byteArray = new Array(HEADER + route.length + msgStr.length);
         //var byteArray = new Uint16Array(HEADER + route.length + msgStr.length);
@@ -309,14 +304,8 @@ var bt2Str = function(byteArray,start,end) {
     return result;
 }
 
-var bt2StrIE = function(byteArr,start,end,route,msg) {
-    var result = "";
-    for(var i = start; i < byteArr.length && i<end; i++) {
-    	alert("222222  "+String.fromCharCode(byteArr[i]));
-       result = result + String.fromCharCode(byteArr[i]);
-    };
-    result = result+route+msg;
-    alert("11111111" + result);
+var bt2StrIE = function(isIE,id,route,msg) {
+    result = isIE+"%"+id+"^"+route+msg;
     return result;
 }
 
@@ -352,7 +341,12 @@ var bt2StrIE = function(byteArr,start,end,route,msg) {
     socket = io.connect(url, {'force new connection': true, reconnect: false});
 
     socket.on('connect', function(){
-      console.log('[pomeloclient.init] websocket connected!');
+      //console.log('[pomeloclient.init] websocket connected!');
+      if(window.console){ //在firefox中是true，在ie打开开发者模式下是true
+    	  console.log('[pomeloclient.init] websocket connected!');
+      }else{ //在ie中未打开开发者模式下是false
+    	  //consoleLog('[pomeloclient.init] websocket connected!');
+      }
       if (cb) {
         cb(socket);
       }

@@ -10,7 +10,6 @@
 <html>
 <head>
 <title>直播间</title>
-<script src="${ctx}/static/chat/js/jquery-1.8.0.min.js"></script>
 <script src="${ctx}/static/chat/js/json2.js"></script>
 <script src="${ctx}/static/chat/js/socket.io.js"></script>
 <script src="${ctx}/static/chat/js/pomeloclient.js"></script>
